@@ -52,8 +52,8 @@ export const CourseCard = ({ initialData }: CourseCard) => {
           className="object-cover w-full h-full"
         />
       </CardHeader>
-      <CardContent className="flex-1 pt-6 space-y-4 px-0">
-        <div className="space-y-4 px-6">
+      <CardContent className="flex-1 pt-6 flex flex-col justify-between items-start gap-4 px-0">
+        <div className="w-full flex-1 space-y-4 px-6">
           <h3 className="text-lg font-medium">{title}</h3>
           <div className="flex justify-start items-center flex-wrap gap-2">
             {categories.map((category, index) => (
@@ -63,7 +63,7 @@ export const CourseCard = ({ initialData }: CourseCard) => {
             ))}
           </div>
         </div>
-        <div className="border-y p-6 flex justify-between items-center">
+        <div className="w-full border-y p-6 flex justify-between items-center">
           <p className="text-sm font-normal">
             By
             <span className="text-base font-medium ml-1">{owner}</span>
