@@ -1,6 +1,7 @@
-import { Categories } from "./_components/categories";
-import { Courses } from "./_components/courses";
 import { Hero } from "./_components/hero";
+import { Courses } from "./_components/courses";
+import { Categories } from "./_components/categories";
+import { ExperiencedInstructor } from "./_components/experienced-instructor";
 
 export default function MarketingPage() {
   return (
@@ -8,6 +9,7 @@ export default function MarketingPage() {
       <Hero />
       <Courses />
       <Categories />
+      <ExperiencedInstructor />
     </main>
   );
 }
