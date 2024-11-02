@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Sidebar = () => {
   const pathname = usePathname();
@@ -38,7 +38,7 @@ export const Sidebar = () => {
   }, [pathname]);
 
   return (
-    <div className="relative bg-[#F8F8F8] flex justify-center items-center">
+    <div className="relative hidden lg:flex bg-[#F8F8F8] justify-center items-center">
       <span className="absolute top-12 left-20 text-[#383838] text-2xl font-normal">
         Welcome!
       </span>
