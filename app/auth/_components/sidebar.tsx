@@ -12,7 +12,7 @@ export const Sidebar = () => {
     label: string;
   } | null>(null);
 
-  const redirectTo = useCallback((pathname: string) => {
+  const redirectTo = (pathname: string) => {
     if (pathname === "/auth/login") {
       return {
         href: "/auth/register",
@@ -28,14 +28,14 @@ export const Sidebar = () => {
     } else {
       return null;
     }
-  }, []);
+  };
 
   useEffect(() => {
     if (!!pathname) {
       const currentUrl = redirectTo(pathname);
       setUrl(currentUrl);
     }
-  }, []);
+  }, [pathname]);
 
   return (
     <div className="relative bg-[#F8F8F8] flex justify-center items-center">
