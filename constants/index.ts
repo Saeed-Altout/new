@@ -134,7 +134,6 @@ export const seminars = [
     href: "/",
   },
 ];
-
 export const categories = [
   {
     id: 0,
@@ -175,5 +174,34 @@ export const categories = [
     id: 7,
     name: "ONLINE SEMINARS",
     courses: 7,
+  },
+];
+export const links = [
+  {
+    id: 0,
+    title: "Company",
+    links: [
+      { id: 0, name: "About Us", href: "/about-us" },
+      { id: 1, name: "Career", href: "/career" },
+      { id: 2, name: "Blog", href: "/blog" },
+      { id: 3, name: "Contact us", href: "/contact-us" },
+    ],
+  },
+  {
+    id: 1,
+    title: "For Businesses",
+    links: [
+      { id: 0, name: "Corporate Training", href: "/corporate-training" },
+      {
+        id: 1,
+        name: "Digital Transformation",
+        href: "/digital-transformation",
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Work with us",
+    links: [{ id: 0, name: "Blog as a guest", href: "/blog-guest" }],
   },
 ];
