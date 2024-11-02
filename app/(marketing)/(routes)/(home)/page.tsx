@@ -7,7 +7,7 @@ import { CTA } from "./_components/cta";
 
 export default function MarketingPage() {
   return (
-    <main>
+    <main className="min-h-full overflow-x-hidden">
       <Hero />
       <Courses />
       <Categories />

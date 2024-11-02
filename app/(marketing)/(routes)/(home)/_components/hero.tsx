@@ -10,12 +10,12 @@ export const Hero = () => {
             Train for your dream job
           </h1>
           <div className="space-y-2 lg:space-y-4">
-            <p className="font-light text-sm md:text-base lg:text-lg leading-6 md:leading-8 lg:leading-[28.8px] text-[#656565]">
+            <p className="font-normal text-sm md:text-base lg:text-lg leading-6 md:leading-8 lg:leading-[28.8px] text-[#656565]">
               At our institution, students have the opportunity to refine their
               professional skills with the guidance of our expert teacher in an
               engaging manner.
             </p>
-            <p className="font-light text-sm md:text-base lg:text-lg leading-6 md:leading-8 lg:leading-[28.8px] text-[#656565]">
+            <p className="font-normal text-sm md:text-base lg:text-lg leading-6 md:leading-8 lg:leading-[28.8px] text-[#656565]">
               We have a talented trainer who is dedicated to instructing over
               200 students.
             </p>
