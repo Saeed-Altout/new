@@ -44,7 +44,7 @@ export const CreateNewTeamForm = ({ role }: { role?: Role }) => {
   };
 
   return (
-    <WrapperForm title="Sign Up" role={role} google facebook>
+    <WrapperForm title="Let's create your team" role={role} google facebook>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
           <FormField

@@ -46,9 +46,10 @@ export const Sidebar = () => {
         <Image
           src="/logo-light.svg"
           alt="E-In-Akademie Logo Light"
-          width={320}
-          height={76.29}
+          width={1000}
+          height={1000}
           priority
+          className="object-contain w-[320px] h-[76.29px]"
         />
       </Link>
       {url && (

@@ -30,7 +30,7 @@ export const WrapperForm = React.forwardRef<HTMLDivElement, WrapperFormProps>(
           <CardTitle className="relative text-4xl w-fit">
             {title}
             {role && (
-              <span className="absolute left-[110%] top-[70%] text-sm font-normal capitalize">
+              <span className="absolute left-[105%] top-[70%] text-base font-normal capitalize">
                 {role}
               </span>
             )}
