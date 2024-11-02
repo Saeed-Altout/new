@@ -24,8 +24,9 @@ import { Label } from "@/components/ui/label";
 
 import { WrapperForm } from "./wrapper-form";
 import { registerSchema } from "@/Schemas";
+import { Role } from "@/config";
 
-export const RegisterForm = () => {
+export const RegisterForm = ({ role }: { role?: Role }) => {
   const [isPassword, setIsPassword] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isRemember, setIsRemember] = useState<boolean>(false);
@@ -44,7 +45,7 @@ export const RegisterForm = () => {
   };
 
   return (
-    <WrapperForm title="Sign Up" google facebook>
+    <WrapperForm title="Sign Up" role={role} google facebook>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
           <FormField

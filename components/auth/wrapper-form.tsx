@@ -9,15 +9,17 @@ import {
 } from "@/components/ui/card";
 import { GoogleProvider } from "./google-provider";
 import { FacebookProvider } from "./facebook-provider";
+import { Role } from "@/config";
 
 interface WrapperFormProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   google?: boolean;
   facebook?: boolean;
+  role?: Role;
 }
 
 export const WrapperForm = React.forwardRef<HTMLDivElement, WrapperFormProps>(
-  ({ title, google, facebook, children, ...props }, ref) => {
+  ({ title, role, google, facebook, children, ...props }, ref) => {
     return (
       <Card
         ref={ref}
@@ -25,7 +27,14 @@ export const WrapperForm = React.forwardRef<HTMLDivElement, WrapperFormProps>(
         className="border-none shadow-none max-w-[576px] w-full"
       >
         <CardHeader>
-          <CardTitle className="text-4xl">{title}</CardTitle>
+          <CardTitle className="relative text-4xl w-fit">
+            {title}
+            {role && (
+              <span className="absolute left-[110%] top-[70%] text-sm font-normal capitalize">
+                {role}
+              </span>
+            )}
+          </CardTitle>
         </CardHeader>
         <CardContent>{children}</CardContent>
         {(google || facebook) && (
