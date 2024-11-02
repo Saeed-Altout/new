@@ -24,7 +24,7 @@ export const Hero = () => {
             Start your learning journey
           </Button>
         </div>
-        <div className="w-[400px] h-[509.7px] hidden lg:block">
+        <div className="w-[400px] h-full max-h-[509.7px] hidden lg:block">
           <Image
             src="/hero.svg"
             alt="Hero Image"
