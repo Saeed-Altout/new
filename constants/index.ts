@@ -66,6 +66,74 @@ export const recommendedCourses = [
     href: "/",
   },
 ];
+export const seminars = [
+  {
+    id: 0,
+    title: "Electromobility Specialist (ZVEH)",
+    cover: "/course-01.png",
+    categories: [
+      {
+        id: 0,
+        label: "trainee",
+      },
+      {
+        id: 1,
+        label: "TREI expertise",
+      },
+      {
+        id: 2,
+        label: "certification",
+      },
+    ],
+    owner: "Yannis Yannkopolus",
+    price: "83.4",
+    currency: "EUR",
+    href: "/",
+  },
+  {
+    id: 1,
+    title:
+      "Blitz- und Überspannungsschutz Aufbauseminar “Regenerative Techniken und Elektromobilität“ am 07.11.2023",
+    cover: "/course-02.png",
+    categories: [
+      {
+        id: 0,
+        label: "trainee",
+      },
+      {
+        id: 1,
+        label: "Kulmbach",
+      },
+      {
+        id: 2,
+        label: "online seminar",
+      },
+    ],
+    owner: "Yannis Yannkopolus",
+    price: "45.8",
+    currency: "EUR",
+    href: "/",
+  },
+  {
+    id: 2,
+    title: "Entry coaching for trainees for the... ",
+    cover: "/course-03.png",
+    categories: [
+      {
+        id: 0,
+        label: "trainee",
+      },
+      {
+        id: 1,
+        label: "Kulmbach",
+      },
+    ],
+    owner: "Yannis Yannkopolus",
+    price: "36.9",
+    currency: "EUR",
+    href: "/",
+  },
+];
 
 export const categories = [
   {

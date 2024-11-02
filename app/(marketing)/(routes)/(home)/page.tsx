@@ -2,6 +2,7 @@ import { Hero } from "./_components/hero";
 import { Courses } from "./_components/courses";
 import { Categories } from "./_components/categories";
 import { ExperiencedInstructor } from "./_components/experienced-instructor";
+import { Seminars } from "./_components/seminars";
 
 export default function MarketingPage() {
   return (
@@ -10,6 +11,7 @@ export default function MarketingPage() {
       <Courses />
       <Categories />
       <ExperiencedInstructor />
+      <Seminars />
     </main>
   );
 }
