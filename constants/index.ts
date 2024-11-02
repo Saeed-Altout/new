@@ -66,3 +66,46 @@ export const recommendedCourses = [
     href: "/",
   },
 ];
+
+export const categories = [
+  {
+    id: 0,
+    name: "E-CHECK",
+    courses: 5,
+  },
+  {
+    id: 1,
+    name: "TETRA",
+    courses: 7,
+  },
+  {
+    id: 2,
+    name: "ELECTROMOBILITY",
+    courses: 7,
+  },
+  {
+    id: 3,
+    name: "TREI",
+    courses: 6,
+  },
+  {
+    id: 4,
+    name: "SAFETY TECHNOLOGY",
+    courses: 7,
+  },
+  {
+    id: 5,
+    name: "OCCUPATIONAL SAFETY",
+    courses: 7,
+  },
+  {
+    id: 6,
+    name: "TECHNOLOGY",
+    courses: 6,
+  },
+  {
+    id: 7,
+    name: "ONLINE SEMINARS",
+    courses: 7,
+  },
+];
