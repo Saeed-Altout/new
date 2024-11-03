@@ -28,7 +28,7 @@ import { Role } from "@/config";
 
 export const LoginForm = ({ role }: { role?: Role }) => {
   const [isPassword, setIsPassword] = useState<boolean>(true);
-  const [isLoading, _setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isRemember, setIsRemember] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -41,6 +41,7 @@ export const LoginForm = ({ role }: { role?: Role }) => {
 
   const onSubmit = (values: z.infer<typeof loginSchema>) => {
     console.log(values);
+    setIsLoading(true);
   };
 
   return (

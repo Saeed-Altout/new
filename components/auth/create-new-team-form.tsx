@@ -24,7 +24,7 @@ import { createNewTeamSchema } from "@/Schemas";
 import { Role } from "@/config";
 
 export const CreateNewTeamForm = ({ role }: { role?: Role }) => {
-  const [isLoading, _setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof createNewTeamSchema>>({
     resolver: zodResolver(createNewTeamSchema),
@@ -41,6 +41,7 @@ export const CreateNewTeamForm = ({ role }: { role?: Role }) => {
 
   const onSubmit = (values: z.infer<typeof createNewTeamSchema>) => {
     console.log(values);
+    setIsLoading(true);
   };
 
   return (
