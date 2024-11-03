@@ -6,7 +6,7 @@ import { RegisterForm } from "@/components/auth/register-form";
 export default async function RegisterPage({
   params,
 }: {
-  params: { role: Role };
+  params: Promise<{ role: string }>;
 }) {
   const { role } = await params;
   if (role !== Role.BUSINESS) redirect("/auth/login");
