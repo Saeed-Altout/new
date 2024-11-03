@@ -24,7 +24,7 @@ import { createNewTeamSchema } from "@/Schemas";
 import { Role } from "@/config";
 
 export const CreateNewTeamForm = ({ role }: { role?: Role }) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, _setIsLoading] = useState<boolean>(false);
 
   const form = useForm<z.infer<typeof createNewTeamSchema>>({
     resolver: zodResolver(createNewTeamSchema),
