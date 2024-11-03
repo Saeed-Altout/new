@@ -14,46 +14,54 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 
 import { WrapperForm } from "./wrapper-form";
-import { forgetPasswordSchema } from "@/Schemas";
+import { forgetPasswordOtpSchema } from "@/Schemas";
 import { Role } from "@/config";
 
-export const ForgetPasswordForm = ({ role }: { role?: Role }) => {
+export const ForgetPasswordOtpForm = ({ role }: { role?: Role }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const form = useForm<z.infer<typeof forgetPasswordSchema>>({
-    resolver: zodResolver(forgetPasswordSchema),
+  const form = useForm<z.infer<typeof forgetPasswordOtpSchema>>({
+    resolver: zodResolver(forgetPasswordOtpSchema),
     defaultValues: {
-      email: "",
+      code: "",
     },
   });
 
-  const onSubmit = (values: z.infer<typeof forgetPasswordSchema>) => {
+  const onSubmit = (values: z.infer<typeof forgetPasswordOtpSchema>) => {
     console.log(values);
     setIsLoading(true);
   };
 
   return (
-    <WrapperForm title="Forget Password?" role={role}>
+    <WrapperForm title="Forget Password?" role={role} className="w-fit">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
           <FormField
             control={form.control}
-            name="email"
+            name="code"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email Address</FormLabel>
+              <FormItem className="mx-auto w-fit">
+                <FormLabel>OTP Password</FormLabel>
                 <FormControl>
-                  <Input
-                    type="email"
-                    placeholder="example@gmail.com"
-                    disabled={isLoading}
-                    {...field}
-                  />
+                  <InputOTP maxLength={6} {...field}>
+                    <InputOTPGroup>
+                      <InputOTPSlot index={0} />
+                      <InputOTPSlot index={1} />
+                      <InputOTPSlot index={2} />
+                      <InputOTPSlot index={3} />
+                      <InputOTPSlot index={4} />
+                      <InputOTPSlot index={5} />
+                    </InputOTPGroup>
+                  </InputOTP>
                 </FormControl>
                 <FormMessage />
               </FormItem>

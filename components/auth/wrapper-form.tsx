@@ -10,6 +10,7 @@ import {
 import { GoogleProvider } from "./google-provider";
 import { FacebookProvider } from "./facebook-provider";
 import { Role } from "@/config";
+import { cn } from "@/lib/utils";
 
 interface WrapperFormProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
@@ -19,12 +20,15 @@ interface WrapperFormProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const WrapperForm = React.forwardRef<HTMLDivElement, WrapperFormProps>(
-  ({ title, role, google, facebook, children, ...props }, ref) => {
+  ({ title, role, google, facebook, className, children, ...props }, ref) => {
     return (
       <Card
         ref={ref}
         {...props}
-        className="border-none shadow-none max-w-[576px] w-full"
+        className={cn(
+          "border-none shadow-none max-w-[576px] w-full",
+          className
+        )}
       >
         <CardHeader>
           <CardTitle className="relative text-4xl w-fit">
@@ -50,3 +54,5 @@ export const WrapperForm = React.forwardRef<HTMLDivElement, WrapperFormProps>(
     );
   }
 );
+
+WrapperForm.displayName = "WrapperForm";
