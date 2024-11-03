@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -52,7 +52,11 @@ export const ForgetPasswordOtpForm = ({ role }: { role?: Role }) => {
               <FormItem className="mx-auto w-fit">
                 <FormLabel>OTP Password</FormLabel>
                 <FormControl>
-                  <InputOTP maxLength={6} {...field}>
+                  <InputOTP
+                    pattern={REGEXP_ONLY_DIGITS}
+                    maxLength={6}
+                    {...field}
+                  >
                     <InputOTPGroup>
                       <InputOTPSlot index={0} />
                       <InputOTPSlot index={1} />
@@ -68,7 +72,7 @@ export const ForgetPasswordOtpForm = ({ role }: { role?: Role }) => {
             )}
           />
           <Button disabled={isLoading} type="submit" className="w-full">
-            Send Email {isLoading && <Spinner />}
+            Verify Email {isLoading && <Spinner />}
           </Button>
         </form>
       </Form>
