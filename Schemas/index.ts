@@ -12,6 +12,9 @@ export const loginSchema = z.object({
 export const forgetPasswordOtpSchema = z.object({
   code: z.string().min(6),
 });
+export const verificationOtpSchema = z.object({
+  code: z.string().min(6),
+});
 
 export const forgetPasswordSchema = z.object({
   email: z.string().email(),
