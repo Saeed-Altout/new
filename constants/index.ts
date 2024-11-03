@@ -70,7 +70,7 @@ export const seminars = [
   {
     id: 0,
     title: "Electromobility Specialist (ZVEH)",
-    cover: "/course-01.png",
+    cover: "/seminar-01.png",
     categories: [
       {
         id: 0,
@@ -94,7 +94,7 @@ export const seminars = [
     id: 1,
     title:
       "Blitz- und Überspannungsschutz Aufbauseminar “Regenerative Techniken und Elektromobilität“ am 07.11.2023",
-    cover: "/course-02.png",
+    cover: "/seminar-02.png",
     categories: [
       {
         id: 0,
@@ -117,7 +117,7 @@ export const seminars = [
   {
     id: 2,
     title: "Entry coaching for trainees for the... ",
-    cover: "/course-03.png",
+    cover: "/seminar-03.png",
     categories: [
       {
         id: 0,

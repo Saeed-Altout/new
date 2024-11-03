@@ -9,7 +9,7 @@ export const ExperiencedInstructor = () => {
         <div className="mt-10 flex justify-between items-start flex-col lg:flex-row gap-10">
           <div className="w-full sm:w-[405.6px] h-full sm:h-[375.8px] rounded-[12px] overflow-hidden">
             <Image
-              src="/course-01.png"
+              src="/instructor.png"
               alt="Experienced Instructor Image"
               width={1000}
               height={1000}

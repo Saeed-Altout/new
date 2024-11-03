@@ -6,6 +6,7 @@ import { links } from "@/constants";
 import { Button } from "@/components/ui/button";
 
 export const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="pt-16 pb-8 bg-[#222222]">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8 space-y-20">
@@ -66,7 +67,7 @@ export const Footer = () => {
         <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-5">
           <Link href="/" className="h-full flex justify-center items-center">
             <Image
-              src="/logo-light.svg"
+              src="/logo-dark.svg"
               alt="E-In-Akademie Logo Light"
               width={139.75}
               height={33.27}
@@ -74,7 +75,7 @@ export const Footer = () => {
             />
           </Link>
           <p className="text-white font-normal text-sm">
-            © 2023 In Akademie, Inc.
+            © {currentYear} In Akademie, Inc.
           </p>
         </div>
       </div>
