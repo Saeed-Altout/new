@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -17,9 +18,15 @@ export const Courses = () => {
               <CourseCard initialData={course} key={index} />
             ))}
           </div>
-          <Button variant="ghost" className="w-fit mx-auto hover:bg-white">
-            View all courses
-            <ArrowRight className="text-[#FDC511] h-5 w-5 ml-3" />
+          <Button
+            variant="ghost"
+            className="w-fit mx-auto hover:bg-white"
+            asChild
+          >
+            <Link href="/courses">
+              View all courses
+              <ArrowRight className="text-[#FDC511] h-5 w-5 ml-3" />
+            </Link>
           </Button>
         </div>
       </div>
