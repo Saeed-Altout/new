@@ -25,14 +25,11 @@ export interface SpinnerProps
 
 export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
   ({ variant = "spinner", size, className, ...props }, ref) => {
+    const Icon = variant === "spinner" ? Loader : Loader2;
+
     return (
       <div ref={ref} {...props} className="w-fit h-fit">
-        {variant === "spinner" && (
-          <Loader className={cn(spinnerVariants({ size }), className)} />
-        )}
-        {variant === "circle" && (
-          <Loader2 className={cn(spinnerVariants({ size }), className)} />
-        )}
+        <Icon className={cn(spinnerVariants({ size }), className)} />
       </div>
     );
   }
