@@ -39,3 +39,10 @@ export const filterSchema = z.object({
   region: z.string().min(2),
   type: z.string().min(2),
 });
+
+export const profileSchema = z.object({
+  fullName: z.string().min(2),
+  birthday: z.string().min(2),
+  phone: z.string().min(2),
+  gender: z.string().min(2),
+});
