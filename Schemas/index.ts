@@ -46,3 +46,8 @@ export const profileSchema = z.object({
   phone: z.string().min(2),
   gender: z.string().min(2),
 });
+
+export const passwordSchema = z.object({
+  new_password: z.string().min(8),
+  current_password: z.string().min(8),
+});
