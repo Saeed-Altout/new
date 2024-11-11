@@ -30,8 +30,7 @@ interface CourseCard {
 }
 
 export const CourseCard = ({ initialData }: CourseCard) => {
-  const { title, categories, cover, price, currency, href, owner } =
-    initialData;
+  const { title, categories, cover, price, currency, owner } = initialData;
   return (
     <Card className="flex flex-col border-none shadow-none rounded-[12px] overflow-hidden group">
       <CardHeader className="relative h-[224px] w-full p-0 space-y-0">
@@ -78,7 +77,9 @@ export const CourseCard = ({ initialData }: CourseCard) => {
       </CardContent>
       <CardFooter className="pb-6 flex justify-between items-center">
         <Link
-          href={href}
+          href={
+            "/learn/medical-neuroscience/supplement/diN0Q/learning-objectives"
+          }
           className="w-full font-medium text-base inline-flex items-center justify-between group"
         >
           More information
