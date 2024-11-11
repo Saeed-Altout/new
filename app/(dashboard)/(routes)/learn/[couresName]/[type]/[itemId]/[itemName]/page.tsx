@@ -207,12 +207,13 @@ export default function ItemPage() {
           </Accordion>
         </section>
         <div className="flex-1 px-6 py-4 space-y-6">
-          <video
-            src="https://youtu.be/5QP0mvrJkiY"
-            controls
-            className="h-[408px] w-full object-cover object-top"
-            poster="/poster.png"
-          />
+          <iframe
+            className="h-[408px] w-full"
+            src="https://www.youtube.com/embed/_uQrJ0TkZlc"
+            title="Python Tutorial - Python Full Course for Beginners"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
           <Tabs defaultValue="overview" className="space-y-6 pb-14">
             <TabsList className="flex items-center justify-start gap-12">
               <TabsTrigger value="overview">Overview</TabsTrigger>
