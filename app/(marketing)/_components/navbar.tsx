@@ -51,7 +51,7 @@ export const Navbar = () => {
           </SheetHeader>
         </SheetContent>
       </Sheet>
-      <NavigationMenu>
+      <NavigationMenu className="max-w-screen-xl mx-auto px-4 md:px-8">
         <Link href="/" className="h-full flex justify-center items-center">
           <Image
             src="/logo-light.svg"
