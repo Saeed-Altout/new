@@ -39,7 +39,7 @@ export const Sidebar = () => {
     },
   ];
   return (
-    <div className="bg-[#F8F8F8] w-[385px] h-full p-10 space-y-8 hidden md:block">
+    <div className="bg-[#F8F8F8] w-[385px] min-h-full p-10 space-y-8 hidden md:block">
       <h3 className="text-[#383838] text-2xl font-medium">Account</h3>
       <ul className="space-y-3">
         {links.map(({ href, label, icon: Icon }, index) => (

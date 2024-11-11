@@ -42,7 +42,7 @@ export const filterSchema = z.object({
 
 export const profileSchema = z.object({
   fullName: z.string().min(2),
-  birthday: z.string().min(2),
+  birthday: z.date(),
   phone: z.string().min(2),
   gender: z.string().min(2),
 });

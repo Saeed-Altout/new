@@ -39,7 +39,7 @@ export const ProfileForm = () => {
     resolver: zodResolver(profileSchema),
     defaultValues: {
       fullName: "",
-      birthday: "",
+      birthday: undefined,
       gender: "",
       phone: "",
     },
@@ -80,13 +80,14 @@ export const ProfileForm = () => {
                   <FormControl>
                     <Button
                       variant="outline"
+                      disabled={isLoading}
                       className={cn(
                         "w-full pl-3 text-left font-normal",
                         !field.value && "text-muted-foreground"
                       )}
                     >
                       {field.value ? (
-                        format(new Date(field.value), "PPP")
+                        format(field.value, "PPP")
                       ) : (
                         <span>Pick a date</span>
                       )}
@@ -97,7 +98,7 @@ export const ProfileForm = () => {
                 <PopoverContent className="w-auto p-0" align="start">
                   <Calendar
                     mode="single"
-                    selected={field.value ? new Date(field.value) : undefined}
+                    selected={field.value}
                     onSelect={field.onChange}
                     disabled={(date) =>
                       date > new Date() || date < new Date("1900-01-01")
@@ -140,6 +141,7 @@ export const ProfileForm = () => {
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                   className="flex gap-x-12"
+                  disabled={isLoading}
                 >
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
