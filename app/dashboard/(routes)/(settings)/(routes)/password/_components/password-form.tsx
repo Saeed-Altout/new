@@ -10,7 +10,6 @@ import * as z from "zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -105,12 +104,16 @@ export const PasswordForm = () => {
                   </div>
                 </div>
               </FormControl>
-              <FormDescription>
-                <ul className="list-disc pl-4 py-3 space-y-2">
-                  <li>Your password must be at least 10 characters long.</li>
-                  <li>Have at least 8 unique characters.</li>
-                </ul>
-              </FormDescription>
+
+              <ul className="list-disc pl-4 py-3 space-y-2">
+                <li className="text-sm text-[#656565]">
+                  Your password must be at least 10 characters long.
+                </li>
+                <li className="text-sm text-[#656565]">
+                  Have at least 8 unique characters.
+                </li>
+              </ul>
+
               <FormMessage />
             </FormItem>
           )}
