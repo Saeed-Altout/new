@@ -55,5 +55,13 @@
         { "name": "Blog als Gast", "href": "/blog-guest" }
       ]
     }
-  }
+    },
+    "Navbar": {
+          "links": [
+            { "name": "Kategorien", "href": "/categories" },
+            { "name": "In Akademie Business", "href": "/akademie-business" }
+          ],
+          "login": "Anmelden",
+          "register": "Registrieren"
+     } 
 }

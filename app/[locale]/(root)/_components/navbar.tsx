@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Menu, Search } from "lucide-react";
 
 import {
@@ -23,9 +22,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { categoriesDe, categoriesEn } from "@/constants";
+import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const locale = useLocale();
+  const ctx = useTranslations("Navbar");
 
   const onOpenChange = (open: boolean) => {
     if (!open) {
@@ -64,35 +68,37 @@ export const Navbar = () => {
         </Link>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
+            <NavigationMenuTrigger>{ctx("links.0.name")}</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="min-h-[73px] flex justify-start items-center flex-wrap gap-x-8 gap-y-4 py-5">
-                {[
-                  "E-CHECK",
-                  "TETRA",
-                  "ELECTROMOBILITY",
-                  "TREI",
-                  "SAFETY TECHNOLOGY",
-                  "TECHNOLOGY",
-                  "STANDARDS & OCCUPATIONAL SAFETY",
-                  "ONLINE SEMINARS",
-                ].map((item, index) => (
-                  <Button
-                    key={index}
-                    size="sm"
-                    variant="ghost"
-                    className="text-[#656565]"
-                  >
-                    {item}
-                  </Button>
-                ))}
+                {locale === "en"
+                  ? categoriesEn.map((item, index) => (
+                      <Button
+                        key={index}
+                        size="sm"
+                        variant="ghost"
+                        className="text-[#656565]"
+                      >
+                        {item.name}
+                      </Button>
+                    ))
+                  : categoriesDe.map((item, index) => (
+                      <Button
+                        key={index}
+                        size="sm"
+                        variant="ghost"
+                        className="text-[#656565]"
+                      >
+                        {item.name}
+                      </Button>
+                    ))}
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/" legacyBehavior passHref>
+            <Link href={"/"} legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                In Akademie Business
+                {ctx("links.1.name")}
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
@@ -117,7 +123,7 @@ export const Navbar = () => {
           <LanguageSwitcher />
           <Button asChild>
             <Link href="/auth/login">
-              Login <span className="sr-only">Login</span>
+              {ctx("login")} <span className="sr-only">{ctx("login")}</span>
             </Link>
           </Button>
         </div>
