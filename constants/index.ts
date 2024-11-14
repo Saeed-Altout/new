@@ -203,48 +203,92 @@ export const seminars = [
     href: "/",
   },
 ];
-export const categories = [
+export const categoriesEn = [
   {
     id: 0,
     name: "E-CHECK",
-    courses: 5,
+    courses: "5 courses",
   },
   {
     id: 1,
     name: "TETRA",
-    courses: 7,
+    courses: "7 courses",
   },
   {
     id: 2,
     name: "ELECTROMOBILITY",
-    courses: 7,
+    courses: "7 courses",
   },
   {
     id: 3,
     name: "TREI",
-    courses: 6,
+    courses: "6 courses",
   },
   {
     id: 4,
     name: "SAFETY TECHNOLOGY",
-    courses: 7,
+    courses: "7 courses",
   },
   {
     id: 5,
     name: "OCCUPATIONAL SAFETY",
-    courses: 7,
+    courses: "7 courses",
   },
   {
     id: 6,
     name: "TECHNOLOGY",
-    courses: 6,
+    courses: "6 courses",
   },
   {
     id: 7,
     name: "ONLINE SEMINARS",
-    courses: 7,
+    courses: "7 courses",
   },
 ];
+
+export const categoriesDe = [
+  {
+    id: 0,
+    name: "E-CHECK",
+    courses: "5 Kurse",
+  },
+  {
+    id: 1,
+    name: "TETRA",
+    courses: "7 Kurse",
+  },
+  {
+    id: 2,
+    name: "ELEKTROMOBILITÄT",
+    courses: "7 Kurse",
+  },
+  {
+    id: 3,
+    name: "TREI",
+    courses: "6 Kurse",
+  },
+  {
+    id: 4,
+    name: "SICHERHEITSTECHNIK",
+    courses: "7 Kurse",
+  },
+  {
+    id: 5,
+    name: "ARBEITSSICHERHEIT",
+    courses: "7 Kurse",
+  },
+  {
+    id: 6,
+    name: "TECHNOLOGIE",
+    courses: "6 Kurse",
+  },
+  {
+    id: 7,
+    name: "ONLINE-SEMINARE",
+    courses: "7 Kurse",
+  },
+];
+
 export const links = [
   {
     id: 0,
