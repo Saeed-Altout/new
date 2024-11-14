@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -31,6 +32,7 @@ import { filterSchema } from "@/Schemas";
 
 export const FilterForm = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const ctx = useTranslations("AdvancedSearchPage.filter");
 
   const form = useForm<z.infer<typeof filterSchema>>({
     resolver: zodResolver(filterSchema),
@@ -52,7 +54,7 @@ export const FilterForm = () => {
   return (
     <section id="filter-form" className="py-16">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
-        <Heading title="Advanced Search " />
+        <Heading title={ctx("title")} />
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -63,9 +65,13 @@ export const FilterForm = () => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Course name</FormLabel>
+                  <FormLabel>{ctx("name-input.label")}</FormLabel>
                   <FormControl>
-                    <Input disabled={isLoading} placeholder="name" {...field} />
+                    <Input
+                      disabled={isLoading}
+                      placeholder={ctx("name-input.placeholder")}
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -76,7 +82,7 @@ export const FilterForm = () => {
               name="date"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Date</FormLabel>
+                  <FormLabel>{ctx("date-input.label")}</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
@@ -84,7 +90,9 @@ export const FilterForm = () => {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a month" />
+                        <SelectValue
+                          placeholder={ctx("date-input.placeholder")}
+                        />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -104,7 +112,7 @@ export const FilterForm = () => {
               name="time"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Time</FormLabel>
+                  <FormLabel>{ctx("time-input.label")}</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
@@ -112,7 +120,9 @@ export const FilterForm = () => {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a time" />
+                        <SelectValue
+                          placeholder={ctx("time-input.placeholder")}
+                        />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -132,11 +142,11 @@ export const FilterForm = () => {
               name="branch"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Branch</FormLabel>
+                  <FormLabel>{ctx("branch-input.label")}</FormLabel>
                   <FormControl>
                     <Input
                       disabled={isLoading}
-                      placeholder="branch"
+                      placeholder={ctx("branch-input.placeholder")}
                       {...field}
                     />
                   </FormControl>
@@ -149,11 +159,11 @@ export const FilterForm = () => {
               name="region"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Region</FormLabel>
+                  <FormLabel>{ctx("region-input.label")}</FormLabel>
                   <FormControl>
                     <Input
                       disabled={isLoading}
-                      placeholder="region"
+                      placeholder={ctx("region-input.placeholder")}
                       {...field}
                     />
                   </FormControl>
@@ -166,9 +176,13 @@ export const FilterForm = () => {
               name="type"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Course Type</FormLabel>
+                  <FormLabel>{ctx("type-input.label")}</FormLabel>
                   <FormControl>
-                    <Input disabled={isLoading} placeholder="type" {...field} />
+                    <Input
+                      disabled={isLoading}
+                      placeholder={ctx("type-input.placeholder")}
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -180,7 +194,7 @@ export const FilterForm = () => {
                 type="submit"
                 className="w-full sm:w-fit"
               >
-                Search {isLoading && <Spinner />}
+                {ctx("search-button")} {isLoading && <Spinner />}
               </Button>
             </div>
           </form>

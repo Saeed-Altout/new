@@ -64,5 +64,40 @@
           ],
           "login": "Anmelden",
           "register": "Registrieren"
-     } 
+     },
+    "AdvancedSearchPage": {
+        "filter": {
+          "title": "Erweiterte Suche",
+          "name-input": {
+            "label": "Kursname",
+            "placeholder": "Name"
+          },
+          "date-input": {
+            "label": "Datum",
+            "placeholder": "Monat auswählen"
+          },
+          "time-input": {
+            "label": "Uhrzeit",
+            "placeholder": "Uhrzeit auswählen"
+          },
+          "branch-input": {
+            "label": "Filiale",
+            "placeholder": "Filiale auswählen"
+          },
+          "region-input": {
+            "label": "Region",
+            "placeholder": "Region"
+          },
+          "type-input": {
+            "label": "Kursart",
+            "placeholder": "Art"
+          },
+          "search-button": "Suche"
+        },
+        "result": {
+          "title": "Suchergebnisse",
+          "label": "Kurse",
+          "view-button": "Alle Kurse anzeigen"
+        }
+     }
 }

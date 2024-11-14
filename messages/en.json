@@ -64,5 +64,40 @@
     ],
     "login": "Login",
     "register": "Register"
-  }
+  },
+  "AdvancedSearchPage":{
+        "filter":{
+            "title":"Advanced Search",
+            "name-input":{
+              "label":"Course name",
+              "placeholder":"name"
+            },
+            "date-input":{
+              "label":"Date",
+              "placeholder":"Select a month"
+            },
+            "time-input":{
+              "label":"Time",
+              "placeholder":"Select a time"
+            },
+            "branch-input":{
+              "label":"Branch",
+              "placeholder":"Select a branch"
+            },
+            "region-input":{
+              "label":"Region",
+              "placeholder":"region"
+            },
+            "type-input":{
+              "label":"Course type",
+              "placeholder":"type"
+            },
+            "search-button":"Search"
+        },
+        "result":{
+          "title":"Search Results",
+          "label":"Courses",
+          "view-button":"View all courses"
+        }
+    }
 }
