@@ -99,5 +99,47 @@
           "label": "Kurse",
           "view-button": "Alle Kurse anzeigen"
         }
-     }
+     },
+    "LoginPage": {
+    "title": "Anmelden",
+    "welcome": "Willkommen",
+    "back-button-label": "Jetzt registrieren",
+    "back-button-message": "Noch kein Mitglied?",
+    "message": "Oder melden Sie sich an mit",
+    "email-input": {
+      "label": "E-Mail-Adresse",
+      "placeholder": "beispiel@gmail.com"
+    },
+    "password-input": {
+      "label": "Passwort",
+      "placeholder": "********"
+    },
+    "checkbox": "Angemeldet bleiben",
+    "special_checkbox": "",
+    "auth-button": "Anmelden",
+    "forgot-password-link": "Passwort vergessen?"
+  },
+  "RegisterPage": {
+    "title": "Registrieren",
+    "welcome": "Willkommen",
+    "back-button-label": "Anmelden",
+    "back-button-message": "Bereits ein Konto?",
+    "message": "Oder registrieren Sie sich mit",
+    "email-input": {
+      "label": "E-Mail-Adresse",
+      "placeholder": "beispiel@gmail.com"
+    },
+    "password-input": {
+      "label": "Passwort",
+      "placeholder": "********"
+    },
+    "repeat-password-input": {
+      "label": "Passwort wiederholen",
+      "placeholder": "********"
+    },
+    "checkbox": "Ich habe gelesen und akzeptiere",
+    "special_checkbox": "die Allgemeinen Geschäftsbedingungen",
+    "auth-button": "Registrieren",
+    "forgot-password-link": "Passwort vergessen?"
+  }
 }

@@ -1,11 +1,17 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
+
+import { Link } from "@/i18n/routing";
 
 export const Sidebar = () => {
   const pathname = usePathname();
+  const locale = useLocale();
+  const ctx = useTranslations(
+    pathname.includes("login") ? "LoginPage" : "RegisterPage"
+  );
   const [url, setUrl] = useState<{
     href: string;
     message: string;
@@ -13,17 +19,17 @@ export const Sidebar = () => {
   } | null>(null);
 
   const redirectTo = (pathname: string) => {
-    if (pathname === "/auth/login") {
+    if (pathname === `/${locale}/auth/login`) {
       return {
         href: "/auth/register",
-        message: "Not a member yet?",
-        label: "Register now",
+        message: ctx("back-button-message"),
+        label: ctx("back-button-label"),
       };
-    } else if (pathname === "/auth/register") {
+    } else if (pathname === `/${locale}/auth/register`) {
       return {
         href: "/auth/login",
-        message: "Have an account?",
-        label: "Log In",
+        message: ctx("back-button-message"),
+        label: ctx("back-button-label"),
       };
     } else {
       return null;
@@ -40,7 +46,7 @@ export const Sidebar = () => {
   return (
     <div className="relative hidden lg:flex bg-[#F8F8F8] justify-center items-center">
       <span className="absolute top-12 left-20 text-[#383838] text-2xl font-normal">
-        Welcome!
+        {ctx("welcome")}
       </span>
       <Link href="/">
         <Image

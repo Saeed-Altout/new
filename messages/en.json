@@ -99,5 +99,47 @@
           "label":"Courses",
           "view-button":"View all courses"
         }
+  },
+  "LoginPage":{
+    "title":"Login",
+    "welcome":"welcome",
+    "back-button-label":"Register now",
+    "back-button-message":"Not a member yet?",
+    "message":"Or sign in with",
+    "email-input":{
+      "label":"Email Address",
+      "placeholder":"example@gmail.com"  
+    },
+    "password-input":{
+      "label":"Password",
+      "placeholder":"********"  
+    },
+    "checkbox":"rRemember me",
+    "special_checkbox":"",
+    "auth-button":"Login",
+    "forgot-password-link":"Forgot password?"
+  },
+  "RegisterPage":{
+    "title":"Register",
+    "welcome":"welcome",
+    "back-button-label":"Log In",
+    "back-button-message":"Have an account?",
+    "message":"Or sign in with",
+    "email-input":{
+      "label":"Email Address",
+      "placeholder":"example@gmail.com"  
+    },
+    "password-input":{
+      "label":"Password",
+      "placeholder":"********"  
+    },
+    "repeat-password-input":{
+      "label":"Repeat Password",
+      "placeholder":"********"  
+    },
+    "checkbox":"I have read and accept",
+    "special_checkbox":"terms & conditions",
+    "auth-button":"Login",
+    "forgot-password-link":"Forgot password?"
   }
 }

@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -25,9 +25,12 @@ import { Label } from "@/components/ui/label";
 import { WrapperForm } from "./wrapper-form";
 import { registerSchema } from "@/Schemas";
 import { Role } from "@/config";
+import { Link } from "@/i18n/routing";
 
 export const RegisterForm = ({ role }: { role?: Role }) => {
+  const ctx = useTranslations("RegisterPage");
   const [isPassword, setIsPassword] = useState<boolean>(true);
+  const [isRepeatPassword, setIsRepeatPassword] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isRemember, setIsRemember] = useState<boolean>(false);
 
@@ -54,11 +57,11 @@ export const RegisterForm = ({ role }: { role?: Role }) => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email Address</FormLabel>
+                <FormLabel>{ctx("email-input.label")}</FormLabel>
                 <FormControl>
                   <Input
                     type="email"
-                    placeholder="example@gmail.com"
+                    placeholder={ctx("email-input.placeholder")}
                     disabled={isLoading}
                     {...field}
                   />
@@ -72,12 +75,12 @@ export const RegisterForm = ({ role }: { role?: Role }) => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>{ctx("password-input.label")}</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <Input
                       type={isPassword ? "password" : "text"}
-                      placeholder="********"
+                      placeholder={ctx("password-input.placeholder")}
                       disabled={isLoading}
                       {...field}
                     />
@@ -103,21 +106,21 @@ export const RegisterForm = ({ role }: { role?: Role }) => {
             name="confirmed_password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Repeat Password</FormLabel>
+                <FormLabel>{ctx("repeat-password-input.label")}</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <Input
-                      type={isPassword ? "password" : "text"}
-                      placeholder="********"
+                      type={isRepeatPassword ? "password" : "text"}
+                      placeholder={ctx("repeat-password-input.placeholder")}
                       disabled={isLoading}
                       {...field}
                     />
                     <div
                       role="button"
-                      onClick={() => setIsPassword((prev) => !prev)}
+                      onClick={() => setIsRepeatPassword((prev) => !prev)}
                       className="absolute top-[50%] right-1 translate-y-[-50%] bg-background h-11 w-11 flex justify-center items-center"
                     >
-                      {isPassword ? (
+                      {isRepeatPassword ? (
                         <Eye className="h-5 w-5 text-[#999999]" />
                       ) : (
                         <EyeOff className="h-5 w-5 text-[#999999]" />
@@ -135,14 +138,14 @@ export const RegisterForm = ({ role }: { role?: Role }) => {
               onCheckedChange={() => setIsRemember((prev) => !prev)}
             />
             <Label className="font-normal">
-              I have read and accept{" "}
+              {ctx("checkbox")}{" "}
               <Link href="/terms" className="font-medium hover:underline">
-                terms & conditions
+                {ctx("special_checkbox")}
               </Link>
             </Label>
           </div>
           <Button disabled={isLoading} type="submit" className="w-full">
-            Sign Up {isLoading && <Spinner />}
+            {ctx("auth-button")} {isLoading && <Spinner />}
           </Button>
         </form>
       </Form>

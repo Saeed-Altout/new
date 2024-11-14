@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -25,8 +25,10 @@ import { Label } from "@/components/ui/label";
 import { WrapperForm } from "./wrapper-form";
 import { loginSchema } from "@/Schemas";
 import { Role } from "@/config";
+import { Link } from "@/i18n/routing";
 
 export const LoginForm = ({ role }: { role?: Role }) => {
+  const ctx = useTranslations("LoginPage");
   const [isPassword, setIsPassword] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isRemember, setIsRemember] = useState<boolean>(false);
@@ -53,11 +55,11 @@ export const LoginForm = ({ role }: { role?: Role }) => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email Address</FormLabel>
+                <FormLabel>{ctx("email-input.label")}</FormLabel>
                 <FormControl>
                   <Input
                     type="email"
-                    placeholder="example@gmail.com"
+                    placeholder={ctx("email-input.placeholder")}
                     disabled={isLoading}
                     {...field}
                   />
@@ -71,12 +73,12 @@ export const LoginForm = ({ role }: { role?: Role }) => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>{ctx("password-input.label")}</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <Input
                       type={isPassword ? "password" : "text"}
-                      placeholder="********"
+                      placeholder={ctx("password-input.placeholder")}
                       disabled={isLoading}
                       {...field}
                     />
@@ -102,11 +104,11 @@ export const LoginForm = ({ role }: { role?: Role }) => {
               checked={isRemember}
               onCheckedChange={() => setIsRemember((prev) => !prev)}
             />
-            <Label>Remember me</Label>
+            <Label>{ctx("checkbox")}</Label>
           </div>
           <div className="flex justify-end items-center flex-col gap-4">
             <Button disabled={isLoading} type="submit" className="w-full">
-              Login {isLoading && <Spinner />}
+              {ctx("auth-button")} {isLoading && <Spinner />}
             </Button>
             <Button
               variant="link"
@@ -114,7 +116,9 @@ export const LoginForm = ({ role }: { role?: Role }) => {
               className="px-0 w-fit ml-auto"
               asChild
             >
-              <Link href="/auth/forget-password">Forget password?</Link>
+              <Link href="/auth/forget-password">
+                {ctx("forgot-password-link")}
+              </Link>
             </Button>
           </div>
         </form>
