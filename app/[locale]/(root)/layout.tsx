@@ -1,7 +1,7 @@
 import { Navbar } from "./_components/navbar";
 import { Footer } from "./_components/footer";
 
-export default function MarketingLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
@@ -113,6 +114,7 @@ export const Navbar = () => {
               </Link>
             </Button>
           </div>
+          <LanguageSwitcher />
           <Button asChild>
             <Link href="/auth/login">
               Login <span className="sr-only">Login</span>
