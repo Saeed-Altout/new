@@ -32,5 +32,28 @@
             "description": "Steigern Sie die Expertise Ihres Teams durch die in-Akademie Business Qualifikation und eröffnen Sie neue Ebenen des Erfolgs und beruflichen Wachstums.",
             "start-button": "Einstieg in die Akademie Business"
         }
-    }  
+    },
+    "Footer":{
+      "title": "Unternehmen",
+      "social":"Folge uns",
+      "links": [
+        { "name": "Über uns", "href": "/about-us" },
+        { "name": "Karriere", "href": "/career" },
+        { "name": "Blog", "href": "/blog" },
+        { "name": "Kontakt", "href": "/contact-us" }
+      ],
+      "for_businesses": {
+      "title": "Für Unternehmen",
+      "links": [
+        { "name": "Unternehmensschulungen", "href": "/corporate-training" },
+        { "name": "Digitale Transformation", "href": "/digital-transformation" }
+      ]
+      },
+      "work_with_us": {
+      "title": "Arbeite mit uns",
+      "links": [
+        { "name": "Blog als Gast", "href": "/blog-guest" }
+      ]
+    }
+  }
 }

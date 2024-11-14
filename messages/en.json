@@ -32,5 +32,28 @@
         "description": "Elevate your team's expertise through in-Akademie Business qualification, unlocking new levels of success and professional growth.",
         "start-button": "Start in the Akademie Business"
       }
+  },
+  "Footer": {
+    "title": "Company",
+    "social":"Follow us",
+    "links": [
+      { "name": "About Us", "href": "/about-us" },
+      { "name": "Career", "href": "/career" },
+      { "name": "Blog", "href": "/blog" },
+      { "name": "Contact", "href": "/contact-us" }
+    ],
+    "for_businesses": {
+      "title": "For Businesses",
+      "links": [
+        { "name": "Corporate Training", "href": "/corporate-training" },
+        { "name": "Digital Transformation", "href": "/digital-transformation" }
+      ]
+    },
+    "work_with_us": {
+      "title": "Work with Us",
+      "links": [
+        { "name": "Blog as a Guest", "href": "/blog-guest" }
+      ]
+    }
   }
 }
