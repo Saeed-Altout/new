@@ -47,7 +47,7 @@ export const LoginForm = ({ role }: { role?: Role }) => {
   };
 
   return (
-    <WrapperForm title="Login" role={role} google facebook>
+    <WrapperForm title={ctx("title")} role={role} google facebook>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
           <FormField

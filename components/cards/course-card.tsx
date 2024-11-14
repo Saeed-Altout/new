@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 
 import { ArrowRight, Bookmark } from "lucide-react";
@@ -11,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useLocale } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 interface Course {
   id: number;

@@ -2,8 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { Menu, Search } from "lucide-react";
+import { Menu } from "lucide-react";
 
 import {
   NavigationMenu,
@@ -21,13 +20,18 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { categoriesDe, categoriesEn } from "@/constants";
+import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const locale = useLocale();
+  const ctx = useTranslations("Navbar");
 
   const onOpenChange = (open: boolean) => {
     if (!open) {
@@ -66,35 +70,37 @@ export const Navbar = () => {
         </Link>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
+            <NavigationMenuTrigger>{ctx("links.0.name")}</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="min-h-[73px] flex justify-start items-center flex-wrap gap-x-8 gap-y-4 py-5">
-                {[
-                  "E-CHECK",
-                  "TETRA",
-                  "ELECTROMOBILITY",
-                  "TREI",
-                  "SAFETY TECHNOLOGY",
-                  "TECHNOLOGY",
-                  "STANDARDS & OCCUPATIONAL SAFETY",
-                  "ONLINE SEMINARS",
-                ].map((item, index) => (
-                  <Button
-                    key={index}
-                    size="sm"
-                    variant="ghost"
-                    className="text-[#656565]"
-                  >
-                    {item}
-                  </Button>
-                ))}
+                {locale === "en"
+                  ? categoriesEn.map((item, index) => (
+                      <Button
+                        key={index}
+                        size="sm"
+                        variant="ghost"
+                        className="text-[#656565]"
+                      >
+                        {item.name}
+                      </Button>
+                    ))
+                  : categoriesDe.map((item, index) => (
+                      <Button
+                        key={index}
+                        size="sm"
+                        variant="ghost"
+                        className="text-[#656565]"
+                      >
+                        {item.name}
+                      </Button>
+                    ))}
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/" legacyBehavior passHref>
+            <Link href={"/"} legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                In Akademie Business
+                {ctx("links.1.name")}
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
@@ -106,24 +112,36 @@ export const Navbar = () => {
               )}
             >
               <Switch id="private-customer" />
-              <Label htmlFor="private-customer">Private Customer</Label>
+              <Label htmlFor="private-customer">{ctx("links.2.name")}</Label>
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
-        <div className="h-full ml-auto hidden xl:flex justify-center items-center gap-3">
+        <div className="h-full ml-auto hidden lg:flex justify-center items-center gap-3">
           <div className="flex justify-center items-center gap-2">
-            <Input placeholder="Search.." icon={Search} />
-            <Button asChild size="icon" variant="outline" className="relative">
-              <Link href="/">
+            <Button asChild size="icon" variant="outline">
+              <Link href="/advanced-search">
                 <Image
-                  src="/bell.svg"
-                  alt="Shop Icon"
+                  src="/search.svg"
+                  alt="Search Icon"
                   width={20}
                   height={20}
                   priority
                   className="object-contain"
                 />
-                <span className="sr-only">Shop Icon</span>
+                <span className="sr-only">Search</span>
+              </Link>
+            </Button>
+            <Button asChild size="icon" variant="outline" className="relative">
+              <Link href="/">
+                <Image
+                  src="/Bell.svg"
+                  alt="Bell Icon"
+                  width={20}
+                  height={20}
+                  priority
+                  className="object-contain"
+                />
+                <span className="sr-only">Bell Icon</span>
                 <div className="absolute top-[10px] left-6 rounded-full h-[10px] w-[10px] bg-[#FDC511]"></div>
               </Link>
             </Button>
@@ -141,13 +159,14 @@ export const Navbar = () => {
               </Link>
             </Button>
           </div>
-          <Button size="icon" asChild>
+          <LanguageSwitcher />
+          <Button asChild>
             <Link href="/auth/login">
-              RO <span className="sr-only">RO</span>
+              {ctx("login")} <span className="sr-only">{ctx("login")}</span>
             </Link>
           </Button>
         </div>
-        <div className="h-full ml-auto inline-flex xl:hidden justify-center items-center">
+        <div className="h-full ml-auto inline-flex lg:hidden justify-center items-center">
           <Button variant="outline" size="icon" onClick={() => setIsOpen(true)}>
             <Menu className="h-5 w-5" />
             <span className="sr-only">Menu Icon</span>

@@ -11,6 +11,8 @@ import { GoogleProvider } from "./google-provider";
 import { FacebookProvider } from "./facebook-provider";
 import { Role } from "@/config";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 interface WrapperFormProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
@@ -21,6 +23,11 @@ interface WrapperFormProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const WrapperForm = React.forwardRef<HTMLDivElement, WrapperFormProps>(
   ({ title, role, google, facebook, className, children, ...props }, ref) => {
+    const pathname = usePathname();
+    const ctx = useTranslations(
+      pathname.includes("auth") ? "LoginPage" : "RegisterPage"
+    );
+
     return (
       <Card
         ref={ref}
@@ -43,7 +50,7 @@ export const WrapperForm = React.forwardRef<HTMLDivElement, WrapperFormProps>(
         <CardContent>{children}</CardContent>
         {(google || facebook) && (
           <CardFooter className="w-full flex-col gap-4 justify-between items-start">
-            <p>Or sign in with</p>
+            <p>{ctx("message")}</p>
             <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4">
               {google && <GoogleProvider />}
               {facebook && <FacebookProvider />}
