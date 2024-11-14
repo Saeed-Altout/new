@@ -9,6 +9,13 @@
             "label": "Übersicht",
             "title": "Am meisten empfohlen",
             "view-courses-button": "Alle Kurse anzeigen"
+        },
+        "our-experienced-instructor": {
+            "label": "Entdecken",
+            "title": "Unser erfahrener Dozent",
+            "name": "Joans Edwards",
+            "job_title": "Masterabschluss in Elektrotechnik.",
+            "about": "Egal, ob Sie neu in diesem Bereich sind oder bereits ein erfahrener Profi, der Besuch meiner Kurse wird Ihnen das Wissen und die Fähigkeiten vermitteln, die Sie benötigen, um Ihr Geschäft zu verbessern. Ich kann es kaum erwarten, Ihnen zu helfen, Ihre Ziele zu erreichen! $$ Hallo zusammen! Ich freue mich, Ihnen mitteilen zu können, dass ich die Kurse auf unserer Website leiten werde. Mit meiner umfangreichen Erfahrung im Bereich der Elektrotechnik bin ich zuversichtlich, dass ich Ihnen das Wissen und die Fähigkeiten vermitteln kann, die Sie für Ihren Erfolg benötigen."
         }
-    }
+    }  
 }

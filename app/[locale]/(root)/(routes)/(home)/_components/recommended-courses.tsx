@@ -12,8 +12,6 @@ export const RecommendedCourses = () => {
   const locale = useLocale();
   const ctx = useTranslations("HomePage.most-recommended");
 
-  console.log(locale);
-
   return (
     <section className="bg-[#F8F8F8] py-20">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
