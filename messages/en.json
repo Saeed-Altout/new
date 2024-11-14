@@ -18,8 +18,13 @@
           "about":"Whether you are new to the field or an experienced professional, attending your courses with me will give you the knowledge and skills you need to improve your business. I can't wait to help you achieve your goals! $$ Hello everyone! I am pleased to inform you that I will lead the courses on our website. With my extensive experience in the field of electrical engineering, I am confident that I can provide you with the knowledge and skills you need for your success."
       },
       "top-categories": {
-          "label": "Übersicht",
-          "title": "Top-Kategorien"
+          "label": "Overview",
+          "title": "Top Categories"
+      },   
+      "our-popular-seminars": {
+          "label": "Overview",
+          "title": "Our popular seminars",
+          "view-courses-button": "View all courses"
       }      
   }
 }

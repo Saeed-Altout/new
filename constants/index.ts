@@ -135,7 +135,7 @@ export const recommendedCoursesDe = [
   },
 ];
 
-export const seminars = [
+export const seminarsEn = [
   {
     id: 0,
     title: "Electromobility Specialist (ZVEH)",
@@ -162,7 +162,7 @@ export const seminars = [
   {
     id: 1,
     title:
-      "Blitz- und Überspannungsschutz Aufbauseminar “Regenerative Techniken und Elektromobilität“ am 07.11.2023",
+      "Lightning and Surge Protection Advanced Seminar “Regenerative Techniques and Electromobility” on 07.11.2023",
     cover: "/seminar-02.png",
     categories: [
       {
@@ -185,7 +185,7 @@ export const seminars = [
   },
   {
     id: 2,
-    title: "Entry coaching for trainees for the... ",
+    title: "Entry Coaching for Trainees for the...",
     cover: "/seminar-03.png",
     categories: [
       {
@@ -203,6 +203,75 @@ export const seminars = [
     href: "/",
   },
 ];
+export const seminarsDe = [
+  {
+    id: 0,
+    title: "Elektromobilität Spezialist (ZVEH)",
+    cover: "/seminar-01.png",
+    categories: [
+      {
+        id: 0,
+        label: "Auszubildender",
+      },
+      {
+        id: 1,
+        label: "TREI Expertise",
+      },
+      {
+        id: 2,
+        label: "Zertifizierung",
+      },
+    ],
+    owner: "Yannis Yannkopolus",
+    price: "83,4",
+    currency: "EUR",
+    href: "/",
+  },
+  {
+    id: 1,
+    title:
+      "Blitz- und Überspannungsschutz Aufbauseminar “Regenerative Techniken und Elektromobilität” am 07.11.2023",
+    cover: "/seminar-02.png",
+    categories: [
+      {
+        id: 0,
+        label: "Auszubildender",
+      },
+      {
+        id: 1,
+        label: "Kulmbach",
+      },
+      {
+        id: 2,
+        label: "Online-Seminar",
+      },
+    ],
+    owner: "Yannis Yannkopolus",
+    price: "45,8",
+    currency: "EUR",
+    href: "/",
+  },
+  {
+    id: 2,
+    title: "Einführungs-Coaching für Auszubildende für die...",
+    cover: "/seminar-03.png",
+    categories: [
+      {
+        id: 0,
+        label: "Auszubildender",
+      },
+      {
+        id: 1,
+        label: "Kulmbach",
+      },
+    ],
+    owner: "Yannis Yannkopolus",
+    price: "36,9",
+    currency: "EUR",
+    href: "/",
+  },
+];
+
 export const categoriesEn = [
   {
     id: 0,

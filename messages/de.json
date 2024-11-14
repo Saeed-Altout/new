@@ -19,7 +19,12 @@
         },
         "top-categories":{
             "label": "Übersicht",
-            "title": "Top Categories"
-        }
+            "title": "Top-Kategorien"
+        },
+        "our-popular-seminars": {
+            "label": "Übersicht",
+            "title": "Unsere beliebten Seminare",
+            "view-courses-button": "Alle Kurse ansehen"
+        }      
     }  
 }
