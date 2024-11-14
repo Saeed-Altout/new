@@ -25,6 +25,12 @@
           "label": "Overview",
           "title": "Our popular seminars",
           "view-courses-button": "View all courses"
-      }      
+      },
+      "cta": {
+        "title": "Qualify your team within the in-Akademie",
+        "special-title": "Business",
+        "description": "Elevate your team's expertise through in-Akademie Business qualification, unlocking new levels of success and professional growth.",
+        "start-button": "Start in the Akademie Business"
+      }
   }
 }

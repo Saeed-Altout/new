@@ -25,6 +25,12 @@
             "label": "Übersicht",
             "title": "Unsere beliebten Seminare",
             "view-courses-button": "Alle Kurse ansehen"
-        }      
+        },
+        "cta": {
+            "title": "Qualifizieren Sie Ihr Team innerhalb der in-Akademie",
+            "special-title": "Business",
+            "description": "Steigern Sie die Expertise Ihres Teams durch die in-Akademie Business Qualifikation und eröffnen Sie neue Ebenen des Erfolgs und beruflichen Wachstums.",
+            "start-button": "Einstieg in die Akademie Business"
+        }
     }  
 }
