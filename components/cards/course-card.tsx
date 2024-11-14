@@ -10,6 +10,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "next-intl";
 
 interface Course {
   id: number;
@@ -31,6 +32,8 @@ interface CourseCard {
 
 export const CourseCard = ({ initialData }: CourseCard) => {
   const { title, categories, cover, price, currency, owner } = initialData;
+  const locale = useLocale();
+
   return (
     <Card className="flex flex-col border-none shadow-none rounded-[12px] overflow-hidden group">
       <CardHeader className="relative h-[224px] w-full p-0 space-y-0">
@@ -82,7 +85,7 @@ export const CourseCard = ({ initialData }: CourseCard) => {
           }
           className="w-full font-medium text-base inline-flex items-center justify-between group"
         >
-          More information
+          {locale === "en" ? "More information" : "Weitere Informationen"}
           <ArrowRight className="h-5 w-5 text-[#FDC511] -translate-x-4 group-hover:translate-x-0 transition-all" />
           <span className="sr-only">Arrow right icon</span>
         </Link>
