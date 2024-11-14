@@ -59,7 +59,8 @@
   "Navbar": {
     "links": [
       {"name":"Categories","href":"/categories"},
-      {"name":"In Akademie Business","href":"/akademie-business"}
+      {"name":"In Akademie Business","href":"/akademie-business"},
+      { "name": "Privatkunde", "href": "/private-customer" }
     ],
     "login": "Login",
     "register": "Register"

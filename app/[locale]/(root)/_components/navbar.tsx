@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { Menu, Search } from "lucide-react";
+import { Menu } from "lucide-react";
 
 import {
   NavigationMenu,
@@ -20,11 +20,13 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { categoriesDe, categoriesEn } from "@/constants";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
@@ -102,10 +104,33 @@ export const Navbar = () => {
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              className={cn(
+                "flex items-center space-x-2",
+                navigationMenuTriggerStyle()
+              )}
+            >
+              <Switch id="private-customer" />
+              <Label htmlFor="private-customer">{ctx("links.2.name")}</Label>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
         </NavigationMenuList>
         <div className="h-full ml-auto hidden lg:flex justify-center items-center gap-3">
           <div className="flex justify-center items-center gap-2">
-            <Input placeholder="Search.." icon={Search} />
+            <Button asChild size="icon" variant="outline">
+              <Link href="/advanced-search">
+                <Image
+                  src="/search.svg"
+                  alt="Search Icon"
+                  width={20}
+                  height={20}
+                  priority
+                  className="object-contain"
+                />
+                <span className="sr-only">Search</span>
+              </Link>
+            </Button>
             <Button asChild size="icon" variant="outline">
               <Link href="/">
                 <Image
