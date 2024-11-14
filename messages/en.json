@@ -4,6 +4,11 @@
           "title":"Train for your dream job",
           "description":"At our institution, students have the opportunity to refine their professional skills with the guidance of our expert teacher in an engaging manner. $$ We have a talented trainer who is dedicated to instructing over 200 students.",
           "start-button":"Start your learning journey"
-        }
+        },
+      "most-recommended":{
+          "label": "Overview",
+          "title": "Most recommended",
+          "view-courses-button": "View all courses"
+      }
   }
 }

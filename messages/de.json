@@ -4,6 +4,11 @@
             "title": "Trainiere für deinen Traumjob",
             "description": "An unserem Institut haben die Studierenden die Möglichkeit, ihre beruflichen Fähigkeiten unter Anleitung unserer erfahrenen Lehrkraft auf ansprechende Weise zu verfeinern. $$ Wir haben einen talentierten Trainer, der sich der Ausbildung von über 200 Studierenden widmet.",
             "start-button": "Starte deine Lernreise"
+        },
+        "most-recommended":{
+            "label": "Übersicht",
+            "title": "Am meisten empfohlen",
+            "view-courses-button": "Alle Kurse anzeigen"
         }
     }
 }
