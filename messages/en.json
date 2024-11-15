@@ -60,7 +60,7 @@
     "links": [
       {"name":"Categories","href":"/categories"},
       {"name":"In Akademie Business","href":"/akademie-business"},
-      { "name": "Privatkunde", "href": "/private-customer" }
+      { "name": "Private Customer", "href": "/private-customer" }
     ],
     "login": "Login",
     "register": "Register"
