@@ -141,5 +141,9 @@
   "special_checkbox": "die Allgemeinen Geschäftsbedingungen",
   "auth-button": "Registrieren",
   "forgot-password-link": "Passwort vergessen?"
+},
+"CoursesPage": {
+  "label": "Übersicht",
+  "title": "Unsere beliebten Seminare"
 }
 }

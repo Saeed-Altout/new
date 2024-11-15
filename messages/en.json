@@ -141,5 +141,9 @@
     "special_checkbox":"terms & conditions",
     "auth-button":"Login",
     "forgot-password-link":"Forgot password?"
+  },
+  "CoursesPage":{
+    "label": "Overview",
+    "title": "Our popular seminars"
   }
 }

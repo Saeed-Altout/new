@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { recommendedCoursesEn, recommendedCoursesDe } from "@/constants";
@@ -7,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { CourseCard } from "@/components/cards/course-card";
 import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 export const RecommendedCourses = () => {
   const locale = useLocale();

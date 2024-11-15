@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { Bell, IdCard, Lock, LucideIcon, User } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
 
 export const Sidebar = () => {
