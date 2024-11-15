@@ -114,7 +114,7 @@
       "label":"Password",
       "placeholder":"********"  
     },
-    "checkbox":"rRemember me",
+    "checkbox":"Remember me",
     "special_checkbox":"",
     "auth-button":"Login",
     "forgot-password-link":"Forgot password?"
