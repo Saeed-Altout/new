@@ -15,6 +15,7 @@ export default function ProfilePage() {
             width={148}
             height={148}
             className="h-full w-full object-cover"
+            priority
           />
         </div>
       </div>
