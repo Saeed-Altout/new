@@ -134,7 +134,7 @@ export const Navbar = () => {
             <Button asChild size="icon" variant="outline" className="relative">
               <Link href="/">
                 <Image
-                  src="/Bell.svg"
+                  src="/bell.svg"
                   alt="Bell Icon"
                   width={20}
                   height={20}

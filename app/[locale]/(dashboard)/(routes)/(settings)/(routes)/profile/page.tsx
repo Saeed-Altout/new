@@ -10,7 +10,7 @@ export default function ProfilePage() {
         </h3>
         <div className="w-[148px] h-[148px] overflow-hidden rounded-[5px]">
           <Image
-            src="/image-profile.png"
+            src="/profile.png"
             alt="Image Profile"
             width={148}
             height={148}
