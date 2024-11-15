@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 export const CTA = () => {
   const ctx = useTranslations("HomePage.cta");
@@ -13,8 +14,11 @@ export const CTA = () => {
         <p className="text-lg font-normal leading-7 text-[#656565] text-center max-w-[845px]">
           {ctx("description")}
         </p>
-        <Button className="w-full sm:w-fit px-10 bg-[#FDC511] hover:bg-[#FDC511]/90 drop-shadow">
-          {ctx("start-button")}
+        <Button
+          className="w-full sm:w-fit px-10 bg-[#FDC511] hover:bg-[#FDC511]/90 drop-shadow"
+          asChild
+        >
+          <Link href="/auth/business/login">{ctx("start-button")}</Link>
         </Button>
       </div>
     </section>

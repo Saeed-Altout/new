@@ -25,10 +25,12 @@ import { Label } from "@/components/ui/label";
 import { WrapperForm } from "./wrapper-form";
 import { loginSchema } from "@/Schemas";
 import { Role } from "@/config";
-import { Link } from "@/i18n/routing";
+import { Link, useRouter } from "@/i18n/routing";
 
 export const LoginForm = ({ role }: { role?: Role }) => {
   const ctx = useTranslations("LoginPage");
+  const router = useRouter();
+
   const [isPassword, setIsPassword] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isRemember, setIsRemember] = useState<boolean>(false);
@@ -44,6 +46,12 @@ export const LoginForm = ({ role }: { role?: Role }) => {
   const onSubmit = (values: z.infer<typeof loginSchema>) => {
     console.log(values);
     setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      router.push("/profile");
+    }, 3000);
+
+    return () => clearTimeout(timer);
   };
 
   return (

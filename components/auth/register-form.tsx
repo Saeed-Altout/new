@@ -25,10 +25,11 @@ import { Label } from "@/components/ui/label";
 import { WrapperForm } from "./wrapper-form";
 import { registerSchema } from "@/Schemas";
 import { Role } from "@/config";
-import { Link } from "@/i18n/routing";
+import { Link, useRouter } from "@/i18n/routing";
 
 export const RegisterForm = ({ role }: { role?: Role }) => {
   const ctx = useTranslations("RegisterPage");
+  const router = useRouter();
   const [isPassword, setIsPassword] = useState<boolean>(true);
   const [isRepeatPassword, setIsRepeatPassword] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -46,6 +47,12 @@ export const RegisterForm = ({ role }: { role?: Role }) => {
   const onSubmit = (values: z.infer<typeof registerSchema>) => {
     console.log(values);
     setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      router.push("/auth/login");
+    }, 3000);
+
+    return () => clearTimeout(timer);
   };
 
   return (

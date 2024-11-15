@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/routing";
 
 export const Hero = () => {
   const ctx = useTranslations("HomePage.hero");
@@ -21,8 +22,8 @@ export const Hero = () => {
               {ctx("description").split("$$")[1]}
             </p>
           </div>
-          <Button className="w-full sm:w-fit px-10">
-            {ctx("start-button")}
+          <Button className="w-full sm:w-fit px-10" asChild>
+            <Link href="/auth/login">{ctx("start-button")}</Link>
           </Button>
         </div>
         <div className="w-[400px] h-full max-h-[509.7px] hidden lg:block">
