@@ -48,7 +48,7 @@ export const Sidebar = () => {
               href={href}
               className={cn(
                 "flex items-center gap-3 py-4 px-6 border-l-4 border-transparent hover:bg-white hover:border-[#656565] duration-300 ease-in-out",
-                pathname === href && "bg-white border-[#656565]"
+                pathname.includes(href) && "bg-white border-[#656565]"
               )}
             >
               <Icon className="h-5 w-5" />
