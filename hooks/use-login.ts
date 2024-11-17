@@ -5,10 +5,12 @@ import { useRouter } from "@/i18n/routing";
 
 import { useToast } from "@/hooks/use-toast";
 import { login } from "@/api/auth/login";
+import { useAuthStore } from "@/stores/auth-store";
 
 export const useLogin = () => {
-  const { toast } = useToast();
   const router = useRouter();
+  const { toast } = useToast();
+  const { setToken } = useAuthStore();
 
   return useMutation({
     mutationKey: ["login"],
@@ -18,6 +20,7 @@ export const useLogin = () => {
         title: "Login",
         description: data.message ?? "Login successfully",
       });
+      setToken(data.data.token);
       router.push("/");
     },
     onError: (error) => {
