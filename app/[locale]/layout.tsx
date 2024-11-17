@@ -8,7 +8,6 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import QueryClientProviders from "@/providers/query-client-provide";
 import { Toaster } from "@/components/ui/toaster";
-import { AuthProvider } from "@/providers/auth-provider";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -42,9 +41,7 @@ export default async function RootLayout({
       <body className={`${poppins.className} antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <QueryClientProviders>
-            <AuthProvider>
-              {children} <Toaster />
-            </AuthProvider>
+            {children} <Toaster />
           </QueryClientProviders>
         </NextIntlClientProvider>
       </body>

@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import { TOKEN_KEY, USER_KEY } from "@/config/constants";
 
 const COOKIE_OPTIONS = {
-  expires: 1, // Cookie expiration in days
+  expires: 7, // Cookie expiration in days
   secure: process.env.NODE_ENV === "production",
   sameSite: "Strict",
 };
