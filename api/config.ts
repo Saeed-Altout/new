@@ -1,5 +1,5 @@
+import { getAccessToken } from "@/utils/token";
 import axios from "axios";
-
 export const apiClient = axios.create({
   baseURL: "https://e-inakademie.free-homes.de/api/",
   headers: {
@@ -9,7 +9,8 @@ export const apiClient = axios.create({
 });
 
 apiClient.interceptors.request.use((config) => {
-  const token = localStorage.getItem("authToken");
+  const token = getAccessToken();
+
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }

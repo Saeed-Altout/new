@@ -8,7 +8,7 @@ export default function AuthStudentLayout({
 }>) {
   return (
     <main className="h-full grid grid-cols-1 lg:grid-cols-2">
-      <UnprotectedRoute>
+      <UnprotectedRoute redirectTo="/profile">
         <Sidebar />
         <div className="flex justify-center items-center transition-all">
           {children}

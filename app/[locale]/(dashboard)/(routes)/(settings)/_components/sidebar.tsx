@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Bell, IdCard, Lock, LucideIcon, User } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
+import { UserButton } from "@/components/auth/user-button";
 
 export const Sidebar = () => {
   const pathname = usePathname();
@@ -39,9 +40,9 @@ export const Sidebar = () => {
     },
   ];
   return (
-    <div className="bg-[#F8F8F8] w-[385px] min-h-full p-10 space-y-8 hidden md:block">
+    <div className="bg-[#F8F8F8] w-[385px] p-10 space-y-8 hidden md:flex flex-col items-start justify-between">
       <h3 className="text-[#383838] text-2xl font-medium">Account</h3>
-      <ul className="space-y-3">
+      <ul className="flex-1 space-y-3">
         {links.map(({ href, label, icon: Icon }, index) => (
           <li key={index}>
             <Link
@@ -57,6 +58,7 @@ export const Sidebar = () => {
           </li>
         ))}
       </ul>
+      <UserButton />
     </div>
   );
 };

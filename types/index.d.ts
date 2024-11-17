@@ -44,3 +44,9 @@ type VerifyEmailResponse = {
   status: string;
   message: string;
 };
+
+type LogoutResponse = {
+  status: string;
+  message: string;
+  data: [];
+};

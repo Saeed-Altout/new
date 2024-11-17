@@ -2,29 +2,29 @@ import { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 
 import { useToast } from "@/hooks/use-toast";
-import { login } from "@/api/auth/login";
 import { useAuthStore } from "@/stores/auth-store";
+import { logout } from "@/api/auth/logout";
 
-export const useLogin = () => {
+export const useLogout = () => {
   const { toast } = useToast();
-  const { setAuthData } = useAuthStore();
+  const { clearAuth } = useAuthStore();
 
   return useMutation({
-    mutationKey: ["login"],
-    mutationFn: (data: LoginBody) => login(data),
+    mutationKey: ["logout"],
+    mutationFn: () => logout(),
     onSuccess: (data) => {
+      clearAuth();
       toast({
-        title: "Login",
-        description: data.message ?? "Login successfully",
+        title: "Logout",
+        description: data.message ?? "Logout successfully",
       });
-      setAuthData(data.data);
     },
     onError: (error) => {
       if (error instanceof AxiosError) {
         const message = error.response?.data?.message;
         toast({
-          title: "Login",
-          description: message ?? "Login failed",
+          title: "Logout",
+          description: message ?? "Logout failed",
         });
       }
     },
