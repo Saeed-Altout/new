@@ -21,7 +21,7 @@ import { Spinner } from "@/components/ui/spinner";
 
 import { WrapperForm } from "./wrapper-form";
 import { newPasswordSchema } from "@/Schemas";
-import { Role } from "@/config";
+import { Role } from "@/config/enums";
 
 export const NewPasswordForm = ({ role }: { role?: Role }) => {
   const [isPassword, setIsPassword] = useState<boolean>(true);
