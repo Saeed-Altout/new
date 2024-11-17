@@ -10,7 +10,7 @@ export const Sidebar = () => {
   const pathname = usePathname();
 
   const ctx = useTranslations(
-    pathname.includes("login") ? "LoginStudentPage" : "RegisterStudentPage"
+    pathname.includes("login") ? "LoginPage" : "RegisterPage"
   );
 
   const [url, setUrl] = useState<{

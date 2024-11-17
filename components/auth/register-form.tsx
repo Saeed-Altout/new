@@ -22,17 +22,18 @@ import { Spinner } from "@/components/ui/spinner";
 import { Checkbox } from "@/components/ui/checkbox";
 
 import { registerSchema } from "@/Schemas";
+import { Role } from "@/config/enums";
 import { Link } from "@/i18n/routing";
 import { useRegister } from "@/hooks/use-register";
 import { WrapperForm } from "./wrapper-form";
 
-export const RegisterStudentForm = () => {
+export const RegisterForm = ({ role }: { role: Role }) => {
   // State Management
   const [isPassword, setIsPassword] = useState<boolean>(true);
   const [isRepeatPassword, setIsRepeatPassword] = useState<boolean>(true);
 
   // Localization
-  const ctx = useTranslations("RegisterStudentPage");
+  const ctx = useTranslations("RegisterPage");
 
   // Hooks
   const { mutate, isPending } = useRegister();
@@ -52,12 +53,12 @@ export const RegisterStudentForm = () => {
   const onSubmit = (values: z.infer<typeof registerSchema>) => {
     mutate({
       ...values,
-      role: "student",
+      role: role,
     });
   };
 
   return (
-    <WrapperForm title={ctx("title")} role={"student"} google facebook>
+    <WrapperForm title={ctx("title")} role={role} google facebook>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
           <FormField

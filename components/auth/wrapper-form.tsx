@@ -12,6 +12,7 @@ import { FacebookProvider } from "./facebook-provider";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
+import { Role } from "@/config/enums";
 
 interface WrapperFormProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
@@ -24,7 +25,7 @@ export const WrapperForm = React.forwardRef<HTMLDivElement, WrapperFormProps>(
   ({ title, role, google, facebook, className, children, ...props }, ref) => {
     const pathname = usePathname();
     const ctx = useTranslations(
-      pathname.includes("auth") ? "LoginStudentPage" : "RegisterStudentPage"
+      pathname.includes("auth") ? "LoginPage" : "RegisterPage"
     );
 
     return (
@@ -39,7 +40,7 @@ export const WrapperForm = React.forwardRef<HTMLDivElement, WrapperFormProps>(
         <CardHeader>
           <CardTitle className="relative text-4xl w-fit">
             {title}
-            {role && (
+            {role === Role.COMPANY && (
               <span className="absolute left-[105%] top-[70%] text-base font-normal capitalize">
                 {role}
               </span>

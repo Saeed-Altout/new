@@ -130,7 +130,7 @@
       "view-button": "Alle Kurse anzeigen"
     }
   },
-  "LoginStudentPage": {
+  "LoginPage": {
     "title": "Anmelden",
     "welcome": "Willkommen",
     "back-button-label": "Jetzt registrieren",
@@ -149,7 +149,7 @@
     "auth-button": "Anmelden",
     "forgot-password-link": "Passwort vergessen?"
   },
-  "RegisterStudentPage": {
+  "RegisterPage": {
     "title": "Registrieren",
     "welcome": "Willkommen",
     "back-button-label": "Anmelden",
