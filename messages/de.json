@@ -1,149 +1,179 @@
 {
   "HomePage": {
-      "hero": {
-          "title": "Trainiere für deinen Traumjob",
-          "description": "Bei InAkademie haben die Azubis die Möglichkeit, ihre beruflichen Fähigkeiten unter Anleitung unserer erfahrenen Lehrkraft auf ansprechende Weise zu verfeinern. Wir haben einen talentierten Trainer, der sich der Ausbildung von über 200 Studierenden widmet.",
-          "start-button": "Starte deine Lernreise"
-      },
-      "most-recommended":{
-          "label": "Übersicht",
-          "title": "Am meisten empfohlen",
-          "view-courses-button": "Alle Kurse anzeigen"
-      },
-      "our-experienced-instructor": {
-          "label": "Entdecken",
-          "title": "Unser erfahrener Dozent",
-          "name": "Joans Edwards",
-          "job_title": "Masterabschluss in Elektrotechnik.",
-          "about": "Egal, ob Sie neu in diesem Bereich sind oder bereits ein erfahrener Profi, der Besuch meiner Kurse wird Ihnen das Wissen und die Fähigkeiten vermitteln, die Sie benötigen, um Ihr Geschäft zu verbessern. Ich kann es kaum erwarten, Ihnen zu helfen, Ihre Ziele zu erreichen! $$ Hallo zusammen! Ich freue mich, Ihnen mitteilen zu können, dass ich die Kurse auf unserer Website leiten werde. Mit meiner umfangreichen Erfahrung im Bereich der Elektrotechnik bin ich zuversichtlich, dass ich Ihnen das Wissen und die Fähigkeiten vermitteln kann, die Sie für Ihren Erfolg benötigen."
-      },
-      "top-categories":{
-          "label": "Übersicht",
-          "title": "Top-Kategorien"
-      },
-      "our-popular-seminars": {
-          "label": "Übersicht",
-          "title": "Unsere beliebten Seminare",
-          "view-courses-button": "Alle Kurse ansehen"
-      },
-      "cta": {
-          "title": "Qualifizieren Sie Ihr Team innerhalb der inAkademie",
-          "special-title": "Business",
-          "description": "Steigern Sie die Expertise Ihres Teams durch die InAkademie Business Qualifikation und eröffnen Sie neue Ebenen des Erfolgs und beruflichen Wachstums.",
-          "start-button": "Einstieg in die InAkademie Business"
-      }
+    "hero": {
+      "title": "Trainiere für deinen Traumjob",
+      "description": "Bei InAkademie haben die Azubis die Möglichkeit, ihre beruflichen Fähigkeiten unter Anleitung unserer erfahrenen Lehrkraft auf ansprechende Weise zu verfeinern. Wir haben einen talentierten Trainer, der sich der Ausbildung von über 200 Studierenden widmet.",
+      "start-button": "Starte deine Lernreise"
+    },
+    "most-recommended": {
+      "label": "Übersicht",
+      "title": "Am meisten empfohlen",
+      "view-courses-button": "Alle Kurse anzeigen"
+    },
+    "our-experienced-instructor": {
+      "label": "Entdecken",
+      "title": "Unser erfahrener Dozent",
+      "name": "Joans Edwards",
+      "job_title": "Masterabschluss in Elektrotechnik.",
+      "about": "Egal, ob Sie neu in diesem Bereich sind oder bereits ein erfahrener Profi, der Besuch meiner Kurse wird Ihnen das Wissen und die Fähigkeiten vermitteln, die Sie benötigen, um Ihr Geschäft zu verbessern. Ich kann es kaum erwarten, Ihnen zu helfen, Ihre Ziele zu erreichen! $$ Hallo zusammen! Ich freue mich, Ihnen mitteilen zu können, dass ich die Kurse auf unserer Website leiten werde. Mit meiner umfangreichen Erfahrung im Bereich der Elektrotechnik bin ich zuversichtlich, dass ich Ihnen das Wissen und die Fähigkeiten vermitteln kann, die Sie für Ihren Erfolg benötigen."
+    },
+    "top-categories": {
+      "label": "Übersicht",
+      "title": "Top-Kategorien"
+    },
+    "our-popular-seminars": {
+      "label": "Übersicht",
+      "title": "Unsere beliebten Seminare",
+      "view-courses-button": "Alle Kurse ansehen"
+    },
+    "cta": {
+      "title": "Qualifizieren Sie Ihr Team innerhalb der inAkademie",
+      "special-title": "Business",
+      "description": "Steigern Sie die Expertise Ihres Teams durch die InAkademie Business Qualifikation und eröffnen Sie neue Ebenen des Erfolgs und beruflichen Wachstums.",
+      "start-button": "Einstieg in die InAkademie Business"
+    }
   },
-  "Footer":{
+  "Footer": {
     "title": "Unternehmen",
-    "social":"Folge uns",
+    "social": "Folge uns",
     "links": [
-      { "name": "Über uns", "href": "/about-us" },
-      { "name": "Karriere", "href": "/career" },
-      { "name": "Blog", "href": "/blog" },
-      { "name": "Kontakt", "href": "/contact-us" }
+      {
+        "name": "Über uns",
+        "href": "/about-us"
+      },
+      {
+        "name": "Karriere",
+        "href": "/career"
+      },
+      {
+        "name": "Blog",
+        "href": "/blog"
+      },
+      {
+        "name": "Kontakt",
+        "href": "/contact-us"
+      }
     ],
     "for_businesses": {
-    "title": "Für Unternehmen",
-    "links": [
-      { "name": "Unternehmensschulungen", "href": "/corporate-training" },
-      { "name": "Digitale Transformation", "href": "/digital-transformation" }
-    ]
+      "title": "Für Unternehmen",
+      "links": [
+        {
+          "name": "Unternehmensschulungen",
+          "href": "/corporate-training"
+        },
+        {
+          "name": "Digitale Transformation",
+          "href": "/digital-transformation"
+        }
+      ]
     },
     "work_with_us": {
-    "title": "Arbeite mit uns",
-    "links": [
-      { "name": "Blog als Gast", "href": "/blog-guest" }
-    ]
-  }
+      "title": "Arbeite mit uns",
+      "links": [
+        {
+          "name": "Blog als Gast",
+          "href": "/blog-guest"
+        }
+      ]
+    }
   },
   "Navbar": {
-        "links": [
-          { "name": "Kategorien", "href": "/categories" },
-          { "name": "InAkademie Business", "href": "/akademie-business" },
-          { "name": "Private Kunden", "href": "/private-customer" }
-        ],
-        "login": "Anmelden",
-        "register": "Registrieren"
-   },
-  "AdvancedSearchPage": {
-      "filter": {
-        "title": "Erweiterte Suche",
-        "name-input": {
-          "label": "Kursname",
-          "placeholder": "Name"
-        },
-        "date-input": {
-          "label": "Datum",
-          "placeholder": "Monat auswählen"
-        },
-        "time-input": {
-          "label": "Uhrzeit",
-          "placeholder": "Uhrzeit auswählen"
-        },
-        "branch-input": {
-          "label": "Filiale",
-          "placeholder": "Filiale auswählen"
-        },
-        "region-input": {
-          "label": "Region",
-          "placeholder": "Region"
-        },
-        "type-input": {
-          "label": "Kursart",
-          "placeholder": "Art"
-        },
-        "search-button": "Suche"
+    "links": [
+      {
+        "name": "Kategorien",
+        "href": "/categories"
       },
-      "result": {
-        "title": "Suchergebnisse",
-        "label": "Kurse",
-        "view-button": "Alle Kurse anzeigen"
+      {
+        "name": "InAkademie Business",
+        "href": "/akademie-business"
+      },
+      {
+        "name": "Private Kunden",
+        "href": "/private-customer"
       }
-   },
+    ],
+    "login": "Anmelden",
+    "register": "Registrieren"
+  },
+  "AdvancedSearchPage": {
+    "filter": {
+      "title": "Erweiterte Suche",
+      "name-input": {
+        "label": "Kursname",
+        "placeholder": "Name"
+      },
+      "date-input": {
+        "label": "Datum",
+        "placeholder": "Monat auswählen"
+      },
+      "time-input": {
+        "label": "Uhrzeit",
+        "placeholder": "Uhrzeit auswählen"
+      },
+      "branch-input": {
+        "label": "Filiale",
+        "placeholder": "Filiale auswählen"
+      },
+      "region-input": {
+        "label": "Region",
+        "placeholder": "Region"
+      },
+      "type-input": {
+        "label": "Kursart",
+        "placeholder": "Art"
+      },
+      "search-button": "Suche"
+    },
+    "result": {
+      "title": "Suchergebnisse",
+      "label": "Kurse",
+      "view-button": "Alle Kurse anzeigen"
+    }
+  },
   "LoginPage": {
-  "title": "Anmelden",
-  "welcome": "Willkommen",
-  "back-button-label": "Jetzt registrieren",
-  "back-button-message": "Noch kein Mitglied?",
-  "message": "Oder melden Sie sich an mit",
-  "email-input": {
-    "label": "E-Mail-Adresse",
-    "placeholder": "beispiel@gmail.com"
+    "title": "Anmelden",
+    "welcome": "Willkommen",
+    "back-button-label": "Jetzt registrieren",
+    "back-button-message": "Noch kein Mitglied?",
+    "message": "Oder melden Sie sich an mit",
+    "email-input": {
+      "label": "E-Mail-Adresse",
+      "placeholder": "beispiel@gmail.com"
+    },
+    "password-input": {
+      "label": "Passwort",
+      "placeholder": "********"
+    },
+    "checkbox": "Angemeldet bleiben",
+    "special_checkbox": "",
+    "auth-button": "Anmelden",
+    "forgot-password-link": "Passwort vergessen?"
   },
-  "password-input": {
-    "label": "Passwort",
-    "placeholder": "********"
+  "RegisterPage": {
+    "title": "Registrieren",
+    "welcome": "Willkommen",
+    "back-button-label": "Anmelden",
+    "back-button-message": "Bereits ein Konto?",
+    "message": "Oder registrieren Sie sich mit",
+    "email-input": {
+      "label": "E-Mail-Adresse",
+      "placeholder": "beispiel@gmail.com"
+    },
+    "password-input": {
+      "label": "Passwort",
+      "placeholder": "********"
+    },
+    "repeat-password-input": {
+      "label": "Passwort wiederholen",
+      "placeholder": "********"
+    },
+    "checkbox": "Ich habe gelesen und akzeptiere",
+    "special_checkbox": "die Allgemeinen Geschäftsbedingungen",
+    "auth-button": "Registrieren",
+    "forgot-password-link": "Passwort vergessen?"
   },
-  "checkbox": "Angemeldet bleiben",
-  "special_checkbox": "",
-  "auth-button": "Anmelden",
-  "forgot-password-link": "Passwort vergessen?"
-},
-"RegisterPage": {
-  "title": "Registrieren",
-  "welcome": "Willkommen",
-  "back-button-label": "Anmelden",
-  "back-button-message": "Bereits ein Konto?",
-  "message": "Oder registrieren Sie sich mit",
-  "email-input": {
-    "label": "E-Mail-Adresse",
-    "placeholder": "beispiel@gmail.com"
-  },
-  "password-input": {
-    "label": "Passwort",
-    "placeholder": "********"
-  },
-  "repeat-password-input": {
-    "label": "Passwort wiederholen",
-    "placeholder": "********"
-  },
-  "checkbox": "Ich habe gelesen und akzeptiere",
-  "special_checkbox": "die Allgemeinen Geschäftsbedingungen",
-  "auth-button": "Registrieren",
-  "forgot-password-link": "Passwort vergessen?"
-},
-"CoursesPage": {
-  "label": "Übersicht",
-  "title": "Unsere beliebten Seminare"
-}
+  "CoursesPage": {
+    "label": "Übersicht",
+    "title": "Unsere beliebten Seminare"
+  }
 }
