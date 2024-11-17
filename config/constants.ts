@@ -1,5 +1,5 @@
 // Endpoints
-export const REGISTER_STUDENT_ENDPOINT = "register";
+export const REGISTER_ENDPOINT = "register";
 export const VERIFY_EMAIL_ENDPOINT = "email/verify";
 
 //

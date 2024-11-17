@@ -23,7 +23,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 import { registerSchema } from "@/Schemas";
 import { Link } from "@/i18n/routing";
-import { useRegisterStudent } from "@/hooks/use-register";
+import { useRegister } from "@/hooks/use-register";
 import { WrapperForm } from "./wrapper-form";
 
 export const RegisterStudentForm = () => {
@@ -35,7 +35,7 @@ export const RegisterStudentForm = () => {
   const ctx = useTranslations("RegisterStudentPage");
 
   // Hooks
-  const { mutate, isPending } = useRegisterStudent();
+  const { mutate, isPending } = useRegister();
 
   // Form
   const form = useForm<z.infer<typeof registerSchema>>({

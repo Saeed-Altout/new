@@ -1,6 +1,7 @@
+import { AxiosResponse } from "axios";
+
 import { apiClient } from "@/api/config";
 import { VERIFY_EMAIL_ENDPOINT } from "@/config/constants";
-import { AxiosResponse } from "axios";
 
 export const verifyEmail = async (data: VerifyEmailBody) => {
   try {

@@ -4,16 +4,16 @@ import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "@/i18n/routing";
 
 import { useToast } from "@/hooks/use-toast";
-import { registerStudent } from "@/api/auth/register";
+import { register } from "@/api/auth/register";
 import { EMAIL } from "@/config/constants";
 
-export const useRegisterStudent = () => {
+export const useRegister = () => {
   const { toast } = useToast();
   const router = useRouter();
 
   return useMutation({
-    mutationKey: ["register-student"],
-    mutationFn: (data: RegisterStudentBody) => registerStudent(data),
+    mutationKey: ["register"],
+    mutationFn: (data: RegisterBody) => register(data),
     onSuccess: (data, variables) => {
       toast({
         title: "Register",

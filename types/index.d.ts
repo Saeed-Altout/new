@@ -1,4 +1,4 @@
-type RegisterStudentBody = {
+type RegisterBody = {
   email: string;
   password: string;
   password_confirmation: string;
@@ -6,7 +6,7 @@ type RegisterStudentBody = {
   terms: boolean;
 };
 
-type RegisterStudentResponse = {
+type RegisterResponse = {
   data: { otp_expiration: string };
   message: string;
   errors: {
