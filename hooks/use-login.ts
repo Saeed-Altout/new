@@ -10,7 +10,7 @@ import { useAuthStore } from "@/stores/auth-store";
 export const useLogin = () => {
   const router = useRouter();
   const { toast } = useToast();
-  const { setToken } = useAuthStore();
+  const { setAuthData } = useAuthStore();
 
   return useMutation({
     mutationKey: ["login"],
@@ -20,7 +20,7 @@ export const useLogin = () => {
         title: "Login",
         description: data.message ?? "Login successfully",
       });
-      setToken(data.data.token);
+      setAuthData(data.data);
       router.push("/");
     },
     onError: (error) => {

@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 import { useAuthStore } from "@/stores/auth-store";
 
 export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const [isMounted, setIsMounted] = useState<boolean>(false);
   const router = useRouter();
+  const [isMounted, setIsMounted] = useState<boolean>(false);
   const { isAuthenticated } = useAuthStore();
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 import { useAuthStore } from "@/stores/auth-store";
 
 export const UnprotectedRoute = ({
@@ -17,6 +17,7 @@ export const UnprotectedRoute = ({
 
   useEffect(() => {
     setIsMounted(true);
+
     if (isAuthenticated) {
       router.push(redirectTo);
     }
