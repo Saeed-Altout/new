@@ -1,5 +1,8 @@
 import * as React from "react";
 
+import { usePathname } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
+
 import {
   Card,
   CardContent,
@@ -9,9 +12,8 @@ import {
 } from "@/components/ui/card";
 import { GoogleProvider } from "./google-provider";
 import { FacebookProvider } from "./facebook-provider";
+
 import { cn } from "@/lib/utils";
-import { useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
 import { Role } from "@/config/enums";
 
 interface WrapperFormProps extends React.HTMLAttributes<HTMLDivElement> {

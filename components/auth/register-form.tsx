@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+
+import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,10 +23,9 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { Checkbox } from "@/components/ui/checkbox";
 
-import { registerSchema } from "@/Schemas";
 import { Role } from "@/config/enums";
-import { Link } from "@/i18n/routing";
 import { useRegister } from "@/hooks/use-register";
+import { registerSchema } from "@/Schemas";
 import { WrapperForm } from "./wrapper-form";
 
 export const RegisterForm = ({ role }: { role: Role }) => {
@@ -51,10 +52,7 @@ export const RegisterForm = ({ role }: { role: Role }) => {
 
   // Handlers
   const onSubmit = (values: z.infer<typeof registerSchema>) => {
-    mutate({
-      ...values,
-      role: role,
-    });
+    mutate({ ...values, role: role });
   };
 
   return (
