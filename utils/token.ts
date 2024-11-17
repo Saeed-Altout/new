@@ -2,10 +2,11 @@ import Cookies from "js-cookie";
 import jwt from "jsonwebtoken";
 import { TOKEN_KEY, USER_KEY } from "@/config/constants";
 
+// Cookie options to be used for setting authentication data
 const COOKIE_OPTIONS = {
   expires: 7, // Cookie expiration in days
-  secure: process.env.NODE_ENV === "production",
-  sameSite: "Strict",
+  secure: process.env.NODE_ENV === "production", // Ensure secure cookies in production environment
+  sameSite: "Strict", // Restrict cookies to same site for security
 };
 
 /**
@@ -15,7 +16,7 @@ const COOKIE_OPTIONS = {
 export const setAccessToken = (token: string) => {
   Cookies.set(TOKEN_KEY, token, {
     ...COOKIE_OPTIONS,
-    sameSite: "strict",
+    sameSite: "strict", // Ensure the cookie is only sent with requests to the same site
   });
 };
 
@@ -28,16 +29,19 @@ export const removeAccessToken = () => {
 
 /**
  * Set the user authentication data in cookies.
- * @param data - User authentication data including token and metadata.
+ * @param data - The user authentication data, including token, user info, role, and remember option.
  */
 export const setAuthData = (data: {
-  token: string;
-  token_expiration: Date | string;
-  user: { id: number; email: string };
-  role: string;
-  is_remembered: boolean;
+  token: string; // JWT token for user authentication
+  token_expiration: Date | string; // Expiration date of the token
+  user: { id: number; email: string }; // User data (ID and email)
+  role: string; // Role of the user (e.g., admin, user)
+  is_remembered: boolean; // Indicates whether the user chose to stay logged in
 }) => {
+  // Set the access token
   setAccessToken(data.token);
+
+  // Store user metadata, token expiration, and other details in cookies
   Cookies.set(
     USER_KEY,
     JSON.stringify({
@@ -48,10 +52,11 @@ export const setAuthData = (data: {
     }),
     {
       ...COOKIE_OPTIONS,
-      sameSite: "strict",
+      sameSite: "strict", // Ensure the cookie is only sent with requests to the same site
     }
   );
 };
+
 /**
  * Get the access token from cookies.
  * @returns {string | null} The JWT token, or null if not found.
@@ -61,25 +66,25 @@ export const getAccessToken = (): string | null => {
 };
 
 /**
- * Get user metadata from cookies.
+ * Get the user metadata (such as ID, email, role, etc.) from cookies.
  * @returns {object | null} User metadata or null if not found.
  */
 export const getUserMetadata = (): {
-  user: { id: number; email: string };
-  role: string;
-  is_remembered: boolean;
-  token_expiration: string;
+  user: { id: number; email: string }; // User info
+  role: string; // Role of the user
+  is_remembered: boolean; // Indicates if the user chose to stay logged in
+  token_expiration: string; // Expiration time of the token
 } | null => {
   const metadata = Cookies.get(USER_KEY);
   return metadata ? JSON.parse(metadata) : null;
 };
 
 /**
- * Remove authentication data from cookies.
+ * Remove authentication data (token and user metadata) from cookies.
  */
 export const clearAuthData = () => {
-  Cookies.remove(TOKEN_KEY);
-  removeAccessToken();
+  Cookies.remove(TOKEN_KEY); // Remove the JWT token
+  removeAccessToken(); // Remove the token from cookies
 };
 
 /**
@@ -91,12 +96,12 @@ export const decodeToken = (token: string): object | null => {
   try {
     const decoded = jwt.decode(token);
     if (typeof decoded === "string" || decoded === null) {
-      return null;
+      return null; // Invalid token
     }
-    return decoded;
+    return decoded; // Return the decoded token payload
   } catch (error) {
     console.error("Failed to decode token:", error);
-    return null;
+    return null; // Return null if decoding fails
   }
 };
 
@@ -107,12 +112,14 @@ export const decodeToken = (token: string): object | null => {
  */
 export const isTokenExpired = (token: string): boolean => {
   const decodedToken = decodeToken(token) as { exp?: number } | null;
+
+  // If the token does not have an expiration date or the expiration date is missing, consider it expired
   if (!decodedToken || !decodedToken.exp) {
     return true;
   }
 
-  const expirationTime = decodedToken.exp * 1000;
-  return Date.now() > expirationTime;
+  const expirationTime = decodedToken.exp * 1000; // Convert expiration time to milliseconds
+  return Date.now() > expirationTime; // Compare current time with expiration time
 };
 
 /**
@@ -121,5 +128,5 @@ export const isTokenExpired = (token: string): boolean => {
  */
 export const isStoredTokenExpired = (): boolean => {
   const token = getAccessToken();
-  return token ? isTokenExpired(token) : true;
+  return token ? isTokenExpired(token) : true; // Check expiration based on stored token
 };
