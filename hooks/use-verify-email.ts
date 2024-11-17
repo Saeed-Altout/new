@@ -3,6 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 
 import { useRouter } from "@/i18n/routing";
 
+import { EMAIL } from "@/config/constants";
 import { useToast } from "@/hooks/use-toast";
 import { verifyEmail } from "@/api/auth/verify-email";
 
@@ -18,6 +19,7 @@ export const useVerifyEmail = (role: string) => {
         title: "Verify email",
         description: data.message ?? "Verify email successfully",
       });
+      localStorage.removeItem(EMAIL);
       router.push(`/auth/${role}/login`);
     },
     onError: (error) => {

@@ -172,8 +172,8 @@
     "auth-button": "Sign Up",
     "forgot-password-link": "Forgot password?"
   },
-  "VerifyStudentPage": {
-    "title": "2F Authentication",
+  "VerifyPage": {
+    "title": "Verify Email",
     "auth-button": "Verify Email",
     "otp-input-label": "OTP Verify"
   },
