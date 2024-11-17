@@ -13,7 +13,7 @@ export const forgetPasswordOtpSchema = z.object({
   code: z.string().min(6),
 });
 export const verificationOtpSchema = z.object({
-  code: z.string().min(6),
+  otp: z.string().min(6),
 });
 
 export const forgetPasswordSchema = z.object({

@@ -1,17 +1,18 @@
 "use client";
+
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
-import { Link } from "@/i18n/routing";
+import { Link, usePathname } from "@/i18n/routing";
 
 export const Sidebar = () => {
   const pathname = usePathname();
-  const locale = useLocale();
+
   const ctx = useTranslations(
-    pathname.includes("login") ? "LoginPage" : "RegisterPage"
+    pathname.includes("login") ? "LoginStudentPage" : "RegisterStudentPage"
   );
+
   const [url, setUrl] = useState<{
     href: string;
     message: string;
@@ -19,15 +20,15 @@ export const Sidebar = () => {
   } | null>(null);
 
   const redirectTo = (pathname: string) => {
-    if (pathname === `/${locale}/auth/login`) {
+    if (pathname.includes("/auth/student/login")) {
       return {
-        href: "/auth/register",
+        href: "/auth/student/register",
         message: ctx("back-button-message"),
         label: ctx("back-button-label"),
       };
-    } else if (pathname === `/${locale}/auth/register`) {
+    } else if (pathname.includes("/auth/student/register")) {
       return {
-        href: "/auth/login",
+        href: "/auth/student/login",
         message: ctx("back-button-message"),
         label: ctx("back-button-label"),
       };

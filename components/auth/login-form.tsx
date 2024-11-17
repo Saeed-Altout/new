@@ -28,7 +28,7 @@ import { Role } from "@/config";
 import { Link, useRouter } from "@/i18n/routing";
 
 export const LoginForm = ({ role }: { role?: Role }) => {
-  const ctx = useTranslations("LoginPage");
+  const ctx = useTranslations("LoginStudentPage");
   const router = useRouter();
 
   const [isPassword, setIsPassword] = useState<boolean>(true);

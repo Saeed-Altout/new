@@ -130,7 +130,7 @@
       "view-button": "Alle Kurse anzeigen"
     }
   },
-  "LoginPage": {
+  "LoginStudentPage": {
     "title": "Anmelden",
     "welcome": "Willkommen",
     "back-button-label": "Jetzt registrieren",
@@ -149,7 +149,7 @@
     "auth-button": "Anmelden",
     "forgot-password-link": "Passwort vergessen?"
   },
-  "RegisterPage": {
+  "RegisterStudentPage": {
     "title": "Registrieren",
     "welcome": "Willkommen",
     "back-button-label": "Anmelden",
@@ -171,6 +171,11 @@
     "special_checkbox": "die Allgemeinen Geschäftsbedingungen",
     "auth-button": "Registrieren",
     "forgot-password-link": "Passwort vergessen?"
+  },
+  "VerifyStudentPage": {
+    "title": "2F-Authentifizierung",
+    "auth-button": "E-Mail verifizieren",
+    "otp-input-label": "OTP verifizieren"
   },
   "CoursesPage": {
     "label": "Übersicht",

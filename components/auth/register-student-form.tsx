@@ -21,19 +21,23 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { Checkbox } from "@/components/ui/checkbox";
 
-import { Role } from "@/config";
 import { registerSchema } from "@/Schemas";
 import { Link } from "@/i18n/routing";
-import { useRegisterStudent } from "@/hooks/useRegister";
+import { useRegisterStudent } from "@/hooks/use-register";
 import { WrapperForm } from "./wrapper-form";
 
-export const RegisterForm = ({ role }: { role?: Role }) => {
-  const ctx = useTranslations("RegisterPage");
+export const RegisterStudentForm = () => {
+  // State Management
   const [isPassword, setIsPassword] = useState<boolean>(true);
   const [isRepeatPassword, setIsRepeatPassword] = useState<boolean>(true);
 
+  // Localization
+  const ctx = useTranslations("RegisterStudentPage");
+
+  // Hooks
   const { mutate, isPending } = useRegisterStudent();
 
+  // Form
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -44,15 +48,16 @@ export const RegisterForm = ({ role }: { role?: Role }) => {
     },
   });
 
+  // Handlers
   const onSubmit = (values: z.infer<typeof registerSchema>) => {
     mutate({
       ...values,
-      role: role ?? "student",
+      role: "student",
     });
   };
 
   return (
-    <WrapperForm title={ctx("title")} role={role} google facebook>
+    <WrapperForm title={ctx("title")} role={"student"} google facebook>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
           <FormField

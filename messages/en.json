@@ -130,7 +130,7 @@
       "view-button": "View all courses"
     }
   },
-  "LoginPage": {
+  "LoginStudentPage": {
     "title": "Login",
     "welcome": "welcome",
     "back-button-label": "Register now",
@@ -149,8 +149,8 @@
     "auth-button": "Login",
     "forgot-password-link": "Forgot password?"
   },
-  "RegisterPage": {
-    "title": "Register",
+  "RegisterStudentPage": {
+    "title": "Sign Up",
     "welcome": "welcome",
     "back-button-label": "Log In",
     "back-button-message": "Have an account?",
@@ -169,8 +169,13 @@
     },
     "checkbox": "I have read and accept",
     "special_checkbox": "terms & conditions",
-    "auth-button": "Register",
+    "auth-button": "Sign Up",
     "forgot-password-link": "Forgot password?"
+  },
+  "VerifyStudentPage": {
+    "title": "2F Authentication",
+    "auth-button": "Verify Email",
+    "otp-input-label": "OTP Verify"
   },
   "CoursesPage": {
     "label": "Overview",

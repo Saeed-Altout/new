@@ -147,7 +147,7 @@ export const Navbar = () => {
           </div>
           <LanguageSwitcher />
           <Button asChild>
-            <Link href="/auth/login">
+            <Link href="/auth/student/login">
               {ctx("login")} <span className="sr-only">{ctx("login")}</span>
             </Link>
           </Button>

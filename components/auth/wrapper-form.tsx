@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/card";
 import { GoogleProvider } from "./google-provider";
 import { FacebookProvider } from "./facebook-provider";
-import { Role } from "@/config";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
@@ -18,14 +17,14 @@ interface WrapperFormProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   google?: boolean;
   facebook?: boolean;
-  role?: Role;
+  role?: string;
 }
 
 export const WrapperForm = React.forwardRef<HTMLDivElement, WrapperFormProps>(
   ({ title, role, google, facebook, className, children, ...props }, ref) => {
     const pathname = usePathname();
     const ctx = useTranslations(
-      pathname.includes("auth") ? "LoginPage" : "RegisterPage"
+      pathname.includes("auth") ? "LoginStudentPage" : "RegisterStudentPage"
     );
 
     return (

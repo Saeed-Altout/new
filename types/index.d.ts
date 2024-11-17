@@ -13,3 +13,13 @@ type RegisterStudentResponse = {
     terms: string[];
   };
 };
+
+type VerifyEmailBody = {
+  email: string;
+  otp: number;
+};
+
+type VerifyEmailResponse = {
+  status: string;
+  message: string;
+};
