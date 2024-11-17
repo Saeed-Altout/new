@@ -21,7 +21,7 @@ import { Spinner } from "@/components/ui/spinner";
 
 import { WrapperForm } from "./wrapper-form";
 import { createNewTeamSchema } from "@/Schemas";
-import { Role } from "@/config";
+import { Role } from "@/config/enums";
 
 export const CreateNewTeamForm = ({ role }: { role?: Role }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
