@@ -29,17 +29,11 @@ import { registerSchema } from "@/Schemas";
 import { WrapperForm } from "./wrapper-form";
 
 export const RegisterForm = ({ role }: { role: Role }) => {
-  // State Management
   const [isPassword, setIsPassword] = useState<boolean>(true);
   const [isRepeatPassword, setIsRepeatPassword] = useState<boolean>(true);
-
-  // Localization
   const ctx = useTranslations("RegisterPage");
-
-  // Hooks
   const { mutate, isPending } = useRegister();
 
-  // Form
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -50,7 +44,6 @@ export const RegisterForm = ({ role }: { role: Role }) => {
     },
   });
 
-  // Handlers
   const onSubmit = (values: z.infer<typeof registerSchema>) => {
     mutate({ ...values, role: role });
   };
@@ -146,6 +139,7 @@ export const RegisterForm = ({ role }: { role: Role }) => {
               <FormItem className="flex items-center justify-start gap-3">
                 <FormControl>
                   <Checkbox
+                    disabled={isPending}
                     checked={field.value}
                     onCheckedChange={field.onChange}
                   />

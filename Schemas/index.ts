@@ -7,6 +7,7 @@ export const newPasswordSchema = z.object({
 export const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8),
+  remember_me: z.boolean().default(false),
 });
 
 export const forgetPasswordOtpSchema = z.object({

@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -20,38 +20,28 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 
-import { WrapperForm } from "./wrapper-form";
 import { loginSchema } from "@/Schemas";
-import { Role } from "@/config";
-import { Link, useRouter } from "@/i18n/routing";
+import { Role } from "@/config/enums";
+import { WrapperForm } from "./wrapper-form";
+import { useLogin } from "@/hooks/use-login";
 
 export const LoginForm = ({ role }: { role?: Role }) => {
-  const ctx = useTranslations("LoginStudentPage");
-  const router = useRouter();
-
   const [isPassword, setIsPassword] = useState<boolean>(true);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isRemember, setIsRemember] = useState<boolean>(false);
+  const { mutate, isPending } = useLogin();
+  const ctx = useTranslations("LoginPage");
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
+      remember_me: false,
     },
   });
 
   const onSubmit = (values: z.infer<typeof loginSchema>) => {
-    console.log(values);
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      router.push("/profile");
-    }, 3000);
-
-    return () => clearTimeout(timer);
+    mutate({ ...values });
   };
 
   return (
@@ -68,7 +58,7 @@ export const LoginForm = ({ role }: { role?: Role }) => {
                   <Input
                     type="email"
                     placeholder={ctx("email-input.placeholder")}
-                    disabled={isLoading}
+                    disabled={isPending}
                     {...field}
                   />
                 </FormControl>
@@ -87,7 +77,7 @@ export const LoginForm = ({ role }: { role?: Role }) => {
                     <Input
                       type={isPassword ? "password" : "text"}
                       placeholder={ctx("password-input.placeholder")}
-                      disabled={isLoading}
+                      disabled={isPending}
                       {...field}
                     />
                     <div
@@ -107,20 +97,32 @@ export const LoginForm = ({ role }: { role?: Role }) => {
               </FormItem>
             )}
           />
-          <div className="flex items-center justify-start gap-3">
-            <Checkbox
-              checked={isRemember}
-              onCheckedChange={() => setIsRemember((prev) => !prev)}
-            />
-            <Label>{ctx("checkbox")}</Label>
-          </div>
+          <FormField
+            control={form.control}
+            name="remember_me"
+            render={({ field }) => (
+              <FormItem className="flex items-center justify-start gap-3">
+                <FormControl>
+                  <Checkbox
+                    disabled={isPending}
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+                <FormLabel className="font-normal pb-2">
+                  {ctx("checkbox")}
+                </FormLabel>
+              </FormItem>
+            )}
+          />
           <div className="flex justify-end items-center flex-col gap-4">
-            <Button disabled={isLoading} type="submit" className="w-full">
-              {ctx("auth-button")} {isLoading && <Spinner />}
+            <Button disabled={isPending} type="submit" className="w-full">
+              {ctx("auth-button")} {isPending && <Spinner />}
             </Button>
             <Button
               variant="link"
               size="sm"
+              disabled={isPending}
               className="px-0 w-fit ml-auto"
               asChild
             >

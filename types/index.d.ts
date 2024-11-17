@@ -1,3 +1,24 @@
+type LoginBody = {
+  email: string;
+  password: string;
+  remember_me: boolean;
+};
+
+type LoginResponse = {
+  status: string;
+  message: string;
+  data: {
+    token: string;
+    token_expiration: Date | string;
+    user: {
+      id: number;
+      email: string;
+    };
+    role: string;
+    is_remembered: boolean;
+  };
+};
+
 type RegisterBody = {
   email: string;
   password: string;
@@ -7,7 +28,7 @@ type RegisterBody = {
 };
 
 type RegisterResponse = {
-  data: { otp_expiration: string };
+  data: { otp_expiration: Date | string };
   message: string;
   errors: {
     terms: string[];
