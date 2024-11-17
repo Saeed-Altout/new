@@ -169,7 +169,7 @@
     },
     "checkbox": "I have read and accept",
     "special_checkbox": "terms & conditions",
-    "auth-button": "Login",
+    "auth-button": "Register",
     "forgot-password-link": "Forgot password?"
   },
   "CoursesPage": {

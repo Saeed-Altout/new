@@ -6,6 +6,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import QueryClientProviders from "@/providers/query-client-provide";
+import { Toaster } from "@/components/ui/toaster";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -38,7 +40,9 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={`${poppins.className} antialiased`}>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <QueryClientProviders>
+            {children} <Toaster />
+          </QueryClientProviders>
         </NextIntlClientProvider>
       </body>
     </html>

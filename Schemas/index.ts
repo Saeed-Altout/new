@@ -23,7 +23,8 @@ export const forgetPasswordSchema = z.object({
 export const registerSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8),
-  confirmed_password: z.string().min(8),
+  password_confirmation: z.string().min(8),
+  terms: z.boolean().default(false),
 });
 
 export const createNewTeamSchema = z.object({

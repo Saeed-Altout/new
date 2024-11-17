@@ -20,39 +20,35 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 
-import { WrapperForm } from "./wrapper-form";
-import { registerSchema } from "@/Schemas";
 import { Role } from "@/config";
-import { Link, useRouter } from "@/i18n/routing";
+import { registerSchema } from "@/Schemas";
+import { Link } from "@/i18n/routing";
+import { useRegisterStudent } from "@/hooks/useRegister";
+import { WrapperForm } from "./wrapper-form";
 
 export const RegisterForm = ({ role }: { role?: Role }) => {
   const ctx = useTranslations("RegisterPage");
-  const router = useRouter();
   const [isPassword, setIsPassword] = useState<boolean>(true);
   const [isRepeatPassword, setIsRepeatPassword] = useState<boolean>(true);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isRemember, setIsRemember] = useState<boolean>(false);
+
+  const { mutate, isPending } = useRegisterStudent();
 
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       email: "",
       password: "",
-      confirmed_password: "",
+      password_confirmation: "",
+      terms: false,
     },
   });
 
   const onSubmit = (values: z.infer<typeof registerSchema>) => {
-    console.log(values);
-    setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      router.push("/auth/login");
-    }, 3000);
-
-    return () => clearTimeout(timer);
+    mutate({
+      ...values,
+      role: role ?? "student",
+    });
   };
 
   return (
@@ -69,7 +65,7 @@ export const RegisterForm = ({ role }: { role?: Role }) => {
                   <Input
                     type="email"
                     placeholder={ctx("email-input.placeholder")}
-                    disabled={isLoading}
+                    disabled={isPending}
                     {...field}
                   />
                 </FormControl>
@@ -88,7 +84,7 @@ export const RegisterForm = ({ role }: { role?: Role }) => {
                     <Input
                       type={isPassword ? "password" : "text"}
                       placeholder={ctx("password-input.placeholder")}
-                      disabled={isLoading}
+                      disabled={isPending}
                       {...field}
                     />
                     <div
@@ -110,7 +106,7 @@ export const RegisterForm = ({ role }: { role?: Role }) => {
           />
           <FormField
             control={form.control}
-            name="confirmed_password"
+            name="password_confirmation"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>{ctx("repeat-password-input.label")}</FormLabel>
@@ -119,7 +115,7 @@ export const RegisterForm = ({ role }: { role?: Role }) => {
                     <Input
                       type={isRepeatPassword ? "password" : "text"}
                       placeholder={ctx("repeat-password-input.placeholder")}
-                      disabled={isLoading}
+                      disabled={isPending}
                       {...field}
                     />
                     <div
@@ -139,20 +135,29 @@ export const RegisterForm = ({ role }: { role?: Role }) => {
               </FormItem>
             )}
           />
-          <div className="flex items-center justify-start gap-3">
-            <Checkbox
-              checked={isRemember}
-              onCheckedChange={() => setIsRemember((prev) => !prev)}
-            />
-            <Label className="font-normal">
-              {ctx("checkbox")}{" "}
-              <Link href="/terms" className="font-medium hover:underline">
-                {ctx("special_checkbox")}
-              </Link>
-            </Label>
-          </div>
-          <Button disabled={isLoading} type="submit" className="w-full">
-            {ctx("auth-button")} {isLoading && <Spinner />}
+          <FormField
+            control={form.control}
+            name="terms"
+            render={({ field }) => (
+              <FormItem className="flex items-center justify-start gap-3">
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+                <FormLabel className="font-normal pb-2">
+                  {ctx("checkbox")}
+                  <Link href="/terms" className="font-medium hover:underline">
+                    {ctx("special_checkbox")}
+                  </Link>
+                </FormLabel>
+              </FormItem>
+            )}
+          />
+
+          <Button disabled={isPending} type="submit" className="w-full">
+            {ctx("auth-button")} {isPending && <Spinner />}
           </Button>
         </form>
       </Form>
