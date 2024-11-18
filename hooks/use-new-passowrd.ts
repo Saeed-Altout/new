@@ -5,6 +5,7 @@ import { useToast } from "@/hooks/use-toast";
 import { newPassword } from "@/api/auth/new-password";
 import { useRouter } from "@/i18n/routing";
 import { Role } from "@/config/enums";
+import { removeAccessToken } from "@/utils/token";
 
 export const useNewPassword = ({ role }: { role: Role }) => {
   const { toast } = useToast();
@@ -18,6 +19,7 @@ export const useNewPassword = ({ role }: { role: Role }) => {
         title: "New password",
         description: data.message ?? "Change your password successfully",
       });
+      removeAccessToken();
       router.push(`/auth/${role}/login`);
     },
     onError: (error) => {

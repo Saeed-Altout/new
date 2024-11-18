@@ -34,7 +34,7 @@ export const VerificationOtpForm = ({ role }: { role: Role }) => {
   const [email, setEmail] = useState<string>("");
 
   // hook
-  const { mutate, isPending } = useVerifyEmail(role);
+  const { mutate, isPending } = useVerifyEmail({ role });
 
   // Localization
   const ctx = useTranslations("VerifyPage");

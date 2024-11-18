@@ -26,9 +26,9 @@ import { Role } from "@/config/enums";
 import { WrapperForm } from "./wrapper-form";
 import { useLogin } from "@/hooks/use-login";
 
-export const LoginForm = ({ role }: { role?: Role }) => {
+export const LoginForm = ({ role }: { role: Role }) => {
   const [isPassword, setIsPassword] = useState<boolean>(true);
-  const { mutate, isPending } = useLogin();
+  const { mutate, isPending } = useLogin({ role });
   const ctx = useTranslations("LoginPage");
 
   const form = useForm<z.infer<typeof loginSchema>>({

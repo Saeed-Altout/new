@@ -6,8 +6,9 @@ import { useRouter } from "@/i18n/routing";
 import { EMAIL } from "@/config/constants";
 import { useToast } from "@/hooks/use-toast";
 import { verifyEmail } from "@/api/auth/verify-email";
+import { Role } from "@/config/enums";
 
-export const useVerifyEmail = (role: string) => {
+export const useVerifyEmail = ({ role }: { role: Role }) => {
   const { toast } = useToast();
   const router = useRouter();
 

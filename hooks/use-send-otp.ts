@@ -7,7 +7,13 @@ import { EMAIL } from "@/config/constants";
 import { useRouter } from "@/i18n/routing";
 import { Role } from "@/config/enums";
 
-export const useSendOtp = ({ role }: { role: Role }) => {
+export const useSendOtp = ({
+  role,
+  redirectTo = "/forget-password-otp",
+}: {
+  role: Role;
+  redirectTo?: string;
+}) => {
   const { toast } = useToast();
   const router = useRouter();
 
@@ -20,7 +26,7 @@ export const useSendOtp = ({ role }: { role: Role }) => {
         description: data.message ?? "Send email successfully",
       });
       localStorage.setItem(EMAIL, variables.email);
-      router.push(`/auth/${role}/forget-password-otp`);
+      router.push(`/auth/${role}${redirectTo ?? "forget-password-otp"}`);
     },
     onError: (error) => {
       if (error instanceof AxiosError) {
