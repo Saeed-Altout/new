@@ -27,10 +27,12 @@ import { forgetPasswordOtpSchema } from "@/Schemas";
 import { Role } from "@/config/enums";
 import { useVerifyOtp } from "@/hooks/use-verify-otp";
 import { EMAIL } from "@/config/constants";
+import { useTranslations } from "next-intl";
 
 export const ForgetPasswordOtpForm = ({ role }: { role: Role }) => {
   const [email, setEmail] = useState<string>("");
   const { mutate, isPending } = useVerifyOtp(role);
+  const ctx = useTranslations("ForgetPasswordPage.VerifyOtp");
 
   const form = useForm<z.infer<typeof forgetPasswordOtpSchema>>({
     resolver: zodResolver(forgetPasswordOtpSchema),
@@ -54,7 +56,7 @@ export const ForgetPasswordOtpForm = ({ role }: { role: Role }) => {
   }, []);
 
   return (
-    <WrapperForm title="Forget Password?" role={role} className="w-fit">
+    <WrapperForm title={ctx("title")} role={role} className="w-fit">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
           <FormField
@@ -62,7 +64,7 @@ export const ForgetPasswordOtpForm = ({ role }: { role: Role }) => {
             name="otp"
             render={({ field }) => (
               <FormItem className="mx-auto w-fit">
-                <FormLabel>OTP Password</FormLabel>
+                <FormLabel>{ctx("otp-input-label")}</FormLabel>
                 <FormControl>
                   <InputOTP
                     pattern={REGEXP_ONLY_DIGITS}
@@ -85,7 +87,7 @@ export const ForgetPasswordOtpForm = ({ role }: { role: Role }) => {
             )}
           />
           <Button disabled={isPending} type="submit" className="w-full">
-            Verify Email {isPending && <Spinner />}
+            {ctx("auth-button")} {isPending && <Spinner />}
           </Button>
         </form>
       </Form>

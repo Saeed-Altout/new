@@ -23,7 +23,7 @@ import { useTranslations } from "next-intl";
 import { useSendOtp } from "@/hooks/use-send-otp";
 
 export const ForgetPasswordForm = ({ role }: { role: Role }) => {
-  const ctx = useTranslations("ForgetPasswordPage");
+  const ctx = useTranslations("ForgetPasswordPage.SendOtp");
 
   const { mutate, isPending } = useSendOtp({ role });
 

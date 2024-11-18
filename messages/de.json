@@ -178,11 +178,18 @@
     "otp-input-label": "OTP verifizieren"
   },
   "ForgetPasswordPage": {
-    "title": "Passwort vergessen?",
-    "auth-button": "E-Mail senden",
-    "email-input": {
-      "label": "E-Mail-Adresse",
-      "placeholder": "beispiel@gmail.com"
+    "SendOtp": {
+      "title": "Passwort vergessen?",
+      "auth-button": "E-Mail senden",
+      "email-input": {
+        "label": "E-Mail-Adresse",
+        "placeholder": "beispiel@gmail.com"
+      }
+    },
+    "VerifyOtp": {
+      "title": "Passwort vergessen?",
+      "auth-button": "E-Mail senden",
+      "otp-input-label": "OTP-Passwort"
     }
   },
   "CoursesPage": {
