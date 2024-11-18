@@ -60,3 +60,15 @@ type SendOtpResponse = {
   message: string;
   data: [];
 };
+
+type VerifyOtpBody = {
+  email: string;
+  otp: number;
+};
+
+type VerifyOtpResponse = {
+  message: string;
+  errors: {
+    email: string[];
+  };
+};

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -25,21 +25,33 @@ import { Spinner } from "@/components/ui/spinner";
 import { WrapperForm } from "./wrapper-form";
 import { forgetPasswordOtpSchema } from "@/Schemas";
 import { Role } from "@/config/enums";
+import { useVerifyOtp } from "@/hooks/use-verify-otp";
+import { EMAIL } from "@/config/constants";
 
-export const ForgetPasswordOtpForm = ({ role }: { role?: Role }) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+export const ForgetPasswordOtpForm = ({ role }: { role: Role }) => {
+  const [email, setEmail] = useState<string>("");
+  const { mutate, isPending } = useVerifyOtp(role);
 
   const form = useForm<z.infer<typeof forgetPasswordOtpSchema>>({
     resolver: zodResolver(forgetPasswordOtpSchema),
     defaultValues: {
-      code: "",
+      otp: "",
     },
   });
 
   const onSubmit = (values: z.infer<typeof forgetPasswordOtpSchema>) => {
-    console.log(values);
-    setIsLoading(true);
+    mutate({
+      otp: +values.otp,
+      email,
+    });
   };
+
+  useEffect(() => {
+    const currentEmail = localStorage.getItem(EMAIL);
+    if (currentEmail) {
+      setEmail(currentEmail);
+    }
+  }, []);
 
   return (
     <WrapperForm title="Forget Password?" role={role} className="w-fit">
@@ -47,7 +59,7 @@ export const ForgetPasswordOtpForm = ({ role }: { role?: Role }) => {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
           <FormField
             control={form.control}
-            name="code"
+            name="otp"
             render={({ field }) => (
               <FormItem className="mx-auto w-fit">
                 <FormLabel>OTP Password</FormLabel>
@@ -55,6 +67,7 @@ export const ForgetPasswordOtpForm = ({ role }: { role?: Role }) => {
                   <InputOTP
                     pattern={REGEXP_ONLY_DIGITS}
                     maxLength={6}
+                    disabled={isPending}
                     {...field}
                   >
                     <InputOTPGroup>
@@ -71,8 +84,8 @@ export const ForgetPasswordOtpForm = ({ role }: { role?: Role }) => {
               </FormItem>
             )}
           />
-          <Button disabled={isLoading} type="submit" className="w-full">
-            Verify Email {isLoading && <Spinner />}
+          <Button disabled={isPending} type="submit" className="w-full">
+            Verify Email {isPending && <Spinner />}
           </Button>
         </form>
       </Form>
