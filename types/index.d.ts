@@ -72,3 +72,14 @@ type VerifyOtpResponse = {
     email: string[];
   };
 };
+
+type NewPasswordBody = {
+  password: string;
+  password_confirmation: string;
+};
+
+type NewPasswordResponse = {
+  status: string;
+  message: string;
+  data: [];
+};

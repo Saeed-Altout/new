@@ -22,23 +22,24 @@ import { Spinner } from "@/components/ui/spinner";
 import { WrapperForm } from "./wrapper-form";
 import { newPasswordSchema } from "@/Schemas";
 import { Role } from "@/config/enums";
+import { useNewPassword } from "@/hooks/use-new-passowrd";
 
-export const NewPasswordForm = ({ role }: { role?: Role }) => {
+export const NewPasswordForm = ({ role }: { role: Role }) => {
   const [isPassword, setIsPassword] = useState<boolean>(true);
   const [isConfirmedPassword, setIsConfirmedPassword] = useState<boolean>(true);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const { mutate, isPending } = useNewPassword({ role });
 
   const form = useForm<z.infer<typeof newPasswordSchema>>({
     resolver: zodResolver(newPasswordSchema),
     defaultValues: {
       password: "",
-      confirmed_password: "",
+      password_confirmation: "",
     },
   });
 
   const onSubmit = (values: z.infer<typeof newPasswordSchema>) => {
-    console.log(values);
-    setIsLoading(true);
+    mutate(values);
   };
 
   return (
@@ -56,7 +57,7 @@ export const NewPasswordForm = ({ role }: { role?: Role }) => {
                     <Input
                       type={isPassword ? "password" : "text"}
                       placeholder="********"
-                      disabled={isLoading}
+                      disabled={isPending}
                       {...field}
                     />
                     <div
@@ -78,7 +79,7 @@ export const NewPasswordForm = ({ role }: { role?: Role }) => {
           />
           <FormField
             control={form.control}
-            name="confirmed_password"
+            name="password_confirmation"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Confirmed Password</FormLabel>
@@ -87,7 +88,7 @@ export const NewPasswordForm = ({ role }: { role?: Role }) => {
                     <Input
                       type={isConfirmedPassword ? "password" : "text"}
                       placeholder="********"
-                      disabled={isLoading}
+                      disabled={isPending}
                       {...field}
                     />
                     <div
@@ -107,8 +108,8 @@ export const NewPasswordForm = ({ role }: { role?: Role }) => {
               </FormItem>
             )}
           />
-          <Button disabled={isLoading} type="submit" className="w-full">
-            Reset Password {isLoading && <Spinner />}
+          <Button disabled={isPending} type="submit" className="w-full">
+            Reset Password {isPending && <Spinner />}
           </Button>
         </form>
       </Form>
