@@ -177,6 +177,14 @@
     "auth-button": "Verify Email",
     "otp-input-label": "OTP Verify"
   },
+  "ForgetPasswordPage": {
+    "title": "Forget Password?",
+    "auth-button": "Send Email",
+    "email-input": {
+      "label": "Email Address",
+      "placeholder": "example@gmail.com"
+    }
+  },
   "CoursesPage": {
     "label": "Overview",
     "title": "Our popular seminars"

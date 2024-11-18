@@ -21,9 +21,11 @@ import { Spinner } from "@/components/ui/spinner";
 import { WrapperForm } from "./wrapper-form";
 import { forgetPasswordSchema } from "@/Schemas";
 import { Role } from "@/config/enums";
+import { useTranslations } from "next-intl";
 
 export const ForgetPasswordForm = ({ role }: { role?: Role }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const ctx = useTranslations("ForgetPasswordPage");
 
   const form = useForm<z.infer<typeof forgetPasswordSchema>>({
     resolver: zodResolver(forgetPasswordSchema),
@@ -38,7 +40,7 @@ export const ForgetPasswordForm = ({ role }: { role?: Role }) => {
   };
 
   return (
-    <WrapperForm title="Forget Password?" role={role}>
+    <WrapperForm title={ctx("title")} role={role}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
           <FormField
@@ -46,11 +48,11 @@ export const ForgetPasswordForm = ({ role }: { role?: Role }) => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email Address</FormLabel>
+                <FormLabel>{ctx("email-input.label")}</FormLabel>
                 <FormControl>
                   <Input
                     type="email"
-                    placeholder="example@gmail.com"
+                    placeholder={ctx("email-input.placeholder")}
                     disabled={isLoading}
                     {...field}
                   />
@@ -60,7 +62,7 @@ export const ForgetPasswordForm = ({ role }: { role?: Role }) => {
             )}
           />
           <Button disabled={isLoading} type="submit" className="w-full">
-            Send Email {isLoading && <Spinner />}
+            {ctx("auth-button")} {isLoading && <Spinner />}
           </Button>
         </form>
       </Form>

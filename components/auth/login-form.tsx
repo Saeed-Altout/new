@@ -126,7 +126,7 @@ export const LoginForm = ({ role }: { role?: Role }) => {
               className="px-0 w-fit ml-auto"
               asChild
             >
-              <Link href="/auth/forget-password">
+              <Link href={`/auth/${role}/forget-password`}>
                 {ctx("forgot-password-link")}
               </Link>
             </Button>
