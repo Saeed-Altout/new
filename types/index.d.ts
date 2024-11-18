@@ -50,3 +50,13 @@ type LogoutResponse = {
   message: string;
   data: [];
 };
+
+type SendOtpBody = {
+  email: string;
+};
+
+type SendOtpResponse = {
+  status: string;
+  message: string;
+  data: [];
+};

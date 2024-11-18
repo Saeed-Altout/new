@@ -1,5 +1,6 @@
 // Endpoints
 export const LOGIN_ENDPOINT = "login";
+export const SEND_OTP_ENDPOINT = "send-otp";
 export const REGISTER_ENDPOINT = "register";
 export const VERIFY_EMAIL_ENDPOINT = "email/verify";
 export const LOGOUT_ENDPOINT = "logout";

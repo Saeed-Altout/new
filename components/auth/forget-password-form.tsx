@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -22,10 +20,12 @@ import { WrapperForm } from "./wrapper-form";
 import { forgetPasswordSchema } from "@/Schemas";
 import { Role } from "@/config/enums";
 import { useTranslations } from "next-intl";
+import { useSendOtp } from "@/hooks/use-send-otp";
 
-export const ForgetPasswordForm = ({ role }: { role?: Role }) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+export const ForgetPasswordForm = ({ role }: { role: Role }) => {
   const ctx = useTranslations("ForgetPasswordPage");
+
+  const { mutate, isPending } = useSendOtp({ role });
 
   const form = useForm<z.infer<typeof forgetPasswordSchema>>({
     resolver: zodResolver(forgetPasswordSchema),
@@ -35,8 +35,7 @@ export const ForgetPasswordForm = ({ role }: { role?: Role }) => {
   });
 
   const onSubmit = (values: z.infer<typeof forgetPasswordSchema>) => {
-    console.log(values);
-    setIsLoading(true);
+    mutate(values);
   };
 
   return (
@@ -53,7 +52,7 @@ export const ForgetPasswordForm = ({ role }: { role?: Role }) => {
                   <Input
                     type="email"
                     placeholder={ctx("email-input.placeholder")}
-                    disabled={isLoading}
+                    disabled={isPending}
                     {...field}
                   />
                 </FormControl>
@@ -61,8 +60,8 @@ export const ForgetPasswordForm = ({ role }: { role?: Role }) => {
               </FormItem>
             )}
           />
-          <Button disabled={isLoading} type="submit" className="w-full">
-            {ctx("auth-button")} {isLoading && <Spinner />}
+          <Button disabled={isPending} type="submit" className="w-full">
+            {ctx("auth-button")} {isPending && <Spinner />}
           </Button>
         </form>
       </Form>
