@@ -67,9 +67,15 @@ type VerifyOtpBody = {
 };
 
 type VerifyOtpResponse = {
+  status: string;
   message: string;
-  errors: {
-    email: string[];
+  data: {
+    token: string;
+    // user: {
+    //   id: number;
+    //   email: string;
+    // };
+    // role: string;
   };
 };
 

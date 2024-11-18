@@ -6,6 +6,7 @@ import { useRouter } from "@/i18n/routing";
 import { EMAIL } from "@/config/constants";
 import { useToast } from "@/hooks/use-toast";
 import { verifyOtp } from "@/api/auth/verify-otp";
+import { setAccessToken } from "@/utils/token";
 
 export const useVerifyOtp = (role: string) => {
   const { toast } = useToast();
@@ -19,6 +20,7 @@ export const useVerifyOtp = (role: string) => {
         title: "Verify otp",
         description: data.message ?? "Verify otp successfully",
       });
+      setAccessToken(data.data.token);
       localStorage.removeItem(EMAIL);
       router.push(`/auth/${role}/new-password`);
     },
