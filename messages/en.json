@@ -190,6 +190,18 @@
       "title": "Forget Password?",
       "auth-button": "Send Email",
       "otp-input-label": "OTP Password"
+    },
+    "NewPassword": {
+      "title": "Set New Password",
+      "auth-button": "Reset Password",
+      "password-input": {
+        "label": "Password",
+        "placeholder": "********"
+      },
+      "confirmed-password-input": {
+        "label": "Confirmed Password",
+        "placeholder": "********"
+      }
     }
   },
   "CoursesPage": {

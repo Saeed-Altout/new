@@ -23,11 +23,13 @@ import { WrapperForm } from "./wrapper-form";
 import { newPasswordSchema } from "@/Schemas";
 import { Role } from "@/config/enums";
 import { useNewPassword } from "@/hooks/use-new-passowrd";
+import { useTranslations } from "next-intl";
 
 export const NewPasswordForm = ({ role }: { role: Role }) => {
   const [isPassword, setIsPassword] = useState<boolean>(true);
   const [isConfirmedPassword, setIsConfirmedPassword] = useState<boolean>(true);
 
+  const ctx = useTranslations("ForgetPasswordPage.NewPassword");
   const { mutate, isPending } = useNewPassword({ role });
 
   const form = useForm<z.infer<typeof newPasswordSchema>>({
@@ -43,7 +45,7 @@ export const NewPasswordForm = ({ role }: { role: Role }) => {
   };
 
   return (
-    <WrapperForm title="Set New Password" role={role}>
+    <WrapperForm title={ctx("title")} role={role}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
           <FormField
@@ -51,12 +53,12 @@ export const NewPasswordForm = ({ role }: { role: Role }) => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>{ctx("password-input.label")}</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <Input
                       type={isPassword ? "password" : "text"}
-                      placeholder="********"
+                      placeholder={ctx("password-input.placeholder")}
                       disabled={isPending}
                       {...field}
                     />
@@ -82,12 +84,12 @@ export const NewPasswordForm = ({ role }: { role: Role }) => {
             name="password_confirmation"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Confirmed Password</FormLabel>
+                <FormLabel>{ctx("confirmed-password-input.label")}</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <Input
                       type={isConfirmedPassword ? "password" : "text"}
-                      placeholder="********"
+                      placeholder={ctx("confirmed-password-input.placeholder")}
                       disabled={isPending}
                       {...field}
                     />
@@ -109,7 +111,7 @@ export const NewPasswordForm = ({ role }: { role: Role }) => {
             )}
           />
           <Button disabled={isPending} type="submit" className="w-full">
-            Reset Password {isPending && <Spinner />}
+            {ctx("auth-button")} {isPending && <Spinner />}
           </Button>
         </form>
       </Form>

@@ -190,6 +190,18 @@
       "title": "Passwort vergessen?",
       "auth-button": "E-Mail senden",
       "otp-input-label": "OTP-Passwort"
+    },
+    "NewPassword": {
+      "title": "Neues Passwort festlegen",
+      "auth-button": "Passwort zurücksetzen",
+      "password-input": {
+        "label": "Passwort",
+        "placeholder": "********"
+      },
+      "confirmed-password-input": {
+        "label": "Passwort bestätigen",
+        "placeholder": "********"
+      }
     }
   },
   "CoursesPage": {
