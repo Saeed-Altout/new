@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Copy, Eye, EyeOff } from "lucide-react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -22,10 +22,13 @@ import { Spinner } from "@/components/ui/spinner";
 
 import { passwordSchema } from "@/Schemas";
 import { useUpdateProfilePassword } from "@/hooks/use-update-profile-password";
+import { generateRandomPassword } from "@/helpers/generate-random-password";
+import { toast } from "@/hooks/use-toast";
 
 export const PasswordForm = () => {
   const [isCurrentPassword, setIsCurrentPassword] = useState<boolean>(true);
   const [isNewPassword, setIsNewPassword] = useState<boolean>(true);
+  const [password, setPassword] = useState<string>("");
 
   const { mutate, isPending } = useUpdateProfilePassword();
 
@@ -40,6 +43,21 @@ export const PasswordForm = () => {
   const onSubmit = (values: z.infer<typeof passwordSchema>) => {
     mutate(values);
   };
+
+  const onCopay = () => {
+    navigator.clipboard.writeText(password);
+    toast({
+      title: "Copied to clipboard",
+      description: "Password copied to clipboard",
+    });
+  };
+
+  useEffect(() => {
+    const password = generateRandomPassword();
+    if (password) {
+      setPassword(password);
+    }
+  }, []);
 
   return (
     <Form {...form}>
@@ -112,6 +130,18 @@ export const PasswordForm = () => {
                 </li>
                 <li className="text-sm text-[#656565]">
                   Have at least 8 unique characters.
+                </li>
+                <li className="text-sm text-[#656565]">
+                  You can copy and use this password:
+                  <Button
+                    type="button"
+                    onClick={onCopay}
+                    size="sm"
+                    variant="ghost"
+                    className="ml-1"
+                  >
+                    <span>{password}</span> <Copy className="h-4 w-4" />
+                  </Button>
                 </li>
               </ul>
 
