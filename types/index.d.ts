@@ -10,10 +10,7 @@ type LoginResponse = {
   data: {
     token: string;
     token_expiration: Date | string;
-    user: {
-      id: number;
-      email: string;
-    };
+    user: User;
     role: string;
     is_remembered: boolean;
   };

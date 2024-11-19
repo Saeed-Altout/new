@@ -24,7 +24,13 @@ export const useLogin = ({ role }: { role: Role }) => {
         title: "Login",
         description: data.message ?? "Login successfully",
       });
-      setAuthData(data.data);
+      setAuthData({
+        ...data.data,
+        user: {
+          ...data.data.user,
+          birth_date: data.data.user.birth_date || undefined,
+        },
+      });
     },
     onError: (error, variables) => {
       if (error instanceof AxiosError) {
