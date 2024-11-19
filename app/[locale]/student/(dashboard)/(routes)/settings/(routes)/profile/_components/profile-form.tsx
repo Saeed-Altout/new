@@ -1,8 +1,8 @@
 "use client";
 
 import { format } from "date-fns";
+import { useEffect, useCallback } from "react";
 import { CalendarIcon } from "lucide-react";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -29,6 +29,8 @@ import { Calendar } from "@/components/ui/calendar";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 import { cn } from "@/lib/utils";
+import { getUserMetadata } from "@/utils/token";
+
 import { profileSchema } from "@/Schemas";
 import { useUpdateProfileInfoStudent } from "@/hooks/use-update-profile-info-student";
 
@@ -41,13 +43,40 @@ export const ProfileForm = () => {
       full_name: "",
       birth_date: undefined,
       gender: "",
-      phone: "(000) 000-0000",
+      phone: "",
     },
   });
 
-  const onSubmit = (values: z.infer<typeof profileSchema>) => {
-    mutate({ ...values, _method: "PUT" });
-  };
+  useEffect(() => {
+    const metadata = getUserMetadata();
+    if (metadata) {
+      const { full_name, birth_date, gender, phone } = metadata.user;
+      form.setValue("full_name", full_name || "");
+      form.setValue(
+        "birth_date",
+        birth_date ? new Date(birth_date) : undefined
+      );
+      form.setValue("gender", gender || "");
+      form.setValue("phone", phone || "other");
+    }
+  }, [form]);
+
+  const onSubmit = useCallback(
+    (values: z.infer<typeof profileSchema>) => {
+      mutate({
+        ...values,
+        phone:
+          values.phone && values.phone.split("").length > 8
+            ? values.phone
+            : undefined,
+        birth_date: values.birth_date
+          ? format(new Date(values.birth_date), "yyyy-MM-dd")
+          : undefined,
+        _method: "PUT",
+      });
+    },
+    [mutate]
+  );
 
   return (
     <Form {...form}>
@@ -128,7 +157,6 @@ export const ProfileForm = () => {
             </FormItem>
           )}
         />
-
         <FormField
           control={form.control}
           name="gender"
@@ -166,7 +194,6 @@ export const ProfileForm = () => {
             </FormItem>
           )}
         />
-
         <div className="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-2 flex justify-between items-center gap-4">
           <Button
             disabled={isPending}

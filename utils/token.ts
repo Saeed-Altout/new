@@ -34,7 +34,7 @@ export const removeAccessToken = () => {
 export const setAuthData = (data: {
   token: string; // JWT token for user authentication
   token_expiration: Date | string; // Expiration date of the token
-  user: { id: number; email: string }; // User data (ID and email)
+  user: User; // User data (ID and email)
   role: string; // Role of the user (e.g., admin, user)
   is_remembered: boolean; // Indicates whether the user chose to stay logged in
 }) => {
@@ -70,7 +70,7 @@ export const getAccessToken = (): string | null => {
  * @returns {object | null} User metadata or null if not found.
  */
 export const getUserMetadata = (): {
-  user: { id: number; email: string }; // User info
+  user: User; // User info
   role: string; // Role of the user
   is_remembered: boolean; // Indicates if the user chose to stay logged in
   token_expiration: string; // Expiration time of the token

@@ -8,14 +8,6 @@ import {
 } from "@/utils/token";
 
 /**
- * Interface representing the user object structure.
- */
-interface User {
-  id: number;
-  email: string;
-}
-
-/**
  * Interface representing the authentication state in the store.
  */
 interface AuthState {

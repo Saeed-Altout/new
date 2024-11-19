@@ -3,6 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 
 import { useToast } from "@/hooks/use-toast";
 import { updateProfileInfoStudent } from "@/api/dashboard/update-profile-info-student";
+import { getAccessToken, getUserMetadata, setAuthData } from "@/utils/token";
 
 export const useUpdateProfileInfoStudent = () => {
   const { toast } = useToast();
@@ -16,6 +17,18 @@ export const useUpdateProfileInfoStudent = () => {
         title: "Update Profile",
         description: data.message ?? "Update profile successfully",
       });
+      if (data.data) {
+        const cloneMetadata = getUserMetadata();
+        const token = getAccessToken();
+
+        if (cloneMetadata && token) {
+          setAuthData({
+            ...cloneMetadata,
+            user: { ...cloneMetadata.user, ...data.data },
+            token,
+          });
+        }
+      }
     },
     onError: (error) => {
       if (error instanceof AxiosError) {

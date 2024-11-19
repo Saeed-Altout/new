@@ -93,7 +93,7 @@ type NewPasswordResponse = {
 declare type UpdateProfileInfoStudentBody = {
   full_name?: string;
   phone?: string;
-  birth_date?: Date;
+  birth_date?: Date | string | undefined;
   gender?: string;
   _method?: string;
 };
@@ -126,3 +126,14 @@ declare type UpdateProfileInfoCompanyResponse = {
     phone: string;
   };
 };
+
+interface User {
+  id?: number;
+  full_name?: string;
+  email?: string;
+  address?: string;
+  image_url?: string;
+  phone?: string;
+  gender?: string;
+  birth_date: Date | string | undefined;
+}
