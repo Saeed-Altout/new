@@ -1,5 +1,7 @@
+"use client";
+
 import { LogOut } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { useLogout } from "@/hooks/use-logout";
 
 export const UserButton = () => {
@@ -10,9 +12,9 @@ export const UserButton = () => {
   };
 
   return (
-    <Button variant="destructive" onClick={logout}>
+    <Button variant="destructive" size="icon" onClick={logout}>
       <LogOut className="h-5 w-5" />
-      <span>Logout</span>
+      <span className="sr-only">Logout</span>
     </Button>
   );
 };
