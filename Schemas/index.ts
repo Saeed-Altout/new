@@ -43,10 +43,10 @@ export const filterSchema = z.object({
 });
 
 export const profileSchema = z.object({
-  fullName: z.string().min(2),
-  birthday: z.date(),
-  phone: z.string().min(2),
-  gender: z.string().min(2),
+  full_name: z.string().optional(),
+  birth_date: z.date().optional(),
+  phone: z.string().optional(),
+  gender: z.string().optional(),
 });
 
 export const passwordSchema = z.object({

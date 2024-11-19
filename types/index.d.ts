@@ -91,11 +91,11 @@ type NewPasswordResponse = {
 };
 
 declare type UpdateProfileInfoStudentBody = {
-  full_name: string;
-  phone: string;
-  birth_date: string;
-  gender: string;
-  _method: string;
+  full_name?: string;
+  phone?: string;
+  birth_date?: Date;
+  gender?: string;
+  _method?: string;
 };
 
 declare type UpdateProfileInfoStudentResponse = {

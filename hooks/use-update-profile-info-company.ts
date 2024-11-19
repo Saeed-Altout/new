@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 import { updateProfileInfoCompany } from "@/api/dashboard/update-profile-info-company";
 
-export const useProfileInfoStudent = () => {
+export const useUpdateProfileInfoStudent = () => {
   const { toast } = useToast();
 
   return useMutation({

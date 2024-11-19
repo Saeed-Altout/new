@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 
@@ -23,31 +22,31 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { Calendar } from "@/components/ui/calendar";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
-import { profileSchema } from "@/Schemas";
 import { cn } from "@/lib/utils";
+import { profileSchema } from "@/Schemas";
+import { useUpdateProfileInfoStudent } from "@/hooks/use-update-profile-info-student";
 
 export const ProfileForm = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { mutate, isPending } = useUpdateProfileInfoStudent();
 
   const form = useForm<z.infer<typeof profileSchema>>({
     resolver: zodResolver(profileSchema),
     defaultValues: {
-      fullName: "",
-      birthday: undefined,
+      full_name: "",
+      birth_date: undefined,
       gender: "",
-      phone: "",
+      phone: "(000) 000-0000",
     },
   });
 
   const onSubmit = (values: z.infer<typeof profileSchema>) => {
-    console.log(values);
-    setIsLoading(true);
+    mutate({ ...values, _method: "PUT" });
   };
 
   return (
@@ -58,12 +57,12 @@ export const ProfileForm = () => {
       >
         <FormField
           control={form.control}
-          name="fullName"
+          name="full_name"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Full name</FormLabel>
               <FormControl>
-                <Input disabled={isLoading} placeholder="Name" {...field} />
+                <Input disabled={isPending} placeholder="Name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -71,7 +70,7 @@ export const ProfileForm = () => {
         />
         <FormField
           control={form.control}
-          name="birthday"
+          name="birth_date"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Birthday</FormLabel>
@@ -80,7 +79,7 @@ export const ProfileForm = () => {
                   <FormControl>
                     <Button
                       variant="outline"
-                      disabled={isLoading}
+                      disabled={isPending}
                       className={cn(
                         "w-full pl-3 text-left font-normal",
                         !field.value && "text-muted-foreground"
@@ -119,7 +118,7 @@ export const ProfileForm = () => {
               <FormLabel>Phone number</FormLabel>
               <FormControl>
                 <PhoneInput
-                  disabled={isLoading}
+                  disabled={isPending}
                   placeholder="0000 000 0000"
                   className="react-international-phone-input-container"
                   {...field}
@@ -141,7 +140,7 @@ export const ProfileForm = () => {
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                   className="flex gap-x-12"
-                  disabled={isLoading}
+                  disabled={isPending}
                 >
                   <FormItem className="flex items-center space-x-3 space-y-0">
                     <FormControl>
@@ -170,15 +169,15 @@ export const ProfileForm = () => {
 
         <div className="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-2 flex justify-between items-center gap-4">
           <Button
-            disabled={isLoading}
+            disabled={isPending}
             type="button"
             className="w-full"
             variant="outline"
           >
             Cancel
           </Button>
-          <Button disabled={isLoading} type="submit" className="w-full">
-            Save {isLoading && <Spinner />}
+          <Button disabled={isPending} type="submit" className="w-full">
+            Save {isPending && <Spinner />}
           </Button>
         </div>
       </form>
