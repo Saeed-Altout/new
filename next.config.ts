@@ -6,5 +6,12 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   /* config options here */
+  images: {
+    domains: [
+      "e-inakademie.free-homes.de",
+      "https://e-inakademie.free-homes.de",
+      "http://e-inakademie.free-homes.de",
+    ],
+  },
 };
 export default withNextIntl(nextConfig);

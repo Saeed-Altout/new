@@ -8,6 +8,8 @@ export const LOGOUT_ENDPOINT = "logout";
 export const NEW_PASSWORD_ENDPOINT = "reset-password";
 export const UPDATE_PROFILE_STUDENT_ENDPOINT = "student/profile/update-profile";
 export const UPDATE_PROFILE_COMPANY_ENDPOINT = "company/profile/update-profile";
+export const UPDATE_PROFILE_PICTURE_STUDENT_ENDPOINT =
+  "student/profile/update-picture";
 
 //
 const NAME = "cws-in-akademie";

@@ -127,6 +127,19 @@ declare type UpdateProfileInfoCompanyResponse = {
   };
 };
 
+declare type UpdateProfilePictureStudentBody = {
+  profile_picture: File;
+  _method: string;
+};
+
+declare type UpdateProfilePictureStudentResponse = {
+  status: string;
+  message: string;
+  data: {
+    profile_picture_url: string;
+  };
+};
+
 interface User {
   id?: number;
   full_name?: string;

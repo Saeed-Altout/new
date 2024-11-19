@@ -12,9 +12,9 @@ export const UserButton = () => {
   };
 
   return (
-    <Button variant="destructive" size="icon" onClick={logout}>
+    <Button variant="destructive" onClick={logout}>
       <LogOut className="h-5 w-5" />
-      <span className="sr-only">Logout</span>
+      <span>Logout</span>
     </Button>
   );
 };

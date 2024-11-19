@@ -47,6 +47,7 @@ export const profileSchema = z.object({
   birth_date: z.date().optional(),
   phone: z.string().optional(),
   gender: z.string().optional(),
+  profile_picture: z.string().optional(),
 });
 
 export const passwordSchema = z.object({

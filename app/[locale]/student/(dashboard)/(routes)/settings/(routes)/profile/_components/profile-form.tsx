@@ -1,8 +1,9 @@
 "use client";
 
 import { format } from "date-fns";
-import { useEffect, useCallback } from "react";
-import { CalendarIcon } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useCallback, useState } from "react";
+import { CalendarIcon, ImagePlus } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -33,9 +34,18 @@ import { getUserMetadata } from "@/utils/token";
 
 import { profileSchema } from "@/Schemas";
 import { useUpdateProfileInfoStudent } from "@/hooks/use-update-profile-info-student";
+import { useUpdateProfilePictureStudent } from "@/hooks/use-update-profile-picture-student";
 
 export const ProfileForm = () => {
-  const { mutate, isPending } = useUpdateProfileInfoStudent();
+  const [file, setFile] = useState<File | null>(null);
+  const [url, setUrl] = useState<string | null>(null);
+
+  const { mutate: updateInfo, isPending: isPendingInfo } =
+    useUpdateProfileInfoStudent();
+  const { mutate: updatePicture, isPending: isPendingPicture } =
+    useUpdateProfilePictureStudent();
+
+  const isPending = isPendingInfo || isPendingPicture;
 
   const form = useForm<z.infer<typeof profileSchema>>({
     resolver: zodResolver(profileSchema),
@@ -44,13 +54,15 @@ export const ProfileForm = () => {
       birth_date: undefined,
       gender: "",
       phone: "",
+      profile_picture: "",
     },
   });
 
   useEffect(() => {
     const metadata = getUserMetadata();
     if (metadata) {
-      const { full_name, birth_date, gender, phone } = metadata.user;
+      const { full_name, birth_date, gender, phone, image_url } = metadata.user;
+      form.setValue("profile_picture", image_url || "");
       form.setValue("full_name", full_name || "");
       form.setValue(
         "birth_date",
@@ -62,8 +74,12 @@ export const ProfileForm = () => {
   }, [form]);
 
   const onSubmit = useCallback(
-    (values: z.infer<typeof profileSchema>) => {
-      mutate({
+    async (values: z.infer<typeof profileSchema>) => {
+      if (file) {
+        updatePicture({ profile_picture: file, _method: "PATCH" });
+      }
+
+      updateInfo({
         ...values,
         phone:
           values.phone && values.phone.split("").length > 8
@@ -75,15 +91,77 @@ export const ProfileForm = () => {
         _method: "PUT",
       });
     },
-    [mutate]
+    [file, updateInfo, updatePicture]
   );
+
+  const uploadPicture = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    fieldChange: (value: string | null) => void
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const fileReader = new FileReader();
+
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      if (!file.type.includes("image")) return;
+      setFile(file);
+      fileReader.onload = () => {
+        const url = URL.createObjectURL(file);
+        setUrl(url);
+        const imageDataUrl = fileReader.result?.toString() || "";
+        fieldChange(imageDataUrl);
+      };
+      fileReader.readAsDataURL(file);
+    }
+  };
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 w-full max-w-[576px]"
+        className="space-y-8  w-full max-w-[576px]"
       >
+        <div className="space-y-4">
+          <h3 className="text-[#222222] text-base font-normal">
+            Profile picture
+          </h3>
+          <FormField
+            control={form.control}
+            name="profile_picture"
+            render={({ field }) => (
+              <FormItem className="h-[148px] w-[148px] relative">
+                <FormLabel className="absolute top-0 left-0 text-sm text-muted-foreground h-full w-full flex justify-center items-center cursor-pointer border border-dashed border-gray-300">
+                  {field.value ?? url ? (
+                    <Image
+                      src={field.value ?? url ?? ""}
+                      alt="Profile Preview"
+                      fill
+                      className="h-full w-full object-cover"
+                      priority
+                    />
+                  ) : (
+                    <>
+                      Upload Image
+                      <ImagePlus className="ml-2 h-4 w-4" />
+                    </>
+                  )}
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    className="h-full w-full hidden"
+                    type="file"
+                    disabled={isPending}
+                    accept="image/*"
+                    onChange={(e) => uploadPicture(e, field.onChange)}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
         <FormField
           control={form.control}
           name="full_name"
