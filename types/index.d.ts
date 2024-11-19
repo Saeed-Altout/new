@@ -89,3 +89,40 @@ type NewPasswordResponse = {
   message: string;
   data: [];
 };
+
+declare type UpdateProfileInfoStudentBody = {
+  full_name: string;
+  phone: string;
+  birth_date: string;
+  gender: string;
+  _method: string;
+};
+
+declare type UpdateProfileInfoStudentResponse = {
+  status: string;
+  message: string;
+  data: {
+    full_name: string;
+    birth_date: string;
+    gender: string;
+    phone: string;
+  };
+};
+
+declare type UpdateProfileInfoCompanyBody = {
+  full_name: string;
+  phone: string;
+  birth_date: string;
+  address: string;
+  _method: string;
+};
+
+declare type UpdateProfileInfoCompanyResponse = {
+  status: string;
+  message: string;
+  data: {
+    full_name: string;
+    address: string;
+    phone: string;
+  };
+};
