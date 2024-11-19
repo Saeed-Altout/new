@@ -1,17 +1,18 @@
 import { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 
+import { useRouter } from "@/i18n/routing";
+
+import { Role } from "@/config/enums";
+import { EMAIL } from "@/config/constants";
 import { useToast } from "@/hooks/use-toast";
+import { useSendOtp } from "@/hooks/use-send-otp";
 import { login } from "@/api/auth/login";
 import { useAuthStore } from "@/stores/auth-store";
-import { useRouter } from "@/i18n/routing";
-import { Role } from "@/config/enums";
-import { useSendOtp } from "@/hooks/use-send-otp";
-import { EMAIL } from "@/config/constants";
 
 export const useLogin = ({ role }: { role: Role }) => {
-  const { toast } = useToast();
   const router = useRouter();
+  const { toast } = useToast();
   const { setAuthData } = useAuthStore();
   const { mutate } = useSendOtp({ role, redirectTo: "/verification-otp" });
 
