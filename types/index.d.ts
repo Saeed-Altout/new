@@ -139,6 +139,16 @@ declare type UpdateProfilePictureStudentResponse = {
     profile_picture_url: string;
   };
 };
+declare type UpdateProfilePasswordBody = {
+  current_password: string;
+  new_password: string;
+};
+
+declare type UpdateProfilePasswordResponse = {
+  status: string;
+  message: string;
+  data: null;
+};
 
 interface User {
   id?: number;

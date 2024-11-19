@@ -16,25 +16,25 @@ export const Sidebar = () => {
     {
       id: 0,
       label: "My profile",
-      href: "/profile",
+      href: "/student/settings/profile",
       icon: User,
     },
     {
       id: 1,
       label: "Change password",
-      href: "/password",
+      href: "/student/settings/password",
       icon: Lock,
     },
     {
       id: 2,
       label: "Payment method",
-      href: "/payment",
+      href: "/student/settings/payment",
       icon: IdCard,
     },
     {
       id: 3,
       label: "Notifications",
-      href: "/notifications",
+      href: "/student/settings/notifications",
       icon: Bell,
     },
   ];

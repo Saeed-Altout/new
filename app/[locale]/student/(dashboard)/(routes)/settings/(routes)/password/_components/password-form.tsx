@@ -21,11 +21,13 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 
 import { passwordSchema } from "@/Schemas";
+import { useUpdateProfilePassword } from "@/hooks/use-update-profile-password";
 
 export const PasswordForm = () => {
   const [isCurrentPassword, setIsCurrentPassword] = useState<boolean>(true);
   const [isNewPassword, setIsNewPassword] = useState<boolean>(true);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const { mutate, isPending } = useUpdateProfilePassword();
 
   const form = useForm<z.infer<typeof passwordSchema>>({
     resolver: zodResolver(passwordSchema),
@@ -36,8 +38,7 @@ export const PasswordForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof passwordSchema>) => {
-    console.log(values);
-    setIsLoading(true);
+    mutate(values);
   };
 
   return (
@@ -57,7 +58,7 @@ export const PasswordForm = () => {
                   <Input
                     type={isCurrentPassword ? "password" : "text"}
                     placeholder="********"
-                    disabled={isLoading}
+                    disabled={isPending}
                     {...field}
                   />
                   <div
@@ -88,7 +89,7 @@ export const PasswordForm = () => {
                   <Input
                     type={isNewPassword ? "password" : "text"}
                     placeholder="********"
-                    disabled={isLoading}
+                    disabled={isPending}
                     {...field}
                   />
                   <div
@@ -120,15 +121,15 @@ export const PasswordForm = () => {
         />
         <div className="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-2 flex justify-between items-center gap-4">
           <Button
-            disabled={isLoading}
+            disabled={isPending}
             type="button"
             className="w-full"
             variant="outline"
           >
             Cancel
           </Button>
-          <Button disabled={isLoading} type="submit" className="w-full">
-            Save {isLoading && <Spinner />}
+          <Button disabled={isPending} type="submit" className="w-full">
+            Save {isPending && <Spinner />}
           </Button>
         </div>
       </form>
