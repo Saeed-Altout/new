@@ -1,16 +1,19 @@
-import { ArrowRight } from "lucide-react";
+"use client";
 
-import { recommendedCoursesEn, recommendedCoursesDe } from "@/constants";
+import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
+import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
-import { CourseCard } from "@/components/cards/course-card";
-import { useLocale, useTranslations } from "next-intl";
-import { Link } from "@/i18n/routing";
+import { OnlineCard, OnlineSkeltonCard } from "@/components/cards/online-card";
+import { useGetMostRecommendedOnline } from "@/hooks/use-get-most-recommended-online";
 
 export const RecommendedCourses = () => {
-  const locale = useLocale();
   const ctx = useTranslations("HomePage.most-recommended");
+  const { data, isSuccess, isLoading } = useGetMostRecommendedOnline();
+
+  console.log(data?.data);
 
   return (
     <section className="bg-[#F8F8F8] py-20">
@@ -18,13 +21,14 @@ export const RecommendedCourses = () => {
         <Heading label={ctx("label")} title={ctx("title")} />
         <div className="pt-10 flex flex-col gap-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {locale === "en"
-              ? recommendedCoursesEn.map((course, index) => (
-                  <CourseCard initialData={course} key={index} />
-                ))
-              : recommendedCoursesDe.map((course, index) => (
-                  <CourseCard initialData={course} key={index} />
-                ))}
+            {(isLoading || !isSuccess) &&
+              [...Array(3)].map((_, index) => (
+                <OnlineSkeltonCard key={index} />
+              ))}
+            {isSuccess &&
+              data?.data.map((online) => (
+                <OnlineCard key={online.id} online={online} />
+              ))}
           </div>
           <Button
             variant="ghost"

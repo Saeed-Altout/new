@@ -158,7 +158,7 @@ interface User {
   birth_date: Date | string | undefined;
 }
 
-declare type MostRecommendedSeminar = {
+declare type CourseType = {
   id: number;
   title: string;
   type: string;
@@ -170,8 +170,16 @@ declare type MostRecommendedSeminar = {
   media: Array<string>;
 };
 
+declare type MostRecommendedSeminar = CourseType;
+declare type MostRecommendedOnline = CourseType;
+
 declare type GetMostRecommendedSeminarResponse = {
   status_code: number;
   message: string;
   data: Array<MostRecommendedSeminar>;
+};
+declare type GetMostRecommendedOnlineResponse = {
+  status_code: number;
+  message: string;
+  data: Array<MostRecommendedOnline>;
 };
