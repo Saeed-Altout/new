@@ -183,3 +183,8 @@ declare type GetMostRecommendedOnlineResponse = {
   message: string;
   data: Array<MostRecommendedOnline>;
 };
+
+declare type GetCategoriesResponse = Array<{
+  id: number;
+  title: string;
+}>;

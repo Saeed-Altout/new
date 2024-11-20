@@ -13,6 +13,7 @@ export const UPDATE_PROFILE_PICTURE_STUDENT_ENDPOINT =
   "student/profile/update-picture";
 export const GET_MOST_RECOMMENDED_SEMINAR_ENDPOINT = "courses/seminar-courses";
 export const GET_MOST_RECOMMENDED_ONLINE_ENDPOINT = "courses/online-courses";
+export const GET_CATEGORIES_ENDPOINT = "categories";
 
 //
 const NAME = "cws-in-akademie";
