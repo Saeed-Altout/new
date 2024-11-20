@@ -14,6 +14,7 @@ export const UPDATE_PROFILE_PICTURE_STUDENT_ENDPOINT =
 export const GET_MOST_RECOMMENDED_SEMINAR_ENDPOINT = "courses/seminar-courses";
 export const GET_MOST_RECOMMENDED_ONLINE_ENDPOINT = "courses/online-courses";
 export const GET_CATEGORIES_ENDPOINT = "categories";
+export const GET_EXPERT_TEACHER_ENDPOINT = "teachers/expert";
 
 //
 const NAME = "cws-in-akademie";

@@ -188,3 +188,15 @@ declare type GetCategoriesResponse = Array<{
   id: number;
   title: string;
 }>;
+
+declare type GetExpertTeacherResponse = {
+  status_code: number;
+  message: string;
+  data: {
+    id: number;
+    name: string;
+    job_title: string;
+    about: string;
+    media: Array<string>;
+  };
+};
