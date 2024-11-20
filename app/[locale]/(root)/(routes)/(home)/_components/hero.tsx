@@ -23,7 +23,7 @@ export const Hero = () => {
             </p>
           </div>
           <Button className="w-full sm:w-fit px-10" asChild>
-            <Link href="/auth/login">{ctx("start-button")}</Link>
+            <Link href="/student/auth/login">{ctx("start-button")}</Link>
           </Button>
         </div>
         <div className="w-[400px] h-full max-h-[509.7px] hidden lg:block">
