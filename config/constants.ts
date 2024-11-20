@@ -11,6 +11,7 @@ export const UPDATE_PROFILE_STUDENT_ENDPOINT = "student/profile/update-profile";
 export const UPDATE_PROFILE_COMPANY_ENDPOINT = "company/profile/update-profile";
 export const UPDATE_PROFILE_PICTURE_STUDENT_ENDPOINT =
   "student/profile/update-picture";
+export const GET_MOST_RECOMMENDED_SEMINAR_ENDPOINT = "courses/seminar-courses";
 
 //
 const NAME = "cws-in-akademie";

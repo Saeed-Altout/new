@@ -157,3 +157,21 @@ interface User {
   gender?: string;
   birth_date: Date | string | undefined;
 }
+
+declare type MostRecommendedSeminar = {
+  id: number;
+  title: string;
+  type: string;
+  price: number;
+  currency: string;
+  taxes_price: number;
+  tags: Array<string>;
+  teacher_name: string;
+  media: Array<string>;
+};
+
+declare type GetMostRecommendedSeminarResponse = {
+  status_code: number;
+  message: string;
+  data: Array<MostRecommendedSeminar>;
+};
