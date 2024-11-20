@@ -12,7 +12,7 @@ export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     setIsMounted(true);
     if (!isAuthenticated) {
-      router.push("/student/auth/student/login");
+      router.push("/student/auth/login");
     }
 
     return () => setIsMounted(false);

@@ -160,11 +160,6 @@ export const Navbar = () => {
             </Button>
           </div>
           <LanguageSwitcher />
-          <Button asChild>
-            <Link href="/auth/login">
-              {ctx("login")} <span className="sr-only">{ctx("login")}</span>
-            </Link>
-          </Button>
         </div>
         <div className="h-full ml-auto inline-flex lg:hidden justify-center items-center">
           <Button variant="outline" size="icon" onClick={() => setIsOpen(true)}>

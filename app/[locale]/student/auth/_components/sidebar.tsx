@@ -20,15 +20,15 @@ export const Sidebar = () => {
   } | null>(null);
 
   const redirectTo = (pathname: string) => {
-    if (pathname.includes("/auth/student/login")) {
+    if (pathname.includes("/student/auth/login")) {
       return {
-        href: "/auth/student/register",
+        href: "/student/auth/register",
         message: ctx("back-button-message"),
         label: ctx("back-button-label"),
       };
-    } else if (pathname.includes("/auth/student/register")) {
+    } else if (pathname.includes("/student/auth/register")) {
       return {
-        href: "/auth/student/login",
+        href: "/student/auth/login",
         message: ctx("back-button-message"),
         label: ctx("back-button-label"),
       };
