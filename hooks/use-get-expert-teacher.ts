@@ -5,7 +5,7 @@ import { getExpertTeacher } from "@/api/root/get-expert-teacher";
 export const useGetExpertTeacher = () => {
   const locale = useLocale();
   return useQuery({
-    queryKey: ["get-expert-teacher"],
+    queryKey: ["get-expert-teacher", locale],
     queryFn: () => getExpertTeacher({ locale }),
   });
 };

@@ -10,7 +10,7 @@ export const useSearchAdvanced = () => {
   const { setCourses } = useSearchStore();
 
   return useMutation({
-    mutationKey: ["search-advanced"],
+    mutationKey: ["search-advanced", locale],
     mutationFn: (data: SearchAdvancedBody) => searchAdvanced({ locale, data }),
     onSuccess: (data) => {
       if (data) {

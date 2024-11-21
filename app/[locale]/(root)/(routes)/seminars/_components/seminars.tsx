@@ -5,12 +5,12 @@ import { CourseCard, CourseSkeltonCard } from "@/components/cards/course-card";
 import { useTranslations } from "next-intl";
 import { useGetAllCourses } from "@/hooks/use-get-all-courses";
 
-export const Courses = () => {
-  const ctx = useTranslations("CoursesPage");
+export const Seminars = () => {
+  const ctx = useTranslations("SeminarsPage");
   const { data: courses, isSuccess, isLoading } = useGetAllCourses();
 
   return (
-    <section id="our-popular-courses" className="bg-[#F8F8F8] py-12">
+    <section id="our-popular-seminars" className="bg-[#F8F8F8] py-12">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
         <Heading title={ctx("title")} label={ctx("label")} />
         <div className="pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

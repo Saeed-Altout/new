@@ -11,6 +11,7 @@ import {
   SeminarCard,
   SeminarSkeltonCard,
 } from "@/components/cards/seminar-card";
+import { Link } from "@/i18n/routing";
 
 export const OurPopularSeminars = () => {
   const ctx = useTranslations("HomePage.our-popular-seminars");
@@ -31,9 +32,15 @@ export const OurPopularSeminars = () => {
                 <SeminarCard key={index} seminar={seminar} />
               ))}
           </div>
-          <Button variant="ghost" className="w-fit mx-auto hover:bg-white">
-            {ctx("view-courses-button")}
-            <ArrowRight className="text-[#FDC511] h-5 w-5 ml-3" />
+          <Button
+            variant="ghost"
+            className="w-fit mx-auto hover:bg-white"
+            asChild
+          >
+            <Link href="/seminars">
+              {ctx("view-courses-button")}
+              <ArrowRight className="text-[#FDC511] h-5 w-5 ml-3" />
+            </Link>
           </Button>
         </div>
       </div>

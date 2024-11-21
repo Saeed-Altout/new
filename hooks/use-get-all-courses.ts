@@ -5,7 +5,7 @@ import { getAllCourses } from "@/api/root/get-all-courses";
 export const useGetAllCourses = () => {
   const locale = useLocale();
   return useQuery({
-    queryKey: ["get-all-courses"],
+    queryKey: ["get-all-courses", locale],
     queryFn: () => getAllCourses({ locale }),
   });
 };

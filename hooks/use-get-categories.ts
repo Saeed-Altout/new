@@ -5,7 +5,7 @@ import { getCategories } from "@/api/root/get-categories";
 export const useGetCategories = () => {
   const locale = useLocale();
   return useQuery({
-    queryKey: ["get-categories"],
+    queryKey: ["get-categories", locale],
     queryFn: () => getCategories({ locale }),
   });
 };

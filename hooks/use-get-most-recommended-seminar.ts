@@ -5,7 +5,7 @@ import { getMostRecommendedSeminar } from "@/api/root/get-most-recommended-semin
 export const useGetMostRecommendedSeminar = () => {
   const locale = useLocale();
   return useQuery({
-    queryKey: ["get-most-recommended-seminar"],
+    queryKey: ["get-most-recommended-seminar", locale],
     queryFn: () => getMostRecommendedSeminar({ locale }),
   });
 };

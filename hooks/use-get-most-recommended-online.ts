@@ -5,7 +5,7 @@ import { getMostRecommendedOnline } from "@/api/root/get-most-recommended-online
 export const useGetMostRecommendedOnline = () => {
   const locale = useLocale();
   return useQuery({
-    queryKey: ["get-most-recommended-online"],
+    queryKey: ["get-most-recommended-online", locale],
     queryFn: () => getMostRecommendedOnline({ locale }),
   });
 };

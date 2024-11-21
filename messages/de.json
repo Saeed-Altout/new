@@ -205,7 +205,11 @@
     }
   },
   "CoursesPage": {
-    "label": "Übersicht",
-    "title": "Unsere beliebten Seminare"
+    "label": "Overview",
+    "title": "Our popular courses"
+  },
+  "SeminarsPage": {
+    "label": "Overview",
+    "title": "Our popular seminars"
   }
 }

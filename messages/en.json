@@ -206,6 +206,10 @@
   },
   "CoursesPage": {
     "label": "Overview",
+    "title": "Our popular courses"
+  },
+  "SeminarsPage": {
+    "label": "Overview",
     "title": "Our popular seminars"
   }
 }
