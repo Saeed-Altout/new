@@ -16,8 +16,6 @@ export const OurPopularSeminars = () => {
   const ctx = useTranslations("HomePage.our-popular-seminars");
   const { data, isSuccess, isLoading } = useGetMostRecommendedSeminar();
 
-  if (!isSuccess) return null;
-
   return (
     <section className="bg-[#F8F8F8] py-20">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
