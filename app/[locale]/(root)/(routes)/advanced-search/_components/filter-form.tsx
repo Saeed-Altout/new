@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import { useTranslations } from "next-intl";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import {
   Form,
@@ -22,23 +23,30 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Spinner } from "@/components/ui/spinner";
+import { Calendar } from "@/components/ui/calendar";
 
-import { months, time } from "@/constants";
+import { cn } from "@/lib/utils";
 import { filterSchema } from "@/Schemas";
+import { useSearchAdvanced } from "@/hooks/use-search-advanced";
 
 export const FilterForm = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const ctx = useTranslations("AdvancedSearchPage.filter");
+  const { mutate, isPending } = useSearchAdvanced();
 
   const form = useForm<z.infer<typeof filterSchema>>({
     resolver: zodResolver(filterSchema),
     defaultValues: {
       name: "",
-      date: "",
+      date: undefined,
       time: "",
       branch: "",
       region: "",
@@ -47,8 +55,7 @@ export const FilterForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof filterSchema>) => {
-    console.log(values);
-    setIsLoading(true);
+    mutate(values);
   };
 
   return (
@@ -68,7 +75,7 @@ export const FilterForm = () => {
                   <FormLabel>{ctx("name-input.label")}</FormLabel>
                   <FormControl>
                     <Input
-                      disabled={isLoading}
+                      disabled={isPending}
                       placeholder={ctx("name-input.placeholder")}
                       {...field}
                     />
@@ -83,26 +90,38 @@ export const FilterForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{ctx("date-input.label")}</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                    disabled={isLoading}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue
-                          placeholder={ctx("date-input.placeholder")}
-                        />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {months.map((month) => (
-                        <SelectItem key={month.id} value={month.name}>
-                          {month.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant="outline"
+                          disabled={isPending}
+                          className={cn(
+                            "w-full pl-3 text-left font-normal",
+                            !field.value && "text-muted-foreground"
+                          )}
+                        >
+                          {field.value ? (
+                            format(field.value, "PPP")
+                          ) : (
+                            <span>{ctx("date-input.placeholder")}</span>
+                          )}
+                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={field.value}
+                        onSelect={field.onChange}
+                        disabled={(date) =>
+                          date > new Date() || date < new Date("1900-01-01")
+                        }
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
                   <FormMessage />
                 </FormItem>
               )}
@@ -116,7 +135,7 @@ export const FilterForm = () => {
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
-                    disabled={isLoading}
+                    disabled={isPending}
                   >
                     <FormControl>
                       <SelectTrigger>
@@ -126,8 +145,15 @@ export const FilterForm = () => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      {time.map((time) => (
-                        <SelectItem key={time.id} value={time.name}>
+                      {[
+                        { id: 1, name: "morning" },
+                        { id: 2, name: "evening" },
+                      ].map((time) => (
+                        <SelectItem
+                          key={time.id}
+                          value={time.name}
+                          className="capitalize"
+                        >
                           {time.name}
                         </SelectItem>
                       ))}
@@ -145,7 +171,7 @@ export const FilterForm = () => {
                   <FormLabel>{ctx("branch-input.label")}</FormLabel>
                   <FormControl>
                     <Input
-                      disabled={isLoading}
+                      disabled={isPending}
                       placeholder={ctx("branch-input.placeholder")}
                       {...field}
                     />
@@ -162,7 +188,7 @@ export const FilterForm = () => {
                   <FormLabel>{ctx("region-input.label")}</FormLabel>
                   <FormControl>
                     <Input
-                      disabled={isLoading}
+                      disabled={isPending}
                       placeholder={ctx("region-input.placeholder")}
                       {...field}
                     />
@@ -177,24 +203,47 @@ export const FilterForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{ctx("type-input.label")}</FormLabel>
-                  <FormControl>
-                    <Input
-                      disabled={isLoading}
-                      placeholder={ctx("type-input.placeholder")}
-                      {...field}
-                    />
-                  </FormControl>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                    disabled={isPending}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue
+                          placeholder={ctx("type-input.placeholder")}
+                        />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {[
+                        { id: 1, name: "seminar" },
+                        { id: 2, name: "webinar" },
+                        { id: 3, name: "online" },
+                        { id: 4, name: "onsite" },
+                      ].map((time) => (
+                        <SelectItem
+                          key={time.id}
+                          value={time.name}
+                          className="capitalize"
+                        >
+                          {time.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}
             />
+
             <div className="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-2 flex justify-end items-end h-full">
               <Button
-                disabled={isLoading}
+                disabled={isPending}
                 type="submit"
                 className="w-full sm:w-fit"
               >
-                {ctx("search-button")} {isLoading && <Spinner />}
+                {ctx("search-button")} {isPending && <Spinner />}
               </Button>
             </div>
           </form>

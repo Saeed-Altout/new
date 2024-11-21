@@ -34,12 +34,12 @@ export const createNewTeamSchema = z.object({
 });
 
 export const filterSchema = z.object({
-  name: z.string().min(2),
-  date: z.string().min(2),
-  time: z.string().min(2),
-  branch: z.string().min(2),
-  region: z.string().min(2),
-  type: z.string().min(2),
+  name: z.string().optional(),
+  date: z.date().optional(),
+  time: z.string().optional(),
+  branch: z.string().optional(),
+  region: z.string().optional(),
+  type: z.string().optional(),
 });
 
 export const profileSchema = z.object({

@@ -205,3 +205,18 @@ declare type GetExpertTeacherResponse = {
     media: Array<string>;
   };
 };
+
+declare type SearchAdvancedBody = {
+  name?: string;
+  type?: string;
+  date?: string | Date;
+  time?: string;
+  region?: string;
+  branch?: string;
+};
+
+declare type SearchAdvancedResponse = {
+  status_code: number;
+  message: string;
+  data: [];
+};
