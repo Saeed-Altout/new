@@ -5,11 +5,11 @@ import { useRouter } from "@/i18n/routing";
 import { useAuthStore } from "@/stores/auth-store";
 
 export const UnprotectedRoute = ({
-  children,
   redirectTo = "/",
+  children,
 }: {
-  children: React.ReactNode;
   redirectTo?: string;
+  children: React.ReactNode;
 }) => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const router = useRouter();
@@ -17,7 +17,6 @@ export const UnprotectedRoute = ({
 
   useEffect(() => {
     setIsMounted(true);
-
     if (isAuthenticated) {
       router.push(redirectTo);
     }

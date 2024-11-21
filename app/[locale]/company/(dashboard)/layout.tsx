@@ -7,7 +7,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ProtectedRoute redirectTo="/student/auth/login">
+    <ProtectedRoute redirectTo="/company/auth/login">
       <Navbar />
       {children}
     </ProtectedRoute>
