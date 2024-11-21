@@ -77,7 +77,7 @@ export const Navbar = () => {
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="min-h-[73px] flex justify-start items-center flex-wrap gap-x-4 gap-y-4 py-5">
-                {categories?.map((item, index) => (
+                {categories?.data.map((item, index) => (
                   <Button
                     key={index}
                     size="sm"

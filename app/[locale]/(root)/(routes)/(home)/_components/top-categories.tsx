@@ -24,7 +24,7 @@ export const TopCategories = () => {
               <CategorySkeletonCard key={index} index={index} />
             ))}
           {isSuccess &&
-            data.map((category, index) => (
+            data.data.map((category, index) => (
               <CategoryCard key={index} category={category} />
             ))}
         </div>

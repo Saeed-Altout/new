@@ -184,10 +184,15 @@ declare type GetMostRecommendedOnlineResponse = {
   data: Array<MostRecommendedOnline>;
 };
 
-declare type GetCategoriesResponse = Array<{
-  id: number;
-  title: string;
-}>;
+declare type GetCategoriesResponse = {
+  status_code: number;
+  message: string;
+  data: Array<{
+    id: number;
+    title: string;
+    courses_number: number;
+  }>;
+};
 
 declare type GetExpertTeacherResponse = {
   status_code: number;

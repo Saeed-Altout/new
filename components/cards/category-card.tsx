@@ -7,6 +7,7 @@ interface CategoryCardProps {
   category: {
     id: number;
     title: string;
+    courses_number: number;
   };
 }
 
@@ -28,7 +29,9 @@ export const CategoryCard = ({ category }: CategoryCardProps) => {
       >
         {category.title}
       </h3>
-      <p className="text-sm font-normal text-[#999999]">0 Courses</p>
+      <p className="text-sm font-normal text-[#999999]">
+        {category.courses_number} Courses
+      </p>
     </div>
   );
 };
