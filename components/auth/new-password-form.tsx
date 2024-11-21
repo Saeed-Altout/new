@@ -22,7 +22,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { WrapperForm } from "./wrapper-form";
 import { newPasswordSchema } from "@/Schemas";
 import { Role } from "@/config/enums";
-import { useNewPassword } from "@/hooks/use-new-passowrd";
+import { useNewPassword } from "@/hooks/auth/use-new-password";
 import { useTranslations } from "next-intl";
 
 export const NewPasswordForm = ({ role }: { role: Role }) => {

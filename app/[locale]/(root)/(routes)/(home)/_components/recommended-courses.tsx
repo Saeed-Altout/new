@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { OnlineCard, OnlineSkeltonCard } from "@/components/cards/online-card";
-import { useGetMostRecommendedOnline } from "@/hooks/use-get-most-recommended-online";
+import { useGetMostRecommendedOnline } from "@/hooks/root/use-get-most-recommended-online";
 
 export const RecommendedCourses = () => {
   const ctx = useTranslations("HomePage.most-recommended");

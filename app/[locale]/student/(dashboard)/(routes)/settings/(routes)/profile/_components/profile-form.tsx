@@ -33,8 +33,8 @@ import { cn } from "@/lib/utils";
 import { getUserMetadata } from "@/utils/token";
 
 import { profileSchema } from "@/Schemas";
-import { useUpdateProfileInfoStudent } from "@/hooks/use-update-profile-info-student";
-import { useUpdateProfilePictureStudent } from "@/hooks/use-update-profile-picture-student";
+import { useUpdateProfileInfoStudent } from "@/hooks/dashboard/use-update-profile-info-student";
+import { useUpdateProfilePictureStudent } from "@/hooks/dashboard/use-update-profile-picture-student";
 
 export const ProfileForm = () => {
   const [file, setFile] = useState<File | null>(null);

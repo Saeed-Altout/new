@@ -26,7 +26,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { Role } from "@/config/enums";
 import { EMAIL } from "@/config/constants";
 import { verificationOtpSchema } from "@/Schemas";
-import { useVerifyEmail } from "@/hooks/use-verify-email";
+import { useVerifyEmail } from "@/hooks/auth/use-verify-email";
 import { WrapperForm } from "./wrapper-form";
 
 export const VerificationOtpForm = ({ role }: { role: Role }) => {

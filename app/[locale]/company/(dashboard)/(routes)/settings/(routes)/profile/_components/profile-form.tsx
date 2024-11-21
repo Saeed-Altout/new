@@ -33,17 +33,19 @@ import { cn } from "@/lib/utils";
 import { getUserMetadata } from "@/utils/token";
 
 import { profileSchema } from "@/Schemas";
-import { useUpdateProfileInfoStudent } from "@/hooks/use-update-profile-info-student";
-import { useUpdateProfilePictureStudent } from "@/hooks/use-update-profile-picture-student";
+import {
+  useUpdateProfileInfoCompany,
+  useUpdateProfilePictureCompany,
+} from "@/hooks";
 
 export const ProfileForm = () => {
   const [file, setFile] = useState<File | null>(null);
   const [url, setUrl] = useState<string | null>(null);
 
   const { mutate: updateInfo, isPending: isPendingInfo } =
-    useUpdateProfileInfoStudent();
+    useUpdateProfileInfoCompany();
   const { mutate: updatePicture, isPending: isPendingPicture } =
-    useUpdateProfilePictureStudent();
+    useUpdateProfilePictureCompany();
 
   const isPending = isPendingInfo || isPendingPicture;
 

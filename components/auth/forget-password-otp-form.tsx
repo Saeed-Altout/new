@@ -25,7 +25,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { WrapperForm } from "./wrapper-form";
 import { forgetPasswordOtpSchema } from "@/Schemas";
 import { Role } from "@/config/enums";
-import { useVerifyOtp } from "@/hooks/use-verify-otp";
+import { useVerifyOtp } from "@/hooks/auth/use-verify-otp";
 import { EMAIL } from "@/config/constants";
 import { useTranslations } from "next-intl";
 

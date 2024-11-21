@@ -36,7 +36,7 @@ import { Calendar } from "@/components/ui/calendar";
 
 import { cn } from "@/lib/utils";
 import { filterSchema } from "@/Schemas";
-import { useSearchAdvanced } from "@/hooks/use-search-advanced";
+import { useSearchAdvanced } from "@/hooks/root/use-search-advanced";
 
 export const FilterForm = () => {
   const ctx = useTranslations("AdvancedSearchPage.filter");

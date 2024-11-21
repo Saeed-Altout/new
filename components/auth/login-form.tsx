@@ -24,7 +24,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { loginSchema } from "@/Schemas";
 import { Role } from "@/config/enums";
 import { WrapperForm } from "./wrapper-form";
-import { useLogin } from "@/hooks/use-login";
+import { useLogin } from "@/hooks/auth/use-login";
 
 export const LoginForm = ({ role }: { role: Role }) => {
   const [isPassword, setIsPassword] = useState<boolean>(true);

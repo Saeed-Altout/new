@@ -6,7 +6,7 @@ import { useRouter } from "@/i18n/routing";
 import { Role } from "@/config/enums";
 import { EMAIL } from "@/config/constants";
 import { useToast } from "@/hooks/use-toast";
-import { useSendOtp } from "@/hooks/use-send-otp";
+import { useSendOtp } from "@/hooks/auth/use-send-otp";
 import { login } from "@/api/auth/login";
 import { useAuthStore } from "@/stores/auth-store";
 

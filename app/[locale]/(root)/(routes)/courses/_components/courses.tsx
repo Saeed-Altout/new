@@ -3,7 +3,7 @@ import { Heading } from "@/components/ui/heading";
 import { CourseCard, CourseSkeltonCard } from "@/components/cards/course-card";
 
 import { useTranslations } from "next-intl";
-import { useGetAllCourses } from "@/hooks/use-get-all-courses";
+import { useGetAllCourses } from "@/hooks/root/use-get-all-courses";
 
 export const Courses = () => {
   const ctx = useTranslations("CoursesPage");

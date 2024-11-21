@@ -8,7 +8,7 @@ import {
 } from "@/components/cards/category-card";
 import { Heading } from "@/components/ui/heading";
 
-import { useGetCategories } from "@/hooks/use-get-categories";
+import { useGetCategories } from "@/hooks/root/use-get-categories";
 
 export const TopCategories = () => {
   const ctx = useTranslations("HomePage.top-categories");

@@ -20,7 +20,7 @@ import { WrapperForm } from "./wrapper-form";
 import { forgetPasswordSchema } from "@/Schemas";
 import { Role } from "@/config/enums";
 import { useTranslations } from "next-intl";
-import { useSendOtp } from "@/hooks/use-send-otp";
+import { useSendOtp } from "@/hooks/auth/use-send-otp";
 
 export const ForgetPasswordForm = ({ role }: { role: Role }) => {
   const ctx = useTranslations("ForgetPasswordPage.SendOtp");

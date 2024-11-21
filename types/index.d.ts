@@ -107,11 +107,12 @@ declare type UpdateProfileInfoStudentResponse = {
 };
 
 declare type UpdateProfileInfoCompanyBody = {
-  full_name: string;
-  phone: string;
-  birth_date: string;
-  address: string;
-  _method: string;
+  full_name?: string;
+  phone?: string;
+  birth_date?: Date | string | undefined;
+  address?: string;
+  gender?: string;
+  _method?: string;
 };
 
 declare type UpdateProfileInfoCompanyResponse = {
@@ -121,6 +122,8 @@ declare type UpdateProfileInfoCompanyResponse = {
     full_name: string;
     address: string;
     phone: string;
+    birth_date: string;
+    gender: string;
   };
 };
 
@@ -130,6 +133,19 @@ declare type UpdateProfilePictureStudentBody = {
 };
 
 declare type UpdateProfilePictureStudentResponse = {
+  status: string;
+  message: string;
+  data: {
+    profile_picture_url: string;
+  };
+};
+
+declare type UpdateProfilePictureCompanyBody = {
+  profile_picture: File;
+  _method: string;
+};
+
+declare type UpdateProfilePictureCompanyResponse = {
   status: string;
   message: string;
   data: {

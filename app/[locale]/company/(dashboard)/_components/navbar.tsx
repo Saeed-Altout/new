@@ -26,7 +26,7 @@ import { Link } from "@/i18n/routing";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { useGetCategories } from "@/hooks/use-get-categories";
+import { useGetCategories } from "@/hooks/root/use-get-categories";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);

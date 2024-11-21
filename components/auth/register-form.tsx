@@ -24,7 +24,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { Checkbox } from "@/components/ui/checkbox";
 
 import { Role } from "@/config/enums";
-import { useRegister } from "@/hooks/use-register";
+import { useRegister } from "@/hooks/auth/use-register";
 import { registerSchema } from "@/Schemas";
 import { WrapperForm } from "./wrapper-form";
 

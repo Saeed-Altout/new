@@ -21,7 +21,7 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 
 import { passwordSchema } from "@/Schemas";
-import { useUpdateProfilePassword } from "@/hooks/use-update-profile-password";
+import { useUpdateProfilePassword } from "@/hooks/dashboard/use-update-profile-password";
 import { generateRandomPassword } from "@/helpers/generate-random-password";
 import { toast } from "@/hooks/use-toast";
 

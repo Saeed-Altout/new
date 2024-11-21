@@ -28,7 +28,7 @@ import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/language-switcher";
 
-import { useGetCategories } from "@/hooks/use-get-categories";
+import { useGetCategories } from "@/hooks/root/use-get-categories";
 import { useAuthStore } from "@/stores/auth-store";
 import { Role } from "@/config/enums";
 import { getUserRole } from "@/utils/protected";

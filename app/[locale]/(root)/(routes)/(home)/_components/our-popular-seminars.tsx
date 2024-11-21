@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 
-import { useGetMostRecommendedSeminar } from "@/hooks/use-get-most-recommended-seminar";
+import { useGetMostRecommendedSeminar } from "@/hooks/root/use-get-most-recommended-seminar";
 import {
   SeminarCard,
   SeminarSkeltonCard,

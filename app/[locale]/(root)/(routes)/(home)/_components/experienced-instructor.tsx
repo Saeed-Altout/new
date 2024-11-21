@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 
 import { Heading } from "@/components/ui/heading";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useGetExpertTeacher } from "@/hooks/use-get-expert-teacher";
+import { useGetExpertTeacher } from "@/hooks/root/use-get-expert-teacher";
 
 export const ExperiencedInstructor = () => {
   const ctx = useTranslations("HomePage.our-experienced-instructor");
