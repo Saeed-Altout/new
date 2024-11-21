@@ -18,7 +18,7 @@ export const CTA = () => {
           className="w-full sm:w-fit px-10 bg-[#FDC511] hover:bg-[#FDC511]/90 drop-shadow"
           asChild
         >
-          <Link href="/student/auth/login">{ctx("start-button")}</Link>
+          <Link href="/company/auth/login">{ctx("start-button")}</Link>
         </Button>
       </div>
     </section>
