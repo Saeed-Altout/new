@@ -3,12 +3,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "@/i18n/routing";
 import { useAuthStore } from "@/stores/auth-store";
+import { isCompanyUser, isStudentUser } from "@/utils/protected";
 
 export const UnprotectedRoute = ({
-  redirectTo = "/",
   children,
 }: {
-  redirectTo?: string;
   children: React.ReactNode;
 }) => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
@@ -17,12 +16,19 @@ export const UnprotectedRoute = ({
 
   useEffect(() => {
     setIsMounted(true);
+
     if (isAuthenticated) {
-      router.push(redirectTo);
+      if (isCompanyUser()) {
+        router.push("/company/settings/profile");
+      } else if (isStudentUser()) {
+        router.push("/student/settings/profile");
+      } else {
+        router.push("/student/settings/profile");
+      }
     }
 
     return () => setIsMounted(false);
-  }, [isAuthenticated, router, redirectTo]);
+  }, [isAuthenticated, router]);
 
   if (!isMounted || isAuthenticated) return null;
 
