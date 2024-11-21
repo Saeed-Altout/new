@@ -20,7 +20,7 @@ export const useNewPassword = ({ role }: { role: Role }) => {
         description: data.message ?? "Change your password successfully",
       });
       removeAccessToken();
-      router.push(`/auth/${role}/login`);
+      router.push(`/${role}/auth/login`);
     },
     onError: (error) => {
       if (error instanceof AxiosError) {

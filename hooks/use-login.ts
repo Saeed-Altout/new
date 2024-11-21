@@ -42,7 +42,7 @@ export const useLogin = ({ role }: { role: Role }) => {
         if (message == "Please verify your email address first") {
           localStorage.setItem(EMAIL, variables.email);
           mutate({ email: variables.email });
-          router.push(`/auth/${role}/verification-otp`);
+          router.push(`/${role}/auth/verification-otp`);
         }
       }
     },

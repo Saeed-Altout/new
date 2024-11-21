@@ -20,7 +20,7 @@ export const useRegister = () => {
         description: data.message ?? "Register successfully",
       });
       localStorage.setItem(EMAIL, variables.email);
-      router.push(`/auth/${variables.role}/verification-otp`);
+      router.push(`/${variables.role}/auth/verification-otp`);
     },
     onError: (error) => {
       if (error instanceof AxiosError) {

@@ -21,7 +21,7 @@ export const useVerifyEmail = ({ role }: { role: Role }) => {
         description: data.message ?? "Verify email successfully",
       });
       localStorage.removeItem(EMAIL);
-      router.push(`/auth/${role}/login`);
+      router.push(`/${role}/auth/login`);
     },
     onError: (error) => {
       if (error instanceof AxiosError) {

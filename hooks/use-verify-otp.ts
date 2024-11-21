@@ -22,7 +22,7 @@ export const useVerifyOtp = (role: string) => {
       });
       setAccessToken(data.data.token);
       localStorage.removeItem(EMAIL);
-      router.push(`/auth/${role}/new-password`);
+      router.push(`/${role}/auth/new-password`);
     },
     onError: (error) => {
       if (error instanceof AxiosError) {

@@ -26,7 +26,7 @@ export const useSendOtp = ({
         description: data.message ?? "Send email successfully",
       });
       localStorage.setItem(EMAIL, variables.email);
-      router.push(`/auth/${role}${redirectTo ?? "forget-password-otp"}`);
+      router.push(`/${role}/auth${redirectTo ?? "/forget-password-otp"}`);
     },
     onError: (error) => {
       if (error instanceof AxiosError) {
