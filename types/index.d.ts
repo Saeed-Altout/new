@@ -215,8 +215,20 @@ declare type SearchAdvancedBody = {
   branch?: string;
 };
 
+declare type CourseResultSearchType = {
+  id: number;
+  title: string;
+  type: string;
+  price: number;
+  currency: string;
+  taxes_price: number;
+  tags: Array<string>;
+  teacher_name: string;
+  feature_image: string;
+};
+
 declare type SearchAdvancedResponse = {
   status_code: number;
   message: string;
-  data: [];
+  data: Array<CourseResultSearchType>;
 };

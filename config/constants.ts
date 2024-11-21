@@ -23,3 +23,4 @@ const NAME = "cws-in-akademie";
 export const EMAIL = `${NAME}-email`;
 export const TOKEN_KEY = `${NAME}-token`;
 export const USER_KEY = `${NAME}-user-metadata`;
+export const SEARCH_COURSES_KEY = `${NAME}-search-courses`;
