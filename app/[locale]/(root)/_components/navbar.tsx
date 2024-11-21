@@ -29,17 +29,31 @@ import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/language-switcher";
 
 import { useGetCategories } from "@/hooks/use-get-categories";
+import { useAuthStore } from "@/stores/auth-store";
+import { Role } from "@/config/enums";
+import { getUserRole } from "@/utils/protected";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const [isMounted, setIsMounted] = React.useState<boolean>(false);
   const { data: categories } = useGetCategories();
+  const { isAuthenticated } = useAuthStore();
   const ctx = useTranslations("Navbar");
+  const [role, setRole] = React.useState<Role>(Role.STUDENT);
 
   const onOpenChange = (open: boolean) => {
     if (!open) {
       setIsOpen(false);
     }
   };
+
+  React.useEffect(() => {
+    setIsMounted(true);
+    const role = getUserRole();
+    if (role) {
+      setRole(role);
+    }
+  }, []);
 
   return (
     <>
@@ -139,11 +153,28 @@ export const Navbar = () => {
             </Button>
           </div>
           <LanguageSwitcher />
-          <Button asChild>
-            <Link href="/student/auth/login">
-              {ctx("login")} <span className="sr-only">{ctx("login")}</span>
-            </Link>
-          </Button>
+          {isMounted && (
+            <Button asChild>
+              <Link
+                href={
+                  isAuthenticated
+                    ? `/${role}/settings/profile`
+                    : `/${role}/auth/login`
+                }
+              >
+                {isAuthenticated ? (
+                  <>
+                    Dashboard <span className="sr-only">Dashboard</span>
+                  </>
+                ) : (
+                  <>
+                    {ctx("login")}{" "}
+                    <span className="sr-only">{ctx("login")}</span>
+                  </>
+                )}
+              </Link>
+            </Button>
+          )}
         </div>
         <div className="h-full ml-auto inline-flex lg:hidden justify-center items-center">
           <Button variant="outline" size="icon" onClick={() => setIsOpen(true)}>
