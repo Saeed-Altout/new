@@ -1,15 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "@/i18n/routing";
-import { useAuthStore } from "@/stores/auth-store";
-import { getUserRole, isCompanyUser, isStudentUser } from "@/utils/protected";
 import { BeatLoader } from "react-spinners";
+
+import { useAuthStore } from "@/stores/auth-store";
+import { useRouter, usePathname } from "@/i18n/routing";
+import { getUserRole, isCompanyUser, isStudentUser } from "@/utils/protected";
 
 export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const [isMounted, setIsMounted] = useState(false);
   const { isAuthenticated } = useAuthStore();
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     setIsMounted(true);
@@ -19,17 +21,15 @@ export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
       const loginPath = role ? `/${role}/auth/login` : "/student/auth/login";
       router.replace(loginPath);
     } else {
-      if (isCompanyUser()) {
+      if (isCompanyUser() && !pathname.startsWith("/company")) {
         router.replace("/company/settings/profile");
-      } else if (isStudentUser()) {
+      } else if (isStudentUser() && !pathname.startsWith("/student")) {
         router.replace("/student/settings/profile");
-      } else {
-        router.replace("/student/auth/login");
       }
     }
 
     return () => setIsMounted(false);
-  }, [isAuthenticated, router]);
+  }, [isAuthenticated, router, pathname]);
 
   if (!isMounted)
     return (

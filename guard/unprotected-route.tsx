@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { BeatLoader } from "react-spinners";
+
 import { useRouter } from "@/i18n/routing";
 import { useAuthStore } from "@/stores/auth-store";
 import { isCompanyUser, isStudentUser } from "@/utils/protected";
-import { BeatLoader } from "react-spinners";
 
 export const UnprotectedRoute = ({
   children,
@@ -19,17 +20,20 @@ export const UnprotectedRoute = ({
     setIsMounted(true);
 
     if (isAuthenticated) {
-      if (isCompanyUser()) {
-        router.replace("/company/settings/profile");
-      } else if (isStudentUser()) {
-        router.replace("/student/settings/profile");
-      } else {
-        router.replace("/student/auth/login");
+      const roleRedirectPath = getRedirectPath();
+      if (roleRedirectPath) {
+        router.replace(roleRedirectPath);
       }
     }
 
     return () => setIsMounted(false);
   }, [isAuthenticated, router]);
+
+  const getRedirectPath = () => {
+    if (isCompanyUser()) return "/company/settings/profile";
+    if (isStudentUser()) return "/student/settings/profile";
+    return null;
+  };
 
   if (!isMounted)
     return (

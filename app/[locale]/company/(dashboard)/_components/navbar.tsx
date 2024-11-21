@@ -21,16 +21,16 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/language-switcher";
-import { categoriesDe, categoriesEn } from "@/constants";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { useGetCategories } from "@/hooks/use-get-categories";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const locale = useLocale();
+  const { data: categories } = useGetCategories();
   const ctx = useTranslations("Navbar");
 
   const onOpenChange = (open: boolean) => {
@@ -72,28 +72,17 @@ export const Navbar = () => {
           <NavigationMenuItem>
             <NavigationMenuTrigger>{ctx("links.0.name")}</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="min-h-[73px] flex justify-start items-center flex-wrap gap-x-8 gap-y-4 py-5">
-                {locale === "en"
-                  ? categoriesEn.map((item, index) => (
-                      <Button
-                        key={index}
-                        size="sm"
-                        variant="ghost"
-                        className="text-[#656565]"
-                      >
-                        {item.name}
-                      </Button>
-                    ))
-                  : categoriesDe.map((item, index) => (
-                      <Button
-                        key={index}
-                        size="sm"
-                        variant="ghost"
-                        className="text-[#656565]"
-                      >
-                        {item.name}
-                      </Button>
-                    ))}
+              <ul className="min-h-[73px] flex justify-start items-center flex-wrap gap-x-4 gap-y-4 py-5">
+                {categories?.data.map((item, index) => (
+                  <Button
+                    key={index}
+                    size="sm"
+                    variant="ghost"
+                    className="text-[#656565]"
+                  >
+                    {item.title}
+                  </Button>
+                ))}
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
