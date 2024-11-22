@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Minus } from "lucide-react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,10 +23,13 @@ import { WrapperForm } from "./wrapper-form";
 import { createNewTeamSchema } from "@/Schemas";
 import { Role } from "@/config/enums";
 import { useTranslations } from "next-intl";
+import { useRegister } from "@/hooks";
 
 export const CreateNewTeamForm = ({ role }: { role?: Role }) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [currentUser, setCurrentUser] = useState<RegisterBody>();
+
   const ctx = useTranslations("CreateNewTeamPage");
+  const { mutate, isPending } = useRegister();
   const form = useForm<z.infer<typeof createNewTeamSchema>>({
     resolver: zodResolver(createNewTeamSchema),
     defaultValues: {
@@ -41,9 +44,18 @@ export const CreateNewTeamForm = ({ role }: { role?: Role }) => {
   });
 
   const onSubmit = (values: z.infer<typeof createNewTeamSchema>) => {
-    console.log(values);
-    setIsLoading(true);
+    if (currentUser) {
+      mutate({ ...currentUser, ...values });
+    }
   };
+
+  useEffect(() => {
+    const currentUser =
+      JSON.parse(localStorage.getItem("currentUser")!) || null;
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    }
+  }, []);
 
   return (
     <WrapperForm title={ctx("title")} role={role}>
@@ -59,7 +71,7 @@ export const CreateNewTeamForm = ({ role }: { role?: Role }) => {
                   <Input
                     type="text"
                     placeholder={ctx("name-input.placeholder")}
-                    disabled={isLoading}
+                    disabled={isPending}
                     {...field}
                   />
                 </FormControl>
@@ -82,7 +94,7 @@ export const CreateNewTeamForm = ({ role }: { role?: Role }) => {
                       <Input
                         type="email"
                         placeholder={ctx("member-input.placeholder")}
-                        disabled={isLoading}
+                        disabled={isPending}
                         {...field}
                       />
                       <div
@@ -110,8 +122,8 @@ export const CreateNewTeamForm = ({ role }: { role?: Role }) => {
             >
               {ctx("add-button")}
             </Button>
-            <Button disabled={isLoading} type="submit" className="w-full">
-              {ctx("auth-button")} {isLoading && <Spinner />}
+            <Button disabled={isPending} type="submit" className="w-full">
+              {ctx("auth-button")} {isPending && <Spinner />}
             </Button>
           </div>
         </form>

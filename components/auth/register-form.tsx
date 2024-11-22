@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
-import { Link } from "@/i18n/routing";
+import { Link, useRouter } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,11 +20,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Spinner } from "@/components/ui/spinner";
 import { Checkbox } from "@/components/ui/checkbox";
 
 import { Role } from "@/config/enums";
-import { useRegister } from "@/hooks/auth/use-register";
+// import { useRegister } from "@/hooks/auth/use-register";
 import { registerSchema } from "@/Schemas";
 import { WrapperForm } from "./wrapper-form";
 
@@ -32,7 +31,8 @@ export const RegisterForm = ({ role }: { role: Role }) => {
   const [isPassword, setIsPassword] = useState<boolean>(true);
   const [isRepeatPassword, setIsRepeatPassword] = useState<boolean>(true);
   const ctx = useTranslations("RegisterPage");
-  const { mutate, isPending } = useRegister();
+  const router = useRouter();
+  // const { mutate, isPending } = useRegister();
 
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
@@ -45,7 +45,9 @@ export const RegisterForm = ({ role }: { role: Role }) => {
   });
 
   const onSubmit = (values: z.infer<typeof registerSchema>) => {
-    mutate({ ...values, role: role });
+    const data = { ...values, role };
+    localStorage.setItem("currentUser", JSON.stringify(data));
+    router.push(`/${role}/auth/create-new-team`);
   };
 
   return (
@@ -62,7 +64,6 @@ export const RegisterForm = ({ role }: { role: Role }) => {
                   <Input
                     type="email"
                     placeholder={ctx("email-input.placeholder")}
-                    disabled={isPending}
                     {...field}
                   />
                 </FormControl>
@@ -81,7 +82,6 @@ export const RegisterForm = ({ role }: { role: Role }) => {
                     <Input
                       type={isPassword ? "password" : "text"}
                       placeholder={ctx("password-input.placeholder")}
-                      disabled={isPending}
                       {...field}
                     />
                     <div
@@ -112,7 +112,6 @@ export const RegisterForm = ({ role }: { role: Role }) => {
                     <Input
                       type={isRepeatPassword ? "password" : "text"}
                       placeholder={ctx("repeat-password-input.placeholder")}
-                      disabled={isPending}
                       {...field}
                     />
                     <div
@@ -139,7 +138,6 @@ export const RegisterForm = ({ role }: { role: Role }) => {
               <FormItem className="flex items-center justify-start gap-3">
                 <FormControl>
                   <Checkbox
-                    disabled={isPending}
                     checked={field.value}
                     onCheckedChange={field.onChange}
                   />
@@ -154,8 +152,8 @@ export const RegisterForm = ({ role }: { role: Role }) => {
             )}
           />
 
-          <Button disabled={isPending} type="submit" className="w-full">
-            {ctx("auth-button")} {isPending && <Spinner />}
+          <Button type="submit" className="w-full">
+            {ctx("auth-button")}
           </Button>
         </form>
       </Form>
