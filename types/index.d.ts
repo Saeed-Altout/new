@@ -272,3 +272,20 @@ declare type GetAllCoursesResponse = {
     total: number;
   };
 };
+
+declare type GetCourseResponse = {
+  status_code: number;
+  message: string;
+  data: {
+    course_title: string;
+    sections: Array<{
+      section_title: string;
+      lessons: Array<{
+        id: number;
+        title: string;
+        estimate_time: string;
+        type: string;
+      }>;
+    }>;
+  };
+};

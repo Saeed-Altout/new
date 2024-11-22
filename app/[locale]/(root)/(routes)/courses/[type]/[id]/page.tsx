@@ -28,7 +28,7 @@ export default async function CoursePage({
           <BreadcrumbResponsive links={items} />
         </div>
         <div className="min-h-full flex items-start">
-          <Sidebar />
+          <Sidebar id={id} />
           <Content />
         </div>
       </ProtectedRoute>
