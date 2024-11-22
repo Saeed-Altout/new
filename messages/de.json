@@ -2,7 +2,7 @@
   "HomePage": {
     "hero": {
       "title": "Trainiere für deinen Traumjob",
-      "description": "Bei InAkademie haben die Azubis die Möglichkeit, ihre beruflichen Fähigkeiten unter Anleitung unserer erfahrenen Lehrkraft auf ansprechende Weise zu verfeinern. Wir haben einen talentierten Trainer, der sich der Ausbildung von über 200 Studierenden widmet.",
+      "description": "Bei InAkademie haben Auszubildende die Möglichkeit, ihre beruflichen Fähigkeiten unter Anleitung unserer erfahrenen Lehrkräfte auf ansprechende Weise zu verfeinern. Wir haben einen talentierten Trainer, der sich der Ausbildung von über 200 Studierenden widmet.",
       "start-button": "Starte deine Lernreise"
     },
     "most-recommended": {
@@ -14,8 +14,8 @@
       "label": "Entdecken",
       "title": "Unser erfahrener Dozent",
       "name": "Joans Edwards",
-      "job_title": "Masterabschluss in Elektrotechnik.",
-      "about": "Egal, ob Sie neu in diesem Bereich sind oder bereits ein erfahrener Profi, der Besuch meiner Kurse wird Ihnen das Wissen und die Fähigkeiten vermitteln, die Sie benötigen, um Ihr Geschäft zu verbessern. Ich kann es kaum erwarten, Ihnen zu helfen, Ihre Ziele zu erreichen! $$ Hallo zusammen! Ich freue mich, Ihnen mitteilen zu können, dass ich die Kurse auf unserer Website leiten werde. Mit meiner umfangreichen Erfahrung im Bereich der Elektrotechnik bin ich zuversichtlich, dass ich Ihnen das Wissen und die Fähigkeiten vermitteln kann, die Sie für Ihren Erfolg benötigen."
+      "job_title": "Masterabschluss in Elektrotechnik",
+      "about": "Egal, ob Sie neu in diesem Bereich sind oder bereits ein erfahrener Profi – der Besuch meiner Kurse wird Ihnen das Wissen und die Fähigkeiten vermitteln, die Sie benötigen, um Ihr Geschäft zu verbessern. Ich kann es kaum erwarten, Ihnen zu helfen, Ihre Ziele zu erreichen! $$ Hallo zusammen! Ich freue mich, Ihnen mitteilen zu können, dass ich die Kurse auf unserer Website leiten werde. Mit meiner umfangreichen Erfahrung im Bereich der Elektrotechnik bin ich zuversichtlich, dass ich Ihnen das Wissen und die Fähigkeiten vermitteln kann, die Sie für Ihren Erfolg benötigen."
     },
     "top-categories": {
       "label": "Übersicht",
@@ -24,18 +24,18 @@
     "our-popular-seminars": {
       "label": "Übersicht",
       "title": "Unsere beliebten Seminare",
-      "view-courses-button": "Alle Kurse ansehen"
+      "view-courses-button": "Alle Kurse anzeigen"
     },
     "cta": {
-      "title": "Qualifizieren Sie Ihr Team innerhalb der inAkademie",
+      "title": "Qualifizieren Sie Ihr Team mit der InAkademie",
       "special-title": "Business",
-      "description": "Steigern Sie die Expertise Ihres Teams durch die InAkademie Business Qualifikation und eröffnen Sie neue Ebenen des Erfolgs und beruflichen Wachstums.",
-      "start-button": "Einstieg in die InAkademie Business"
+      "description": "Steigern Sie die Expertise Ihres Teams durch die InAkademie Business-Qualifikation und eröffnen Sie neue Ebenen des Erfolgs und beruflichen Wachstums.",
+      "start-button": "Start mit der InAkademie Business"
     }
   },
   "Footer": {
     "title": "Unternehmen",
-    "social": "Folge uns",
+    "social": "Folgen Sie uns",
     "links": [
       {
         "name": "Über uns",
@@ -68,10 +68,10 @@
       ]
     },
     "work_with_us": {
-      "title": "Arbeite mit uns",
+      "title": "Arbeiten Sie mit uns",
       "links": [
         {
-          "name": "Blog als Gast",
+          "name": "Gastbeitrag im Blog",
           "href": "/blog-guest"
         }
       ]
@@ -116,13 +116,13 @@
       },
       "region-input": {
         "label": "Region",
-        "placeholder": "Region"
+        "placeholder": "Region auswählen"
       },
       "type-input": {
         "label": "Kursart",
-        "placeholder": "Art"
+        "placeholder": "Art auswählen"
       },
-      "search-button": "Suche"
+      "search-button": "Suchen"
     },
     "result": {
       "title": "Suchergebnisse",
@@ -173,23 +173,23 @@
     "forgot-password-link": "Passwort vergessen?"
   },
   "CreateNewTeamPage": {
-    "title": "Let's create your team",
-    "welcome": "welcome",
+    "title": "Erstellen Sie Ihr Team",
+    "welcome": "Willkommen",
     "name-input": {
-      "label": "Team Name",
-      "placeholder": "team name"
+      "label": "Teamname",
+      "placeholder": "Teamname"
     },
     "member-input": {
-      "label": "Member",
-      "placeholder": "example@gmail.con"
+      "label": "Mitglied",
+      "placeholder": "beispiel@gmail.com"
     },
-    "add-button": "Add another member",
-    "auth-button": "Sign Up"
+    "add-button": "Weiteres Mitglied hinzufügen",
+    "auth-button": "Anmelden"
   },
   "VerifyPage": {
-    "title": "Verifizieren E-mail",
+    "title": "E-Mail verifizieren",
     "auth-button": "E-Mail verifizieren",
-    "otp-input-label": "OTP verifizieren"
+    "otp-input-label": "OTP-Code verifizieren"
   },
   "ForgetPasswordPage": {
     "SendOtp": {
@@ -203,7 +203,7 @@
     "VerifyOtp": {
       "title": "Passwort vergessen?",
       "auth-button": "E-Mail senden",
-      "otp-input-label": "OTP-Passwort"
+      "otp-input-label": "OTP-Code"
     },
     "NewPassword": {
       "title": "Neues Passwort festlegen",
@@ -219,11 +219,11 @@
     }
   },
   "CoursesPage": {
-    "label": "Overview",
-    "title": "Our popular courses"
+    "label": "Übersicht",
+    "title": "Unsere beliebten Kurse"
   },
   "SeminarsPage": {
-    "label": "Overview",
-    "title": "Our popular seminars"
+    "label": "Übersicht",
+    "title": "Unsere beliebten Seminare"
   }
 }
