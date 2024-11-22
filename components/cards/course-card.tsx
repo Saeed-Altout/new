@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useLocale } from "next-intl";
 import { ArrowRight, Bookmark } from "lucide-react";
@@ -13,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Link } from "@/i18n/routing";
 
 interface CourseCardProps {
   course: CourseType;
