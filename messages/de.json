@@ -172,6 +172,20 @@
     "auth-button": "Registrieren",
     "forgot-password-link": "Passwort vergessen?"
   },
+  "CreateNewTeamPage": {
+    "title": "Let's create your team",
+    "welcome": "welcome",
+    "name-input": {
+      "label": "Team Name",
+      "placeholder": "team name"
+    },
+    "member-input": {
+      "label": "Member",
+      "placeholder": "example@gmail.con"
+    },
+    "add-button": "Add another member",
+    "auth-button": "Sign Up"
+  },
   "VerifyPage": {
     "title": "Verifizieren E-mail",
     "auth-button": "E-Mail verifizieren",

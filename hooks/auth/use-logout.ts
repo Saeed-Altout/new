@@ -14,6 +14,7 @@ export const useLogout = () => {
     mutationFn: () => logout(),
     onSuccess: (data) => {
       clearAuth();
+      localStorage.clear();
       toast({
         title: "Logout",
         description: data.message ?? "Logout successfully",

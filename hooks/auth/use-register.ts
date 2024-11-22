@@ -6,6 +6,7 @@ import { useRouter } from "@/i18n/routing";
 import { useToast } from "@/hooks/use-toast";
 import { register } from "@/api/auth/register";
 import { EMAIL } from "@/config/constants";
+import { Role } from "@/config/enums";
 
 export const useRegister = () => {
   const { toast } = useToast();
@@ -20,7 +21,13 @@ export const useRegister = () => {
         description: data.message ?? "Register successfully",
       });
       localStorage.setItem(EMAIL, variables.email);
-      router.push(`/${variables.role}/auth/verification-otp`);
+      console.log(variables.role);
+
+      if (variables.role === Role.COMPANY) {
+        router.push(`/company/auth/create-new-team`);
+      } else {
+        router.push(`/student/auth/verification-otp`);
+      }
     },
     onError: (error) => {
       if (error instanceof AxiosError) {

@@ -17,9 +17,11 @@ export const Seminars = () => {
           {(isLoading || !isSuccess) &&
             [...Array(6)].map((_, index) => <CourseSkeltonCard key={index} />)}
           {isSuccess &&
-            courses?.data.data.map((course, index) => (
-              <CourseCard key={index} course={course} />
-            ))}
+            courses?.data.data
+              .filter((course) => course.type === "seminar")
+              .map((course, index) => (
+                <CourseCard key={index} course={course} />
+              ))}
         </div>
       </div>
     </section>

@@ -22,10 +22,11 @@ import { Spinner } from "@/components/ui/spinner";
 import { WrapperForm } from "./wrapper-form";
 import { createNewTeamSchema } from "@/Schemas";
 import { Role } from "@/config/enums";
+import { useTranslations } from "next-intl";
 
 export const CreateNewTeamForm = ({ role }: { role?: Role }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
+  const ctx = useTranslations("CreateNewTeamPage");
   const form = useForm<z.infer<typeof createNewTeamSchema>>({
     resolver: zodResolver(createNewTeamSchema),
     defaultValues: {
@@ -45,7 +46,7 @@ export const CreateNewTeamForm = ({ role }: { role?: Role }) => {
   };
 
   return (
-    <WrapperForm title="Let's create your team" role={role} google facebook>
+    <WrapperForm title={ctx("title")} role={role}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
           <FormField
@@ -53,11 +54,11 @@ export const CreateNewTeamForm = ({ role }: { role?: Role }) => {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Team Name</FormLabel>
+                <FormLabel>{ctx("name-input.label")}</FormLabel>
                 <FormControl>
                   <Input
                     type="text"
-                    placeholder="team name"
+                    placeholder={ctx("name-input.placeholder")}
                     disabled={isLoading}
                     {...field}
                   />
@@ -73,12 +74,14 @@ export const CreateNewTeamForm = ({ role }: { role?: Role }) => {
               name={`members.${index}.email`}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Member {index + 1}</FormLabel>
+                  <FormLabel>
+                    {ctx("name-input.label")} {index + 1}
+                  </FormLabel>
                   <FormControl>
                     <div className="relative">
                       <Input
                         type="email"
-                        placeholder="example@gmail.con"
+                        placeholder={ctx("member-input.placeholder")}
                         disabled={isLoading}
                         {...field}
                       />
@@ -105,10 +108,10 @@ export const CreateNewTeamForm = ({ role }: { role?: Role }) => {
               className="w-fit ml-auto font-medium"
               onClick={() => append({ email: "" })}
             >
-              Add another member
+              {ctx("add-button")}
             </Button>
             <Button disabled={isLoading} type="submit" className="w-full">
-              Sign Up {isLoading && <Spinner />}
+              {ctx("auth-button")} {isLoading && <Spinner />}
             </Button>
           </div>
         </form>

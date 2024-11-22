@@ -62,6 +62,9 @@ export const ProfileForm = () => {
 
   useEffect(() => {
     const metadata = getUserMetadata();
+
+    console.log(metadata);
+
     if (metadata) {
       const { full_name, birth_date, gender, phone, image_url } = metadata.user;
       form.setValue("profile_picture", image_url || "");

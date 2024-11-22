@@ -169,8 +169,22 @@
     },
     "checkbox": "I have read and accept",
     "special_checkbox": "terms & conditions",
-    "auth-button": "Sign Up",
+    "auth-button": "Continue",
     "forgot-password-link": "Forgot password?"
+  },
+  "CreateNewTeamPage": {
+    "title": "Let's create your team",
+    "welcome": "welcome",
+    "name-input": {
+      "label": "Team Name",
+      "placeholder": "team name"
+    },
+    "member-input": {
+      "label": "Member",
+      "placeholder": "example@gmail.con"
+    },
+    "add-button": "Add another member",
+    "auth-button": "Sign Up"
   },
   "VerifyPage": {
     "title": "Verify Email",
