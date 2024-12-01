@@ -2,11 +2,11 @@ import { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 
 import { useRouter } from "@/i18n/routing";
-
-import { EMAIL } from "@/config/constants";
 import { useToast } from "@/hooks/use-toast";
-import { verifyOtp } from "@/api/auth/verify-otp";
 import { setAccessToken } from "@/utils/token";
+import { removeEmail } from "@/utils/local-storage";
+
+import { verifyOtp } from "@/api";
 
 export const useVerifyOtp = (role: string) => {
   const { toast } = useToast();
@@ -21,7 +21,7 @@ export const useVerifyOtp = (role: string) => {
         description: data.message ?? "Verify otp successfully",
       });
       setAccessToken(data.data.token);
-      localStorage.removeItem(EMAIL);
+      removeEmail();
       router.push(`/${role}/auth/new-password`);
     },
     onError: (error) => {

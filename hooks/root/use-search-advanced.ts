@@ -2,7 +2,7 @@ import { useLocale } from "next-intl";
 import { useMutation } from "@tanstack/react-query";
 
 import { searchAdvanced } from "@/api/root/search-advanced";
-import { useSearchStore } from "@/stores/search-store";
+import { useSearchStore } from "@/store/search-store";
 import { SEARCH_COURSES_KEY } from "@/config/constants";
 
 export const useSearchAdvanced = () => {

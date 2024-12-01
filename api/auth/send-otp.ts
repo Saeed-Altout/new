@@ -3,7 +3,7 @@ import { AxiosResponse } from "axios";
 import { apiClient } from "@/api/config";
 import { SEND_OTP_ENDPOINT } from "@/config/constants";
 
-export const sendOtp = async (data: SendOtpBody) => {
+export const sendOtp = async (data: SendOtpBody): Promise<SendOtpResponse> => {
   try {
     const response: AxiosResponse<SendOtpResponse> =
       await apiClient.post<SendOtpResponse>(SEND_OTP_ENDPOINT, data);

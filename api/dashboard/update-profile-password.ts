@@ -5,7 +5,7 @@ import { UPDATE_PROFILE_PASSWORD_ENDPOINT } from "@/config/constants";
 
 export const updateProfilePassword = async (
   data: UpdateProfilePasswordBody
-) => {
+): Promise<UpdateProfilePasswordResponse> => {
   try {
     const response: AxiosResponse<UpdateProfilePasswordResponse> =
       await apiClient.patch<UpdateProfilePasswordResponse>(

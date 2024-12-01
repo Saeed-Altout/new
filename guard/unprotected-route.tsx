@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
 
 import { useRouter } from "@/i18n/routing";
-import { useAuthStore } from "@/stores/auth-store";
+import { useAuthStore } from "@/store/auth-store";
 import { isCompanyUser, isStudentUser } from "@/utils/protected";
 
 export const UnprotectedRoute = ({

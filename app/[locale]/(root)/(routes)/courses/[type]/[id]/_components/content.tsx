@@ -5,7 +5,7 @@ import { Comments } from "./comments";
 import { Notebook } from "./notebook";
 import { Reviews } from "./reviews";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useCourseStore } from "@/stores/course-store";
+import { useCourseStore } from "@/store/course-store";
 export const Content = () => {
   const { lesson } = useCourseStore();
 

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 
 import { Link, usePathname } from "@/i18n/routing";
@@ -19,30 +19,33 @@ export const Sidebar = () => {
     label: string;
   } | null>(null);
 
-  const redirectTo = (pathname: string) => {
-    if (pathname.includes("/company/auth/login")) {
-      return {
-        href: "/company/auth/register",
-        message: ctx("back-button-message"),
-        label: ctx("back-button-label"),
-      };
-    } else if (pathname.includes("/company/auth/register")) {
-      return {
-        href: "/company/auth/login",
-        message: ctx("back-button-message"),
-        label: ctx("back-button-label"),
-      };
-    } else {
-      return null;
-    }
-  };
+  const redirectTo = useCallback(
+    (pathname: string) => {
+      if (pathname.includes("/company/auth/login")) {
+        return {
+          href: "/company/auth/register",
+          message: ctx("back-button-message"),
+          label: ctx("back-button-label"),
+        };
+      } else if (pathname.includes("/company/auth/register")) {
+        return {
+          href: "/company/auth/login",
+          message: ctx("back-button-message"),
+          label: ctx("back-button-label"),
+        };
+      } else {
+        return null;
+      }
+    },
+    [ctx]
+  );
 
   useEffect(() => {
     if (!!pathname) {
       const currentUrl = redirectTo(pathname);
       setUrl(currentUrl);
     }
-  }, [pathname]);
+  }, [pathname, redirectTo]);
 
   return (
     <div className="relative hidden lg:flex bg-[#F8F8F8] justify-center items-center">

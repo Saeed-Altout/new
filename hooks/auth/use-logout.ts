@@ -2,8 +2,9 @@ import { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 
 import { useToast } from "@/hooks/use-toast";
-import { useAuthStore } from "@/stores/auth-store";
-import { logout } from "@/api/auth/logout";
+import { logout } from "@/api";
+import { useAuthStore } from "@/store";
+import { clearAll } from "@/utils/local-storage";
 
 export const useLogout = () => {
   const { toast } = useToast();
@@ -14,7 +15,7 @@ export const useLogout = () => {
     mutationFn: () => logout(),
     onSuccess: (data) => {
       clearAuth();
-      localStorage.clear();
+      clearAll();
       toast({
         title: "Logout",
         description: data.message ?? "Logout successfully",

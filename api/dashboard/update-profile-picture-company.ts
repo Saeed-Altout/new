@@ -5,7 +5,7 @@ import { UPDATE_PROFILE_PICTURE_COMPANY_ENDPOINT } from "@/config/constants";
 
 export const updateProfilePictureCompany = async (
   data: UpdateProfilePictureCompanyBody
-) => {
+): Promise<UpdateProfilePictureCompanyResponse> => {
   const formData = new FormData();
 
   formData.append("profile_picture", data.profile_picture);

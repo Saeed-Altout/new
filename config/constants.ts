@@ -21,10 +21,10 @@ export const GET_CATEGORIES_ENDPOINT = "categories";
 export const GET_EXPERT_TEACHER_ENDPOINT = "teachers/expert";
 export const GET_COURSE_ENDPOINT = "courses";
 
-//
-const NAME = "cws-in-akademie";
-// Special Keys For LocalStorage
-export const EMAIL = `${NAME}-email`;
-export const TOKEN_KEY = `${NAME}-token`;
-export const USER_KEY = `${NAME}-user-metadata`;
-export const SEARCH_COURSES_KEY = `${NAME}-search-courses`;
+// Keys
+const NAME = "NEXT_CWS_IN_AKADEMIE";
+
+export const EMAIL = `${NAME}_EMAIL`;
+export const TOKEN_KEY = `${NAME}_TOKEN`;
+export const USER_KEY = `${NAME}_USER_METADATA`;
+export const SEARCH_COURSES_KEY = `${NAME}_SEARCH_COURSE`;

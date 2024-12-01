@@ -5,7 +5,7 @@ import { UPDATE_PROFILE_COMPANY_ENDPOINT } from "@/config/constants";
 
 export const updateProfileInfoCompany = async (
   data: UpdateProfileInfoCompanyBody
-) => {
+): Promise<UpdateProfileInfoCompanyResponse> => {
   try {
     const response: AxiosResponse<UpdateProfileInfoCompanyResponse> =
       await apiClient.post<UpdateProfileInfoCompanyResponse>(

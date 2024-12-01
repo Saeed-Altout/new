@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useSearchStore } from "@/stores/search-store";
+import { useSearchStore } from "@/store/search-store";
 
 import { Heading } from "@/components/ui/heading";
 import { SearchCourseCard } from "@/components/cards/search-course-card";

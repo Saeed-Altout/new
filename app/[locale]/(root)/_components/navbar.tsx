@@ -29,7 +29,7 @@ import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/language-switcher";
 
 import { useGetCategories } from "@/hooks/root/use-get-categories";
-import { useAuthStore } from "@/stores/auth-store";
+import { useAuthStore } from "@/store/auth-store";
 import { Role } from "@/config/enums";
 import { getUserRole } from "@/utils/protected";
 

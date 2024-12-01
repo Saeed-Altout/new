@@ -1,11 +1,12 @@
 import { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 
-import { useToast } from "@/hooks/use-toast";
-import { sendOtp } from "@/api/auth/send-otp";
-import { EMAIL } from "@/config/constants";
-import { useRouter } from "@/i18n/routing";
 import { Role } from "@/config/enums";
+import { useRouter } from "@/i18n/routing";
+import { useToast } from "@/hooks/use-toast";
+import { setEmail } from "@/utils/local-storage";
+
+import { sendOtp } from "@/api";
 
 export const useSendOtp = ({
   role,
@@ -25,7 +26,7 @@ export const useSendOtp = ({
         title: "Send Email",
         description: data.message ?? "Send email successfully",
       });
-      localStorage.setItem(EMAIL, variables.email);
+      setEmail(variables.email);
       router.push(`/${role}/auth${redirectTo ?? "/forget-password-otp"}`);
     },
     onError: (error) => {

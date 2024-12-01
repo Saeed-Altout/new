@@ -9,7 +9,8 @@ import {
 } from "@/components/ui/accordion";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetCourse } from "@/hooks/dashboard/use-get-course";
-import { useCourseStore } from "@/stores/course-store";
+import { useCourseStore } from "@/store/course-store";
+import { cn } from "@/lib/utils";
 
 export const Sidebar = ({ id }: { id: string }) => {
   const { data: course, isLoading, isSuccess } = useGetCourse({ id });
@@ -21,14 +22,19 @@ export const Sidebar = ({ id }: { id: string }) => {
         <Accordion type="single" collapsible>
           {[...Array(10)].map((_, index) => (
             <AccordionItem key={index} value={`item-${index + 1}`}>
-              <AccordionTrigger className="bg-[#383838] text-white font-medium py-5 px-6">
+              <AccordionTrigger
+                className={cn(
+                  "bg-transparent font-medium py-5 px-6",
+                  index == 0 && "bg-[#383838] text-white"
+                )}
+              >
                 <Skeleton className="w-[80%] h-5" />
               </AccordionTrigger>
               <AccordionContent>
                 {[...Array(3)].map((_, index) => (
                   <div
                     key={index}
-                    className="bg-[#F3F3F3] flex items-start gap-2 py-4 px-6"
+                    className="bg-transparent flex items-start gap-2 py-4 px-6"
                   >
                     <Skeleton className="h-6 w-6" />
                     <div className="space-y-2">
@@ -47,16 +53,21 @@ export const Sidebar = ({ id }: { id: string }) => {
         <Accordion type="single" collapsible>
           {course?.data.sections.map((section, index) => (
             <AccordionItem key={index} value={`item-${index + 1}`}>
-              <AccordionTrigger className="bg-[#383838] text-white font-medium py-5 px-6">
+              <AccordionTrigger
+                className={cn(
+                  "bg-transparent font-medium py-5 px-6",
+                  index == 0 && "bg-[#383838] text-white"
+                )}
+              >
                 {section.section_title}
               </AccordionTrigger>
-              <AccordionContent className="bg-[#F3F3F3]">
+              <AccordionContent className="bg-transparent">
                 {section.lessons.length > 0 ? (
                   <>
                     {section.lessons.map((lesson, index) => (
                       <div
                         key={index}
-                        className="flex items-start gap-2 py-4 px-6 bg-transparent hover:bg-[#e4e4e4] cursor-pointer duration-300 ease-in-out"
+                        className="flex items-start gap-2 py-4 px-6 bg-transparent hover:bg-[#F3F3F3] cursor-pointer duration-300 ease-in-out"
                         onClick={() => setLesson(lesson)}
                       >
                         {lesson.type === "reading" && (

@@ -163,7 +163,7 @@ declare type UpdateProfilePasswordResponse = {
   data: null;
 };
 
-interface User {
+declare type User = {
   id?: number;
   full_name?: string;
   email?: string;
@@ -172,7 +172,7 @@ interface User {
   phone?: string;
   gender?: string;
   birth_date: Date | string | undefined;
-}
+};
 
 declare type CourseType = {
   id: number;

@@ -2,10 +2,10 @@ import { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 
 import { useRouter } from "@/i18n/routing";
-
 import { useToast } from "@/hooks/use-toast";
-import { register } from "@/api/auth/register";
-import { EMAIL } from "@/config/constants";
+import { setEmail } from "@/utils/local-storage";
+
+import { register } from "@/api";
 
 export const useRegister = () => {
   const { toast } = useToast();
@@ -19,7 +19,7 @@ export const useRegister = () => {
         title: "Register",
         description: data.message ?? "Register successfully",
       });
-      localStorage.setItem(EMAIL, variables.email);
+      setEmail(variables.email);
       localStorage.removeItem("currentUser");
       router.push(`/${variables.role}/auth/verification-otp`);
     },

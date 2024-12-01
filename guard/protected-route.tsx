@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
 
-import { useAuthStore } from "@/stores/auth-store";
+import { useAuthStore } from "@/store/auth-store";
 import { useRouter, usePathname } from "@/i18n/routing";
 import { getUserRole, isCompanyUser, isStudentUser } from "@/utils/protected";
 

@@ -5,7 +5,7 @@ import { UPDATE_PROFILE_STUDENT_ENDPOINT } from "@/config/constants";
 
 export const updateProfileInfoStudent = async (
   data: UpdateProfileInfoStudentBody
-) => {
+): Promise<UpdateProfileInfoStudentResponse> => {
   try {
     const response: AxiosResponse<UpdateProfileInfoStudentResponse> =
       await apiClient.post<UpdateProfileInfoStudentResponse>(

@@ -9,7 +9,7 @@ export const searchAdvanced = async ({
 }: {
   locale: string;
   data: SearchAdvancedBody;
-}) => {
+}): Promise<SearchAdvancedResponse> => {
   try {
     const response: AxiosResponse<SearchAdvancedResponse> =
       await apiClient.post<SearchAdvancedResponse>(
