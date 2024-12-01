@@ -6,8 +6,8 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   /* config options here */
-  output: "export",
-  trailingSlash: true,
+  // output: "export",
+  // trailingSlash: true,
   images: {
     domains: [
       "e-inakademie.free-homes.de",
