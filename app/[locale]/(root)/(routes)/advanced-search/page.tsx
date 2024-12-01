@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { Courses } from "./_components/courses";
 import { FilterForm } from "./_components/filter-form";
 
